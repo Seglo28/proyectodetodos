@@ -1,0 +1,23 @@
+
+/* 
+    Created on : 07-31-2018, 11:48:54 AM
+    Author     : Admin127
+*/
+
+body, html {
+    height: 100%;
+    font-family: 'EB Garamond', serif;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("img/fondo.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
