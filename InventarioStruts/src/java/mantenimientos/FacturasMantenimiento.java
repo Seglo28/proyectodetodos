@@ -147,7 +147,7 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
 
     }
 
-    public Facturas consultarFactura(int idFactura) {
+    public Facturas consultarFacturaId(int idFactura) {
         Facturas fac = new Facturas();
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();

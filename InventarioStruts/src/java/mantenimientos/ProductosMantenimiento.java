@@ -142,8 +142,8 @@ public class ProductosMantenimiento {
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
-                System.out.println(" error al eliminar  el producto");
+                flag = 0;
+                System.out.println(" error al eliminar  el producto "+e);
             }
 
         } finally {
