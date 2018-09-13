@@ -15,6 +15,7 @@
         <form-bean name="ActionFormSucursales" type="actionforms.ActionFormSucursales"></form-bean>
         <form-bean name="ActionFormClientes" type="actionforms.ActionFormClientes"></form-bean>
         <form-bean name="ActionFormCompras" type="actionforms.ActionFormCompras"></form-bean>
+        <form-bean name="ActionFormFacturas" type="actionforms.ActionFormFacturas"/>
     </form-beans>
     
     <global-exceptions>
@@ -102,6 +103,7 @@
     </global-forwards>
 
     <action-mappings>
+        <action input="/" name="ActionFormUser" path="/Facturas" scope="session" type="action.ActionFacturas"/>
                 <!-- 1. action de usuario-->
         <action name="ActionFormUser" path="/user" scope="request" type="action.ActionUser"/>
                 <!--2.action de  proveedores -->

@@ -14,6 +14,8 @@ public class FacturasMantenimiento {
 
     public static void main(String[] args) {
         FacturasMantenimiento m = new FacturasMantenimiento();
+        
+        m.consultarNombreFechaDeFactura("12/13/14");
         /*
         int idFactura=0;
         int idVentas=1;
@@ -97,7 +99,7 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
                 flag = 1;
-                System.out.println("Error al guaradr la factura");
+                System.out.println("Error al guardar la factura. "+e.getMessage());
             }
         } finally {
             session.close();
@@ -218,5 +220,27 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
         }
         return listaFacturas;
     }
-
+    
+    public Facturas consultarNombreFechaDeFactura(String fechaVenta){
+        Facturas fac = new Facturas();
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        
+        try{
+        Query q = session.createQuery("from Facturas f where f.fechaVenta = :fechaVenta").setParameter("fechaVenta", fechaVenta);
+            System.out.println("TAMAÑO: "+q.list().size());
+            if(q.list().isEmpty()){
+                System.out.println("No existe la factura.");
+                return fac = null;
+            }else{
+                System.out.println("La sucursal ya existe.");
+                return fac;
+            }
+        }catch (Exception e) {
+            System.out.println("Error al tratar de consultar fecha de factura. "+e.getMessage());
+            return fac = null;
+        }finally{
+            session.close();
+        }
+    }
 }
