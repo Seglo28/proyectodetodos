@@ -55,18 +55,14 @@ public static void main(String[] args) {
         
     }
 
-    public int guardarCompras(int idCompra,
-            int idProductos,
-            int idProveedores,
-            int cantidad,
-            double monto
-    ) {
+    public int guardarCompras(Integer idProductos, Integer idProveedores, Integer cantidad,
+            Double monto, String fechaCompra) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
 
         Compras com = new Compras();
-        com.setIdCompra(idCompra);
+        com.setIdCompra(0);
         
         Productos producto = new Productos();
         producto.setIdProducto(idProductos);
@@ -78,6 +74,7 @@ public static void main(String[] args) {
         
         com.setCantidad(cantidad);
         com.setMonto(monto);
+        com.setFechaCompra(fechaCompra);
 
         try {
             session.beginTransaction();
@@ -88,7 +85,7 @@ public static void main(String[] args) {
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
+                flag = 0;
                 System.out.println("Error al guardar Compra "+e);
             }
         } finally {
@@ -97,12 +94,8 @@ public static void main(String[] args) {
         return flag;
 
     }
-    public int ActualizarCompras(int idCompra,
-            int idProductos,
-            int idProveedores,
-            int cantidad,
-            double monto
-    ) {
+    public int ActualizarCompras(Integer idCompra, Integer idProductos, Integer idProveedores, Integer cantidad,
+            Double monto, String fechaCompra) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
@@ -120,6 +113,7 @@ public static void main(String[] args) {
         
         com.setCantidad(cantidad);
         com.setMonto(monto);
+        com.setFechaCompra(fechaCompra);
 
         try {
             session.beginTransaction();
@@ -130,7 +124,7 @@ public static void main(String[] args) {
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
+                flag = 0;
                 System.out.println("No se actualizó la Compra "+e);
             }
         } finally {
@@ -140,8 +134,7 @@ public static void main(String[] args) {
 
     }
 
-    public Compras consultarCompra(int idCompra) {
-         List<Compras> listaCompras = null;
+    public Compras consultarCompra(Integer idCompra) {
         Compras com = new Compras();
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -149,8 +142,7 @@ public static void main(String[] args) {
             session.beginTransaction();
             
             com = (Compras) session.get(Compras.class, idCompra);
-            Query q = session.createQuery("from Compras where idCompra= " + idCompra);
-            listaCompras = (List<Compras>) q.list();
+            session.getTransaction().commit();
             System.out.println("Exito ConsultaPorId Compra" );
             return com;
         } catch (Exception e) {
@@ -158,14 +150,14 @@ public static void main(String[] args) {
                 session.getTransaction().rollback();
                 System.out.println("Error consultaPorId Compra "+e);
             }
-            return null;
+            
         } finally {
             session.close();
         }
-
+        return com;
     }
 
-    public int eliminarCompra(int idCompra) {
+    public int eliminarCompra(Integer idCompra) {
         Compras com = new Compras();
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -182,7 +174,7 @@ public static void main(String[] args) {
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
+                flag = 0;
                 System.out.println("Error Eliminar Compra "+e);
             }
         } finally {
@@ -205,8 +197,7 @@ public static void main(String[] args) {
             
             System.out.println("Consulta Exitosa Compras");
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Falló consultar Compras");
+            System.out.println("Falló consultar Compras "+e);
         } finally {
 
         }

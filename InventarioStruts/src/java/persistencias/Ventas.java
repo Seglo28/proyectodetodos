@@ -17,6 +17,7 @@ public class Ventas  implements java.io.Serializable {
      private Usuario usuario;
      private Integer cantidad;
      private Double monto;
+     private String fechaVenta;
      private Set facturases = new HashSet(0);
 
     public Ventas() {
@@ -28,12 +29,13 @@ public class Ventas  implements java.io.Serializable {
         this.productos = productos;
         this.usuario = usuario;
     }
-    public Ventas(Clientes clientes, Productos productos, Usuario usuario, Integer cantidad, Double monto, Set facturases) {
+    public Ventas(Clientes clientes, Productos productos, Usuario usuario, Integer cantidad, Double monto, String fechaVenta, Set facturases) {
        this.clientes = clientes;
        this.productos = productos;
        this.usuario = usuario;
        this.cantidad = cantidad;
        this.monto = monto;
+       this.fechaVenta = fechaVenta;
        this.facturases = facturases;
     }
    
@@ -87,8 +89,13 @@ public class Ventas  implements java.io.Serializable {
         this.facturases = facturases;
     }
 
+    public String getFechaVenta() {
+        return fechaVenta;
+    }
 
-
+    public void setFechaVenta(String fechaVenta) {
+        this.fechaVenta = fechaVenta;
+    }
 
 }
 

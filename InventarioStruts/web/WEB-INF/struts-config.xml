@@ -14,6 +14,7 @@
         <form-bean name="ActionFormFabricantes" type="actionforms.ActionFormFabricantes"></form-bean>
         <form-bean name="ActionFormSucursales" type="actionforms.ActionFormSucursales"></form-bean>
         <form-bean name="ActionFormClientes" type="actionforms.ActionFormClientes"></form-bean>
+        <form-bean name="ActionFormCompras" type="actionforms.ActionFormCompras"></form-bean>
     </form-beans>
     
     <global-exceptions>
@@ -111,13 +112,14 @@
         <action name="ActionFormInventario" path="/inventario" scope="request" type="action.ActionInventario"/>
                 <!--5. action de ventas -->
                 <!--6. action de compras -->
+        <action name="ActionFormCompras" path="/compras" scope="request" type="action.ActionCompras"/>
                 <!--7. action de facturas-->
                 <!--8.  action de fabricantes-->
        <action name="ActionFormFabricantes" path="/fabricantes" scope="request" type="action.ActionFabricantes"/>
                 <!--9. action de clientes -->
        <action name="ActionFormClientes" path="/clientes" scope="request" type="action.ActionClientes"/>
                 <!--10.  acton de  sucursales-->
-      <action name="ActionFormSucursales" path="/sucursales" scope="request" type="action.ActionSucursales"/>
+       <action name="ActionFormSucursales" path="/sucursales" scope="request" type="action.ActionSucursales"/>
                 <!---->
 
         

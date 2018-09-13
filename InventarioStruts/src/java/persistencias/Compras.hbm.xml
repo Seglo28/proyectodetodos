@@ -20,5 +20,8 @@
         <property name="monto" type="java.lang.Double">
             <column name="monto" precision="22" scale="0" />
         </property>
+        <property name="fechaCompra" type="string">
+            <column name="fecha_compra" length="25" />
+        </property>
     </class>
 </hibernate-mapping>

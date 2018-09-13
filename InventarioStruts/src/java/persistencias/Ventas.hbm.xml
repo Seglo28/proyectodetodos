@@ -23,6 +23,9 @@
         <property name="monto" type="java.lang.Double">
             <column name="monto" precision="22" scale="0" />
         </property>
+        <property name="fechaVenta" type="string">
+            <column name="fecha_venta" length="25" />
+        </property>
         <set name="facturases" table="facturas" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_venta" not-null="true" />

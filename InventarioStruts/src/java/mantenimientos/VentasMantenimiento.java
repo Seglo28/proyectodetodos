@@ -30,14 +30,17 @@ public class VentasMantenimiento {
         //  /---- actualizar---------------////
 
         /*
-        int idVenta=6;
-        int idCliente=1;
-        int idProducto=3;
-        int idUsuario=1;
-        Integer cantidad=1455;
-        Double monto=1.0;
-         int r= vm.ActualizarVenta(idVenta, idCliente, idProducto, idUsuario, cantidad, monto);
-         */
+        int idVenta = 1;
+        int idCliente = 2;
+        int idProducto = 1;
+        int idUsuario = 1;
+        Integer cantidad = 123;
+        Double monto = 48.22;
+        String fechaVenta = "10/09/2018 11:17";
+        int r = vm.ActualizarVenta(idVenta, idCliente, idProducto, idUsuario, cantidad, monto, fechaVenta);
+        System.out.println("Actualizar, si es 1 funvionó: "+r);
+        */
+         
         ////----- eliminar-------///////////
         /*
          int idVenta=3;
@@ -75,13 +78,8 @@ public class VentasMantenimiento {
     }
 
    
-     public int guardarVenta( 
-            int idVenta,
-            int idClientes,
-            int idProductos,
-            int idUsuario,
-            Integer cantidad,
-            Double monto) {
+     public int guardarVenta(int idVenta, int idClientes, int idProductos, int idUsuario, Integer cantidad,
+            Double monto, String fechaVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -105,6 +103,7 @@ public class VentasMantenimiento {
         
         ven.setCantidad(cantidad);
         ven.setMonto(monto);
+        ven.setFechaVenta(fechaVenta);
 
         try {
             session.beginTransaction();
@@ -115,8 +114,8 @@ public class VentasMantenimiento {
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
-                System.out.println(" error al guardar la venta");
+                flag = 0;
+                System.out.println("Error al guardar la venta "+e);
             }
         } finally {
             session.close();
@@ -126,13 +125,8 @@ public class VentasMantenimiento {
     }
     
 
-public int ActualizarVenta(
-            int idVenta,
-            int idClientes,
-            int idProductos,
-            int idUsuario,
-            Integer cantidad,
-            Double monto) {
+public int ActualizarVenta(int idVenta, int idClientes, int idProductos, int idUsuario, Integer cantidad,
+            Double monto, String fechaVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -154,17 +148,19 @@ public int ActualizarVenta(
         
         ven.setCantidad(cantidad);
         ven.setMonto(monto);
+        ven.setFechaVenta(fechaVenta);
+        
         try {
             session.beginTransaction();
             session.saveOrUpdate(ven);
             session.getTransaction().commit();
             flag = 1;
-            System.out.println(" exito al actualizar la venta");
+            System.out.println("Exito al actualizar la venta");
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
-                System.out.println(" error al actualizar la venta");
+                flag = 0;
+                System.out.println("Error al actualizar la venta "+e);
             }
         } finally {
             session.close();
@@ -175,24 +171,19 @@ public int ActualizarVenta(
 
 
     public Ventas consultarVentas(Integer idVenta) {
-        List<Ventas> listaVentas = null;
+
         Ventas ven = new Ventas();
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         try {
             session.beginTransaction();
             ven = (Ventas) session.get(Ventas.class, idVenta);
-            
-            Query q = session.createQuery("from Ventas where idVenta= " + idVenta);
-            listaVentas = (List<Ventas>) q.list();
-            System.out.println("exito al consultar la venta");
-             
             session.getTransaction().commit();
-           return ven;
+            return ven;
         } catch (Exception ex) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                System.out.println(" error al  consultar");
+                System.out.println("Error al Consultar Ventas "+ex);
             }
         } finally {
             session.close();
@@ -213,13 +204,13 @@ public int ActualizarVenta(
             session.delete(ven);
             session.getTransaction().commit();
             flag = 1;
-            System.out.println(" exito al eliminar");
+            System.out.println("Exito al eliminar Venta");
 
         } catch (Exception ex) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
-                System.out.println("error al eliminar");
+                flag = 0;
+                System.out.println("Error al eliminar Venta "+ex);
             }
 
         } finally {
@@ -239,7 +230,7 @@ public int ActualizarVenta(
             listaVentas = (List<Ventas>) q.list();
             System.out.println("exito al consultar todo");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Error Consultar Lista Ventas "+e);
         } finally {
         }
         return listaVentas;
