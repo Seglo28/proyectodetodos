@@ -14,7 +14,7 @@ public class Compras  implements java.io.Serializable {
      private Proveedores proveedores;
      private Integer cantidad;
      private Double monto;
-     private String fechaCompra;
+     private String fechaCompras;
 
     public Compras() {
     }
@@ -29,7 +29,7 @@ public class Compras  implements java.io.Serializable {
        this.proveedores = proveedores;
        this.cantidad = cantidad;
        this.monto = monto;
-       this.fechaCompra = fechaCompra;
+       this.fechaCompras = fechaCompras;
     }
    
     public Integer getIdCompra() {
@@ -68,12 +68,12 @@ public class Compras  implements java.io.Serializable {
         this.monto = monto;
     }
 
-    public String getFechaCompra() {
-        return fechaCompra;
+    public String getFechaCompras() {
+        return fechaCompras;
     }
 
-    public void setFechaCompra(String fechaCompra) {
-        this.fechaCompra = fechaCompra;
+    public void setFechaCompras(String fechaCompras) {
+        this.fechaCompras = fechaCompras;
     }
 
 }

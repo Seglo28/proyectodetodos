@@ -72,6 +72,23 @@
                             </html:form></a>
                     </div>
                 </li>
+                   <!-- esto es lo que deja ver las lista de ID-->
+                
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                       Compras
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/compras">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/compras">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Compras</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <!--AQUI TERMINA.... esto es lo que deja ver las lista de ID-->
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                        Fabricantes
@@ -141,9 +158,7 @@
                     <html:form action="/productos">
                           <div hidden="hidden"><html:text property="idProducto"></html:text></div> 
                         <table border="0" class="table-striped">
-                            <tbody style="margin: 5px;">
-                                
-                             
+                            <tbody style="margin: 5px;">  
                                <tr>
                                 <td>
                                     <label form="id_proveedor">ID PROVEEDOR</label><br>

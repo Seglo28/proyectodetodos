@@ -17,19 +17,20 @@ public static void main(String[] args) {
         
         /* ------ Guardar -------- */
         
-        /*int idCompra = 0;
-        int productos = 1;
-        int proveedores = 2;
+     /*
+        int productos = 3;
+        int proveedores = 4;
         int cantidad = 20;
         double monto = 6.50;
+        String fechaCompras="11/06/11";
 
-        int r = mant.guardarCompras(idCompra, productos, proveedores, cantidad, monto); 
+        int r = mant.guardarCompras(productos, proveedores, cantidad, monto,fechaCompras); 
         System.exit(0);
-        */
+    */    
         
                 /* ----- Actualizar ----- */
         /*
-        int actua = mant.ActualizarCompras(3, 1, 2, 444, 222);
+        int actua = mant.ActualizarCompras(1, 1, 2, 20, 6.50, "10/01/2018 17:32");
        */
         
         /* ----- Consultar ----- */
@@ -56,12 +57,13 @@ public static void main(String[] args) {
     }
 
     public int guardarCompras(Integer idProductos, Integer idProveedores, Integer cantidad,
-            Double monto, String fechaCompra) {
+            Double monto, String fechaCompras) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
 
         Compras com = new Compras();
+        
         com.setIdCompra(0);
         
         Productos producto = new Productos();
@@ -74,7 +76,7 @@ public static void main(String[] args) {
         
         com.setCantidad(cantidad);
         com.setMonto(monto);
-        com.setFechaCompra(fechaCompra);
+        com.setFechaCompras(fechaCompras);
 
         try {
             session.beginTransaction();
@@ -95,7 +97,7 @@ public static void main(String[] args) {
 
     }
     public int ActualizarCompras(Integer idCompra, Integer idProductos, Integer idProveedores, Integer cantidad,
-            Double monto, String fechaCompra) {
+            Double monto, String fechaCompras) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
@@ -113,11 +115,11 @@ public static void main(String[] args) {
         
         com.setCantidad(cantidad);
         com.setMonto(monto);
-        com.setFechaCompra(fechaCompra);
+        com.setFechaCompras(fechaCompras);
 
         try {
             session.beginTransaction();
-            session.saveOrUpdate(com);
+            session.update(com);
             session.getTransaction().commit();
             flag = 1;
             System.out.println("Si modificó la Compra");

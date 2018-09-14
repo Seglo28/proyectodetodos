@@ -81,7 +81,7 @@ public class ProductosMantenimiento {
     
         try {
             session.beginTransaction();
-            session.saveOrUpdate(prod);
+            session.update(prod);
             session.getTransaction().commit();
             flag = 1;
             System.out.println(" exito al actualizar el producto");

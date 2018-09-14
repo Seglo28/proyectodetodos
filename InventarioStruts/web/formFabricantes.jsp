@@ -75,6 +75,23 @@
                             </html:form></a>
                     </div>
                 </li>
+                   <!-- esto es lo que deja ver las lista de ID-->
+                
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                       Compras
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/compras">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/compras">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Compras</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <!--AQUI TERMINA.... esto es lo que deja ver las lista de ID-->
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                        Fabricantes
@@ -142,7 +159,11 @@
             <div class="row">
                 <div class="col-8">
                     <html:form action="/fabricantes">
-                        <table border="0" class="table-striped">
+                       <div class="card">
+                            <div class="card bg-info text-white">
+                                <div class="card-header">Registro de Fabricantes</div>
+                            </div>
+                            <div class="card-body">
                             <tbody style="margin: 5px;">
                                 <tr  style="padding: 10px;">
                                     <td>Nombre del fabricante
@@ -161,7 +182,9 @@
                                  
                                 </tr><br>
                                 </tbody>
-                            </table><br>
+                                </div>
+                        </div>
+                            <br>
                         <html:submit styleClass="btn btn-primary" property="action" value="Insertar" />
                         <br><br>
                         <bean:write name="ActionFormFabricantes" property="error" filter="false"/>

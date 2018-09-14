@@ -15,6 +15,7 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
      private Integer cantidad;
      private Double monto;
      private String error;
+     private String fechaCompras;
     private String action;
     private String mensaje;
     private List<Productos> listaProd;
@@ -125,10 +126,19 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
         this.listaCom = listaCom;
     }
 
+    public String getFechaCompras() {
+        return fechaCompras;
+    }
+
+    public void setFechaCompras(String fechaCompras) {
+        this.fechaCompras = fechaCompras;
+    }
+
     @Override
     public String toString() {
-        return "ActionFormCompras{" + "idCompra=" + idCompra + ", productos=" + productos + ", proveedores=" + proveedores + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", cantidad=" + cantidad + ", monto=" + monto + ", error=" + error + ", action=" + action + ", mensaje=" + mensaje + ", listaProd=" + listaProd + ", listaProv=" + listaProv + ", listaCom=" + listaCom + '}';
+        return "ActionFormCompras{" + "idCompra=" + idCompra + ", productos=" + productos + ", proveedores=" + proveedores + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", cantidad=" + cantidad + ", monto=" + monto + ", error=" + error + ", fechaCompras=" + fechaCompras + ", action=" + action + ", mensaje=" + mensaje + ", listaProd=" + listaProd + ", listaProv=" + listaProv + ", listaCom=" + listaCom + '}';
     }
+
     
     
 }

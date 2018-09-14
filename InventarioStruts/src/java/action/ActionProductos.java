@@ -154,6 +154,7 @@ public class ActionProductos extends org.apache.struts.action.Action {
                 formBean.setError("<div class='alert alert-danger'> No se puede realizar la consulta para actualizar...</div>");
                 return mapping.findForward(errorPROD);
             }else{
+                System.out.println("id:"+prod.getIdProducto());
                 formBean.setIdProducto(prod.getIdProducto());
                  formBean.setIdProveedor(prod.getProveedores().getIdProveedor());
                  formBean.setIdFabricante(prod.getFabricantes().getIdFabricante());
@@ -172,11 +173,20 @@ public class ActionProductos extends org.apache.struts.action.Action {
         }
         if (action.equals("Modificar")) {
             ProductosMantenimiento mprod = new ProductosMantenimiento();
-            mprod.ActualizarProductos(idProducto, idFabricante, idProveedor, producto);
+            
+            System.out.println("ID Producto: "+idProducto);
+             System.out.println("ID: "+idFabricante);
+            System.out.println("ID Prov: "+idProveedor);
+            System.out.println(" producto"+producto);
+          
+           int r= mprod.ActualizarProductos(idProducto, idFabricante, idProveedor, producto);
+             System.out.println("Ya sabes 1: "+r);
             List<Productos> listaProd = mprod.consultarTodosProductos();
             formBean.setListaProd(listaProd);
             return mapping.findForward(consultarPROD);
         }
+        
+        
          if (action.equals("Volver")) {
             ProductosMantenimiento mprod = new ProductosMantenimiento();
             List<Productos> listaProd = mprod.consultarTodosProductos();

@@ -1,23 +1,28 @@
+<%-- 
+    Document   : verFac
+    Created on : 09-05-2018, 04:23:16 PM
+    Author     : delmy.perezusam
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@taglib uri="http://struts.apache.org/tags-faces" prefix="faces" %>
 <%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/bootstrap.min.css" rel="stylesheet" >
-          <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>Modificar Producto</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" >
+        <title>Consulta de tabla Compras</title>
+         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <style>
-              .bg {
+            .bg {
                 /* Imagen de Fondo */
                 background-image: url("img/login.jpg");
 
@@ -35,19 +40,16 @@
                 right: 0px;
             }
         </style>
-        
     </head>
-
     <body class="bg">
-      
-              <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+         <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
             <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
                 <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
             </a>
             <ul class="nav navbar-nav">
 
-               
+              
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Usuarios
@@ -56,19 +58,6 @@
                         <a class="dropdown-item" href=""><html:link page="/formUser.jsp" styleClass="btn btn-outline-info">Ingresar Usuario</html:link></a>
                         <a class="dropdown-item" href=""><html:form action="/user">
                                 <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
-                            </html:form></a>
-                    </div>
-                </li>
-                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                       Productos
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/productos">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
-                            </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/productos">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
                             </html:form></a>
                     </div>
                 </li>
@@ -89,6 +78,19 @@
                 </li>
                 <!--AQUI TERMINA.... esto es lo que deja ver las lista de ID-->
                 
+                   <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                       Productos
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/productos">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/productos">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                        Fabricantes
@@ -143,69 +145,51 @@
                 </li>
             </ul>
         </nav>
-                    
-        <div class="container" style="margin-top: 20px">
-            
-          
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h3> Actualizar Producto</h3>  
-                </div>  
-            </div> 
+    
+         
+        <div class="container">
 
+            <br>
             <div class="row">
-                <div class="col-8">
-                    <html:form action="/productos">
-                          <div hidden="hidden"><html:text property="idProducto"></html:text></div> 
-                        <table border="0" class="table-striped">
-                            <tbody style="margin: 5px;">
-                                
-                             
-                               <tr>
-                                <td>
-                                    <label form="id_proveedor">ID PROVEEDOR</label><br>
-                                    <html:select property="idProveedor">
-                                        <html:option value="-- Seleccionar --"></html:option>
-                                        <logic:notEmpty name="ActionFormProductos" property="listaProv">
-                                            <logic:iterate id="prov" name="ActionFormProductos" property="listaProv">
-                                                <html:option value="${prov.idProveedor}">${prov.proveedor}</html:option>
-                                            </logic:iterate>
-                                        </logic:notEmpty>
-                                    </html:select>
-                                    <br>
-                                </td>
-                            </tr>
+                <div class="col-12">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
                             <tr>
-                                 <td>
-                                    <label form="id_fabricante">ID FABRICANTE</label><br>
-                                    <html:select property="idFabricante">
-                                        <html:option value="-- Seleccionar--"></html:option>
-                                        <logic:notEmpty name="ActionFormProductos" property="listaFab">
-                                            <logic:iterate id="fab" name="ActionFormProductos" property="listaFab">
-                                                <html:option value="${fab.idFabricante}">${fab.fabricante}</html:option>
-                                            </logic:iterate>
-                                        </logic:notEmpty>
-                                    </html:select>
-                                    <br>
-                                </td>
+                                <th>id</th>
+                                <th>idProducto</th>
+                                <th>idProveedor</th>
+                                <th>Cantidad de producto</th>
+                                <th>Monto de la compra</th>
+                                <th>Fecha de la compra</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
                             </tr>
-                                    <tr  style="padding: 10px;">
-                                        <td>Nombre del producto:
-                                        <html:text property="producto" size="70" maxlength="15"></html:text>
+                        </thead>
+                        <tbody>
+                        <logic:notEmpty name="ActionFormCompras" property="listaCom">
+                            <logic:iterate id="compras" name="ActionFormCompras" property="listaCom">
+                                <tr>
+                                    <html:form action="/compras">
+                                        <td><bean:write name="compras" property="idCompra"/></td>
+                                        <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div> </td>
+                                    <td><bean:write name="compras" property="productos.idProducto"/></td>
+                                    <td><bean:write name="compras" property="proveedores.idProveedor"/></td>
+                                    <td><bean:write name="compras" property="cantidad"/></td>
+                                    <td><bean:write name="compras" property="monto"/></td>
+                                    <td><bean:write name="compras" property="fechaCompras"/></td>
+                                    <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
+                                    <td><html:submit styleClass="btn btn-danger" property="action" value="Eliminar"/></td>
+                                </html:form>
                                     </tr>
-                                <br>
-                                <tr colspan="2">
-                                </tr><br>
-                                </tbody>
-                            </table><br>
-                          <html:submit styleClass="btn btn-primary" property="action" value="Borrar" />
-                          <html:submit styleClass="btn btn-primary" property="action" value="Volver"/>
-                        <br><br>
-                        <bean:write name="ActionFormFabricantes" property="error" filter="false"/>
-                    </html:form>
+                            </logic:iterate>
+                        </logic:notEmpty>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4">
+                    ${error}
+                    ${mensaje}
                 </div>
             </div>
-        </div>
-        ${mensaje}
     </body>
 </html>
