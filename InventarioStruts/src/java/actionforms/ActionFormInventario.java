@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package actionforms;
 
 import java.util.List;
@@ -14,8 +10,11 @@ import persistencias.Sucursales;
 public class ActionFormInventario extends org.apache.struts.action.ActionForm{
     private Integer idInventario;
     private Productos productos;
+    private Integer idProducto;
     private Proveedores proveedores;
+    private Integer idProveedor;
     private Sucursales sucursales;
+    private Integer idSucursal;
     private Integer cant;
     private Integer stock;
     private String estado;
@@ -24,6 +23,9 @@ public class ActionFormInventario extends org.apache.struts.action.ActionForm{
     private String errorIngresarInventario;
     private String mensaje;
     private List<Inventario> listaInv;
+    private List<Productos> listProd;
+    private List<Proveedores> listProv;
+    private List<Sucursales> listSuc;
 
     public Integer getIdInventario() {
         return idInventario;
@@ -41,6 +43,14 @@ public class ActionFormInventario extends org.apache.struts.action.ActionForm{
         this.productos = productos;
     }
 
+    public Integer getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Integer idProducto) {
+        this.idProducto = idProducto;
+    }
+
     public Proveedores getProveedores() {
         return proveedores;
     }
@@ -49,12 +59,28 @@ public class ActionFormInventario extends org.apache.struts.action.ActionForm{
         this.proveedores = proveedores;
     }
 
+    public Integer getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(Integer idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
     public Sucursales getSucursales() {
         return sucursales;
     }
 
     public void setSucursales(Sucursales sucursales) {
         this.sucursales = sucursales;
+    }
+
+    public Integer getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(Integer idSucursal) {
+        this.idSucursal = idSucursal;
     }
 
     public Integer getCant() {
@@ -113,8 +139,6 @@ public class ActionFormInventario extends org.apache.struts.action.ActionForm{
         this.errorIngresarInventario = errorIngresarInventario;
     }
 
-   
-
     public String getMensaje() {
         return mensaje;
     }
@@ -123,13 +147,33 @@ public class ActionFormInventario extends org.apache.struts.action.ActionForm{
         this.mensaje = mensaje;
     }
 
-    @Override
-    public String toString() {
-        return "ActionFormInventario{" + "idInventario=" + idInventario + ", productos=" + productos + ", proveedores=" + proveedores + ", sucursales=" + sucursales + ", cant=" + cant + ", stock=" + stock + ", estado=" + estado + ", error=" + error + ", action=" + action + ", errorIngresarInventario=" + errorIngresarInventario + ", mensaje=" + mensaje + ", listaInv=" + listaInv + '}';
+    public List<Productos> getListProd() {
+        return listProd;
     }
 
-   
-   
-   
-      
+    public void setListProd(List<Productos> listProd) {
+        this.listProd = listProd;
+    }
+
+    public List<Proveedores> getListProv() {
+        return listProv;
+    }
+
+    public void setListProv(List<Proveedores> listProv) {
+        this.listProv = listProv;
+    }
+
+    public List<Sucursales> getListSuc() {
+        return listSuc;
+    }
+
+    public void setListSuc(List<Sucursales> listSuc) {
+        this.listSuc = listSuc;
+    }
+
+    @Override
+    public String toString() {
+        return "ActionFormInventario{" + "idInventario=" + idInventario + ", productos=" + productos + ", idProducto=" + idProducto + ", proveedores=" + proveedores + ", idProveedor=" + idProveedor + ", sucursales=" + sucursales + ", idSucursal=" + idSucursal + ", cant=" + cant + ", stock=" + stock + ", estado=" + estado + ", error=" + error + ", action=" + action + ", errorIngresarInventario=" + errorIngresarInventario + ", mensaje=" + mensaje + ", listaInv=" + listaInv + ", listProd=" + listProd + ", listProv=" + listProv + ", listSuc=" + listSuc + '}';
+    }
+
 }

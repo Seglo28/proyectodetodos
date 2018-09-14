@@ -22,6 +22,7 @@ public class ActionClientes extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping map, ActionForm form, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
+        
         ActionFormClientes formBean = (ActionFormClientes) form;
         Integer idCliente = formBean.getIdCliente();
         String cliente = formBean.getCliente();

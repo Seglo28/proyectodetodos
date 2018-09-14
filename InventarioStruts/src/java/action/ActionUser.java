@@ -102,6 +102,7 @@ public class ActionUser extends org.apache.struts.action.Action{
             }
             mant.guardarUser(usuario, correo, contra, cargo);
             List<Usuario> listaUser = mant.consultarUser();
+            formBean.setListaUser(listaUser);
             
             if(listaUser == null){
                 formBean.setError("<div class='alert alert-danger'>No hay Usuarios en el Sistema<div>");
@@ -109,7 +110,7 @@ public class ActionUser extends org.apache.struts.action.Action{
             } else {
                 mensaje = "<div class='alert alert-success'>Guardado de Usuario Exitoso<div>";
                 request.setAttribute("mensaje", mensaje);
-                formBean.setListaUser(listaUser);
+                
                 return map.findForward(insertar);
             }
             

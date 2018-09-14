@@ -1,5 +1,5 @@
-
 package action;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,92 +8,125 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import actionforms.ActionFormInventario;
+import mantenimientos.ProductosMantenimiento;
+import mantenimientos.ProveedorMantenimiento;
+import mantenimientos.SucursalesMantenimiento;
 import persistencias.Inventario;
 import persistencias.Productos;
 import persistencias.Proveedores;
 import persistencias.Sucursales;
 
-public class ActionInventario extends org.apache.struts.action.Action{
-    private static final String agregarINV = "agregarINV";
+public class ActionInventario extends org.apache.struts.action.Action {
+
+    private static final String agregarINV = "insertarINV";
     private static final String consultarINV = "consultarINV";
     private static final String consultarIdINV = "consultarIdINV";
     private static final String modificarINV = "modificarINV";
     private static final String eliminarINV = "eliminarINV";
     private static final String errorINV = "errorINV";
+    private static final String errorIngresarINV = "errorIngresarINV";
+    private static final String irFormInventario = "irFormInventario";
+
     @Override
-public ActionForward execute(ActionMapping mapping, ActionForm form,
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
-        throws Exception {
-    
-    
-   ActionFormInventario formBean = (ActionFormInventario) form;
-      int idInventario = formBean.getIdInventario();
-      int idProducto = formBean.getProductos().getIdProducto();
-      int idProveedor = formBean.getProveedores().getIdProveedor();
-      int idSucursal = formBean.getSucursales().getIdSucursal();
-      Integer cant = formBean.getCant();
-      Integer stock = formBean.getStock();
-      String estado = formBean.getEstado();
-      String action = formBean.getAction();
-      
-       if (formBean == null || action == null) {
+            throws Exception {
+
+        ActionFormInventario formBean = (ActionFormInventario) form;
+        Integer idInventario = formBean.getIdInventario();
+        Integer idProducto = formBean.getIdProducto();
+        Integer idProveedor = formBean.getIdProveedor();
+        Integer idSucursal = formBean.getIdSucursal();
+        Integer cant = formBean.getCant();
+        Integer stock = formBean.getStock();
+        String estado = formBean.getEstado();
+        String action = formBean.getAction();
+
+        if (formBean == null || action == null) {
             return mapping.findForward(errorINV);
         }
-    
-    if (action.equals("Agregar")) {
+
+        if (action.equals("Insertar")) {
             String adver = "";
-             if (cant == null || cant.equals("")) {
+            String adver2 = "";
+            String mensaje = "";
+            if (cant == null || cant.equals("")) {
                 adver = "* Escriba la cantidad del producto";
             }
-             if (stock == null || stock.equals("")) {
-                adver = "* Escriba la cantidad del stock del producto";
-            }
-            if (estado == null || estado.equals("")) {
-                adver = "* Escriba el estado del inventario";
+            if (stock == null || stock.equals("")) {
+                adver2 = "* Escriba la cantidad del stock del producto";
             }
             if (!adver.equals("")) {
-                formBean.setError("<div class='alert alert-danger'>" + adver + "</div>");
+                formBean.setError("<div class='alert alert-danger'>" + adver + adver2 + "</div>");
                 return mapping.findForward(errorINV);
             }
-            
-            InventarioMantenimiento minv=new InventarioMantenimiento();
-            Inventario inv=minv.consultarInventario(idInventario);
-        
+
+            InventarioMantenimiento minv = new InventarioMantenimiento();
+            System.out.println("Del JSP Producto: "+idProducto);
+            Inventario inv = minv.consultarInventarioProducto(idProducto);
+            System.out.println("Consulta Producto: "+inv);
+
             if (inv != null) {
-                formBean.setError("<div class='alert alert-danger'>Este Producto ya Existe</div>");
-                return mapping.findForward(errorINV);
+            ProductosMantenimiento mprod = new ProductosMantenimiento();
+            List<Productos> listaProd = mprod.consultarTodosProductos();
+            formBean.setListProd(listaProd);
+            request.setAttribute("listaProd", listaProd);
+
+            ProveedorMantenimiento mprov = new ProveedorMantenimiento();
+            List<Proveedores> listaProv = mprov.consultarTodosProveedores();
+            formBean.setListProv(listaProv);
+            request.setAttribute("listaProv", listaProv);
+
+            SucursalesMantenimiento msuc = new SucursalesMantenimiento();
+            List<Sucursales> listaSuc = msuc.consultarTodosSucursales();
+            formBean.setListSuc(listaSuc);
+            request.setAttribute("listaSuc", listaSuc);
+                
+            mensaje = "Error";
+                request.setAttribute("mensaje", mensaje);
+                return mapping.findForward(errorIngresarINV);
             }
             int inv1 = minv.guardarInventario(idInventario, idProducto, cant, stock, estado, idProveedor, idSucursal);
-                    
+            List<Inventario> listInv = minv.consultarTodosInventario();
+            formBean.setListaInv(listInv);
+
             System.out.println("Si es 1 Funcionó " + inv1);
             return mapping.findForward(agregarINV);
         }
 
-      if (action.equals("Consultar")) {
-          InventarioMantenimiento inv = new InventarioMantenimiento();
-          List<Inventario> listaInv = inv.consultarTodosInventario();
-          if (listaInv == null) {
-              formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados EN EL INVENTARIO</div>");
-              return mapping.findForward(errorINV);
-          } else {
-              formBean.setListaInv(listaInv);
-              return mapping.findForward(consultarINV);
-          }
-      }
+        if (action.equals("Consultar")) {
+            InventarioMantenimiento minv = new InventarioMantenimiento();
+            List<Inventario> listaInv = minv.consultarTodosInventario();
+            
+            if (listaInv == null) {
+                formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados EN EL INVENTARIO</div>");
+                return mapping.findForward(errorINV);
+            } else {
+                formBean.setListaInv(listaInv);
+                return mapping.findForward(consultarINV);
+            }
+        }
 
-      if (action.equals("Eliminar")) {
+        if (action.equals("Agregar Inventario")) {
+            ProductosMantenimiento mprod = new ProductosMantenimiento();
+            List<Productos> listaProd = mprod.consultarTodosProductos();
+            formBean.setListProd(listaProd);
+            request.setAttribute("listaProd", listaProd);
 
-          InventarioMantenimiento minv = new InventarioMantenimiento();
-          minv.eliminarInventario(idInventario);
+            ProveedorMantenimiento mprov = new ProveedorMantenimiento();
+            List<Proveedores> listaProv = mprov.consultarTodosProveedores();
+            formBean.setListProv(listaProv);
+            request.setAttribute("listaProv", listaProv);
 
-          return mapping.findForward(eliminarINV);
-      }
-     
-    
-        return mapping.findForward(agregarINV);
-    }  
-    
-    
-    
-    
+            SucursalesMantenimiento msuc = new SucursalesMantenimiento();
+            List<Sucursales> listaSuc = msuc.consultarTodosSucursales();
+            formBean.setListSuc(listaSuc);
+            request.setAttribute("listaSuc", listaSuc);
+
+            return mapping.findForward(irFormInventario);
+        }
+
+        return null;
+    }
+
 }
