@@ -62,9 +62,11 @@
    
   
         <!-- 4. acciones de  inventarios y redireccion-->
-        
-        
-        
+        <forward name="irFormInventario"  path="/formInventario.jsp"/>
+        <forward name="errorIngresarINV"  path="/formInventario.jsp"/>
+        <forward name="insertarINV"  path="/verINV.jsp"/>
+        <forward name="consultarINV"  path="/verINV.jsp"/>
+        <forward name="errorINV"  path="/verINV.jsp"/>
         
         <!-- 5. acciones de ventas y redireccion-->
         

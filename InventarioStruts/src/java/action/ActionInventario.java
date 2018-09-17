@@ -51,14 +51,15 @@ public class ActionInventario extends org.apache.struts.action.Action {
             String adver2 = "";
             String mensaje = "";
             if (cant == null || cant.equals("")) {
-                adver = "* Escriba la cantidad del producto";
+                adver = "* Escriba la cantidad del producto <br>";
             }
             if (stock == null || stock.equals("")) {
-                adver2 = "* Escriba la cantidad del stock del producto";
+                adver2 = "* Escriba la cantidad del stock del producto <br>";
             }
             if (!adver.equals("")) {
-                formBean.setError("<div class='alert alert-danger'>" + adver + adver2 + "</div>");
-                return mapping.findForward(errorINV);
+                mensaje = "Complete los campos: <br>" + adver + adver2 + "";
+                request.setAttribute("mensaje", mensaje);
+                return mapping.findForward(errorIngresarINV);
             }
 
             InventarioMantenimiento minv = new InventarioMantenimiento();
@@ -82,10 +83,11 @@ public class ActionInventario extends org.apache.struts.action.Action {
             formBean.setListSuc(listaSuc);
             request.setAttribute("listaSuc", listaSuc);
                 
-            mensaje = "Error";
-                request.setAttribute("mensaje", mensaje);
-                return mapping.findForward(errorIngresarINV);
+            mensaje = "Este Producto ya tiene un Inventario";
+            request.setAttribute("mensaje", mensaje);
+            return mapping.findForward(errorIngresarINV);
             }
+            
             int inv1 = minv.guardarInventario(idInventario, idProducto, cant, stock, estado, idProveedor, idSucursal);
             List<Inventario> listInv = minv.consultarTodosInventario();
             formBean.setListaInv(listInv);

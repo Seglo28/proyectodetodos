@@ -15,6 +15,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://codeseven.github.com/toastr/toastr.js"></script>
+	<link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
+	<link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
         <style>
             .bg {
                 /* Imagen de Fondo */
@@ -34,48 +38,6 @@
                 right: 0px;
             }
         </style>
-        <script>
-            toastr.options = {
-                "debug": false,
-  		"positionClass": "toast-bottom-right",
-  		"onclick": null,
-            	"fadeIn": 300,
-  		"fadeOut": 100,
-                "timeOut": 5000,
-  		"extendedTimeOut": 1000
-            }
-
-            var showToastrs = false;
-
-            function error() {
-                if (!showToastrs) {
-                    toastr.error('Usuario no Registrado', 'Error!');
-                    toastr.success('Se guardaron los cambios satisfactoriamente', 'Todo en orden');
-                    toastr.warning('La latencia del server esta aumentando.', 'Alerta!');
-                } else {
-                    toastr.error('no se puede!\'t.', 'Otro error crítico');
-                }
-            }
-
-            // Definimos los callback cuando el TOAST le da un fade in/out:
-            toastr.options.onFadeIn = function() {
-                showToastrs = true;
-            };
-            toastr.options.onFadeOut = function() {
-                showToastrs = false;
-            };
-
-            $(function() {
-                $("#clear").on("click", function() {
-                // Clears the current list of toasts
-                toastr.clear();
-            });
-            $("#rewind").on("click", function() {
-            // show toastrs :)
-            toastrs();
-            });
-            });
-        </script>
     </head>
 
     <body class="bg">
@@ -192,7 +154,7 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label>Producto</label><br>
-                                    <html:select property="idProducto">
+                                    <html:select property="idProducto" styleClass="form-control">
                                         <html:option value="">-- Seleccionar --</html:option>
                                         <logic:notEmpty name="ActionFormInventario" property="listProd">
                                             <logic:iterate id="prod" name="ActionFormInventario" property="listProd">
@@ -203,18 +165,18 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Cant</label><br>
-                                    <html:text property="cant" size="25" maxlength="25"></html:text>
+                                    <html:text property="cant" styleClass="form-control"></html:text>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Stock</label><br>
-                                    <html:text property="stock" size="25" maxlength="25"></html:text>
+                                    <html:text property="stock" styleClass="form-control"></html:text>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label>Estado</label><br>
-                                    <html:select property="estado">
+                                    <html:select property="estado" styleClass="form-control">
                                         <html:option value="Disponible">Disponible</html:option>
                                         <html:option value="Stock">Stock</html:option>
                                         <html:option value="Sin Existencias">Sin Existencias</html:option>
@@ -222,7 +184,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Proveedor</label><br>
-                                    <html:select property="idProveedor">
+                                    <html:select property="idProveedor" styleClass="form-control">
                                         <html:option value="-- Seleccionar --"></html:option>
                                         <logic:notEmpty name="ActionFormInventario" property="listProv">
                                             <logic:iterate id="prov" name="ActionFormInventario" property="listProv">
@@ -233,7 +195,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Sucursal</label><br>
-                                    <html:select property="idSucursal">
+                                    <html:select property="idSucursal" styleClass="form-control">
                                         <html:option value="-- Seleccionar --"></html:option>
                                         <logic:notEmpty name="ActionFormInventario" property="listSuc">
                                             <logic:iterate id="suc" name="ActionFormInventario" property="listSuc">
@@ -246,11 +208,36 @@
                             <html:submit styleClass="btn btn-outline-success" property="action" value="Insertar">Insertar</html:submit>
                         </div>
                     </div><br>
-                    <div id="info" hidden="hidden">${mensaje}</div>
+                    <div id="error" hidden="hidden">${mensaje}</div>
                 </html:form>
                 </div>
             </div>
 
         </div>
+        <script>
+            toastr.options = {
+                "debug": false,
+  		"positionClass": "toast-bottom-right",
+  		"onclick": null,
+            	"fadeIn": 300,
+  		"fadeOut": 100,
+                "timeOut": 5000,
+  		"extendedTimeOut": 1000
+            }
+
+            var showToastrs = false;
+
+            function toastrs() {
+                if(!showToastrs){
+                    toastr.error($("#error").text(), 'Error!');
+                }
+            }
+            
+            if($("#error").text() != ""){
+                window.onload = function(){
+                    toastrs();
+                }
+            }
+        </script>
     </body>
 </html>
