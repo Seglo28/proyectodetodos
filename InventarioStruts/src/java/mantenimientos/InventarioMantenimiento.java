@@ -200,6 +200,34 @@ public class InventarioMantenimiento {
         }
 
     }
+    
+    public Inventario consultarInventarioSucursal(int idSucursal) {
+        
+        Inventario inv = new Inventario();
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        session.beginTransaction();
+
+        try {
+            
+            Query q = session.createQuery("FROM Inventario i where i.sucursales.idSucursal=:sucursal").setParameter("sucursal", idSucursal);
+            System.out.println("TAMAÑO: "+q.list().size());
+            if(q.list().isEmpty()){
+                System.out.println("No éxiste el Sucursal, puede ocuparlo");
+                return inv = null;
+            } else {
+                System.out.println("El Sucursal ya existe en el Inventario");
+                return inv;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error consultarInventarioProducto "+e);
+            return inv;
+        } finally {
+            
+        }
+
+    }
 
     public int eliminarInventario(Integer idInventario) {
         Inventario inv = new Inventario();

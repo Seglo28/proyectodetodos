@@ -65,9 +65,10 @@ public class ActionInventario extends org.apache.struts.action.Action {
             InventarioMantenimiento minv = new InventarioMantenimiento();
             System.out.println("Del JSP Producto: "+idProducto);
             Inventario inv = minv.consultarInventarioProducto(idProducto);
+            Inventario inv2 = minv.consultarInventarioSucursal(idSucursal);
             System.out.println("Consulta Producto: "+inv);
 
-            if (inv != null) {
+            if (inv != null && inv2 != null) {
             ProductosMantenimiento mprod = new ProductosMantenimiento();
             List<Productos> listaProd = mprod.consultarTodosProductos();
             formBean.setListProd(listaProd);
