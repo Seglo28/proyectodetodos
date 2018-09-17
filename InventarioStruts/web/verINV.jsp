@@ -16,6 +16,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://codeseven.github.com/toastr/toastr.js"></script>
+	<link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
+	<link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
         <style>
             .bg {
                 /* Imagen de Fondo */
@@ -35,6 +39,7 @@
                 right: 0px;
             }
         </style>
+        
     </head>
     <body class="bg">
         
@@ -142,7 +147,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
                     </html:form></a>
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
                         <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
@@ -211,10 +216,54 @@
                     </table>
                 </div>
                 <div class="col-4">
-                    ${error}
-                    ${mensaje}
+                    <div id="error" hidden="hidden">${error}</div>
+                    <div id="mensaje" hidden="hidden">${mensaje}</div>
+                    <div id="info" hidden="hidden">${info}</div>
                 </div>
             </div>
         </div>
+        <script>
+            toastr.options = {
+                "debug": false,
+//  		"positionClass": "toast-bottom-right",
+  		"onclick": null,
+            	"fadeIn": 300,
+  		"fadeOut": 100,
+                "timeOut": 5000,
+  		"extendedTimeOut": 1000
+            }
+
+            var showToastrs = false;
+
+            function error() {
+                if(!showToastrs){
+                    toastr.error($("#error").text(), 'Error!');
+                }
+            }
+            
+            function mensaje() {
+                if(!showToastrs){
+                    toastr.success($("#mensaje").text(), 'Éxito!');
+                }
+            }
+            function info() {
+                if(!showToastrs){
+                    toastr.info($("#info").text(), 'Info!');
+                }
+            }
+            
+            window.onload = function(){
+                if($("#error").text() != ""){
+                    error();
+                }
+                if($("#mensaje").text() != ""){
+                    mensaje();
+                }
+                if($("#info").text() != ""){
+                    info();
+                }
+            }
+
+        </script>
     </body>
 </html>

@@ -13,14 +13,20 @@ import  com.myapp.struts.HibernateUtil;
 public class ProductosMantenimiento {
 
     public static void main(String[] args) {
-        int idProducto = 0;
-        int idFabricantes = 1;
-        int idProveedores = 1;
-        String producto = " coasa";
 
         ProductosMantenimiento man = new ProductosMantenimiento();
+        // --- GUARDAR ---
+        /*
         int r = man.guardarProductos(idFabricantes, idProveedores, producto);
         System.out.println();
+        */
+        
+        // --- MODIFICAR ---
+        
+        int r = man.ActualizarProductos(4, 2, 1, "Porozas");
+        System.out.println("R: "+r);
+        
+        
     }
 
     public int guardarProductos(int idFabricantes, int idProveedores, String producto) {
@@ -58,11 +64,7 @@ public class ProductosMantenimiento {
         return flag;
     }
 
-    public int ActualizarProductos(
-            Integer idProducto,
-            Integer idFabricantes,
-            Integer idProveedores,
-            String producto) {
+    public int ActualizarProductos(Integer idProducto, Integer idFabricantes, Integer idProveedores, String producto) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -78,19 +80,20 @@ public class ProductosMantenimiento {
         prov.setIdProveedor(idProveedores);
         prod.setProveedores(prov);
 
-    
+        session.beginTransaction();
+        
         try {
-            session.beginTransaction();
+            
             session.update(prod);
             session.getTransaction().commit();
             flag = 1;
-            System.out.println(" exito al actualizar el producto");
+            System.out.println("Exito al actualizar el producto");
 
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
-                System.out.println(" error al  actualizar el producto");
+                flag = 0;
+                System.out.println("Error al  actualizar el producto "+e);
             }
         } finally {
             session.close();

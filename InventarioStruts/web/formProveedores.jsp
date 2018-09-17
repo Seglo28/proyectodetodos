@@ -1,3 +1,4 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
@@ -6,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inicio</title>
+        <title>Agregar Proveedor</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -187,7 +188,7 @@
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 Proveedor:
-                                                <html:text property="proveedor" size="50" maxlength="25" value=""></html:text>
+                                                <html:text property="proveedor" styleClass="form-control"></html:text>
                                                     Rubro:
                                                 <html:text property="rubro" size="50" maxlength="25" value=""></html:text>
                                                     Contacto:

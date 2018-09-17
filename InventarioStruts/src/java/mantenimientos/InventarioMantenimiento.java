@@ -51,7 +51,7 @@ public class InventarioMantenimiento {
         
         // --- CONSULTAR UNO ---
         
-        Inventario mostrarU = m.consultarInventarioProducto(1);
+        Inventario mostrarU = m.consultarInventarioProducto(1, 1);
         System.out.println(mostrarU);
         
         
@@ -173,7 +173,7 @@ public class InventarioMantenimiento {
         return inv;
     }
     
-    public Inventario consultarInventarioProducto(int idProducto) {
+    public Inventario consultarInventarioProducto(int idProducto, int idSucursal) {
         
         Inventario inv = new Inventario();
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -182,41 +182,13 @@ public class InventarioMantenimiento {
 
         try {
             
-            Query q = session.createQuery("FROM Inventario i where i.productos.idProducto=:producto").setParameter("producto", idProducto);
+            Query q = session.createQuery("FROM Inventario i where i.productos.idProducto=:producto and i.sucursales.idSucursal=:sucursal").setParameter("producto", idProducto).setParameter("sucursal", idSucursal);
             System.out.println("TAMAÑO: "+q.list().size());
             if(q.list().isEmpty()){
                 System.out.println("No éxiste el producto, puede ocuparlo");
                 return inv = null;
             } else {
                 System.out.println("El producto ya existe en el Inventario");
-                return inv;
-            }
-            
-        } catch (Exception e) {
-            System.out.println("Error consultarInventarioProducto "+e);
-            return inv;
-        } finally {
-            
-        }
-
-    }
-    
-    public Inventario consultarInventarioSucursal(int idSucursal) {
-        
-        Inventario inv = new Inventario();
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.openSession();
-        session.beginTransaction();
-
-        try {
-            
-            Query q = session.createQuery("FROM Inventario i where i.sucursales.idSucursal=:sucursal").setParameter("sucursal", idSucursal);
-            System.out.println("TAMAÑO: "+q.list().size());
-            if(q.list().isEmpty()){
-                System.out.println("No éxiste el Sucursal, puede ocuparlo");
-                return inv = null;
-            } else {
-                System.out.println("El Sucursal ya existe en el Inventario");
                 return inv;
             }
             
