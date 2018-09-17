@@ -97,7 +97,7 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
                 flag = 1;
-                System.out.println("Error al guaradr la factura");
+                System.out.println("Error al guaradar la factura");
             }
         } finally {
             session.close();
@@ -106,7 +106,7 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
 
     }
 
-    public int ActualizarFacturas(
+    /*public int ActualizarFacturas(
             int idFactura,
             int idVentas,
             String fechaVenta,
@@ -145,7 +145,7 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
         }
         return flag;
 
-    }
+    }*/
 
     public Facturas consultarFacturaId(int idFactura) {
         Facturas fac = new Facturas();
@@ -208,11 +208,11 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
         try {
             Query q = session.createQuery("from Facturas");
             listaFacturas = (List<Facturas>) q.list();
-            System.out.println("exito al consultar las facturas");
+            System.out.println("exito al consultar las facturas" +q);
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Error al consultar las facturas");
+            System.out.println("Error al consultar las facturas. "+e.getMessage());
         } finally {
 
         }

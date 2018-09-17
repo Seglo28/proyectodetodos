@@ -15,6 +15,7 @@
         <form-bean name="ActionFormSucursales" type="actionforms.ActionFormSucursales"></form-bean>
         <form-bean name="ActionFormClientes" type="actionforms.ActionFormClientes"></form-bean>
         <form-bean name="ActionFormCompras" type="actionforms.ActionFormCompras"></form-bean>
+        <form-bean name="ActionFormFacturas" type="actionforms.ActionFormFacturas"/>
     </form-beans>
     
     <global-exceptions>
@@ -80,7 +81,15 @@
         <forward name="irFormCompras"  path="/formCompras.jsp"/>
         
         <!-- 7. acciones de  facturas y redireccion-->
-        
+
+         <forward name="agregarFACT" path="/formFacturas.jsp"/>
+         <forward name="consultarFACT" path="/verFACT.jsp"/>
+         <forward name="consultarIdFACT" path="/modFACT.jsp"/>
+         <forward name="modificarFACT" path="/modFACT.jsp"/>
+         <forward name="eliminarFACT" path="/eliminarFacturas.jsp"/>
+         <forward name="borrarFACT" path="/verFACT.jsp"/>
+         <forward name="errorFACT" path="/formFacturas.jsp"/>
+         
         <!-- 8. acciones de fabricantes y redireccion-->
          <forward name="insertarFac"  path="/formFabricantes.jsp"/>
         <forward name="consultarFac"  path="/verFac.jsp"/>
@@ -128,6 +137,7 @@
         <action name="ActionFormCompras" path="/compras" scope="request" type="action.ActionCompras"/>
         
                 <!--7. action de facturas-->
+        <action input="/" name="ActionFormFacturas" path="/facturas" scope="session" type="action.ActionFacturas"/>
                 <!--8.  action de fabricantes-->
        <action name="ActionFormFabricantes" path="/fabricantes" scope="request" type="action.ActionFabricantes"/>
                 <!--9. action de clientes -->

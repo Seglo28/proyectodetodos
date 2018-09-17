@@ -1,14 +1,16 @@
- 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@taglib uri="http://struts.apache.org/tags-faces" prefix="faces" %>
+<%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Inicio</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet" >
+        <title>Consulta de tabla Facturas</title>
+         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -27,7 +29,7 @@
                 background-repeat: initial;
                 background-size: cover;
             }
-
+            
             .ml-auto .dropdown-menu {
                 left: auto !important;
                 right: 0px;
@@ -35,15 +37,14 @@
         </style>
     </head>
     <body class="bg">
-
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+         <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
             <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
                 <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
             </a>
             <ul class="nav navbar-nav">
 
-
+              
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Usuarios
@@ -55,9 +56,9 @@
                             </html:form></a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Productos
+                       Productos
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><html:form action="/productos">
@@ -68,11 +69,11 @@
                             </html:form></a>
                     </div>
                 </li>
-                <!-- esto es lo que deja ver las lista de ID-->
-
-                <li class="nav-item dropdown">
+                   <!-- esto es lo que deja ver las lista de ID-->
+                
+                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Compras
+                       Compras
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><html:form action="/compras">
@@ -84,10 +85,10 @@
                     </div>
                 </li>
                 <!--AQUI TERMINA.... esto es lo que deja ver las lista de ID-->
-
+                
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Fabricantes
+                       Fabricantes
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link></a>
@@ -99,7 +100,7 @@
                 <!-- INICIO FACTURAS-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Facturas
+                       Facturas
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link></a>
@@ -109,9 +110,9 @@
                     </div>
                 </li>
                 <!-- FINAL FACTURAS-->
-                <li class="nav-item dropdown">
+                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Clientes
+                     Clientes
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">IngresarClientes</html:link></a>
@@ -131,7 +132,7 @@
                             </html:form></a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Proveedores
                     </a>
@@ -142,26 +143,57 @@
                             </html:form></a>
                     </div>
                 </li>
-
+                 
 
 
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
+                        <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
                 </li>
             </ul>
         </nav>
-
-        <div class="container" style="margin-top: 20px">
-
+          
+        <div class="container">
             <br>
             <div class="row">
                 <div class="col-12">
-                    <h1>Inicio</h1>
-
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID FACTURA</th>
+                                <th>ID VENTA</th>
+                                <th>FECHA</th>
+                                <th>ID SUCURSAL</th>
+                                <th>Actualizar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <logic:notEmpty name="ActionFormFacturas" property="listaFACT">
+                            <logic:iterate id="ver" name="ActionFormFacturas" property="listaFACT">
+                                <tr>
+                                    <html:form action="/facturas">
+                                        <td><bean:write name="ver" property="idFactura"/></td>
+                                        <div hidden="hidden"><html:text  name="ver" property="idProducto"></html:text></div> </td>
+                                    <td><bean:write name="ver" property="ventas.idVenta"/></td>
+                                    <td><bean:write name="ver" property="fechaVenta"/></td>
+                                    <td><bean:write name="ver" property="sucursales.idSucursal"/></td>
+                                    <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
+                                    <td><html:submit styleClass="btn btn-danger" property="action" value="Eliminar"/></td>
+                                </html:form>
+                                    </tr>
+                            </logic:iterate>
+                        </logic:notEmpty>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-4">
+                    ${error}
+                    ${mensaje}
                 </div>
             </div>
-        </div>
+                        </div>
     </body>
 </html>
+

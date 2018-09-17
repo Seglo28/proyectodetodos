@@ -199,9 +199,6 @@ public class ActionProductos extends org.apache.struts.action.Action {
                 return mapping.findForward(consultarPROD);
             }
         }
-        
-        
-        
         return null;
     }
 }
