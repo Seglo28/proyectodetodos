@@ -51,10 +51,10 @@ public class ActionInventario extends org.apache.struts.action.Action {
             String adver2 = "";
             String mensaje = "";
             if (cant == null || cant.equals("") || cant == 0) {
-                adver = "* Escriba la cantidad del producto.";
+                adver = "- Escriba la cantidad del producto. ";
             }
             if (stock == null || stock.equals("") || cant == 0) {
-                adver2 = "* Escriba la cantidad del stock del producto.";
+                adver2 = "- Escriba la cantidad del stock del producto.";
             }
             if (!adver.equals("")) {
                 ProductosMantenimiento mprod = new ProductosMantenimiento();
