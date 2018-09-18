@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1
+// Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,35 +13,35 @@ public class Ventas  implements java.io.Serializable {
 
      private Integer idVenta;
      private Clientes clientes;
+     private Inventario inventario;
      private Productos productos;
+     private Sucursales sucursales;
      private Usuario usuario;
      private Integer cantidad;
      private Double monto;
      private String fechaVenta;
-     private Sucursales sucursales;
-     private Inventario inventario;
      private Set facturases = new HashSet(0);
 
     public Ventas() {
     }
 
 	
-    public Ventas(Clientes clientes, Productos productos, Usuario usuario, Sucursales sucursales, Inventario inventario) {
+    public Ventas(Clientes clientes, Inventario inventario, Productos productos, Sucursales sucursales, Usuario usuario) {
         this.clientes = clientes;
-        this.productos = productos;
-        this.usuario = usuario;
-        this.sucursales = sucursales;
         this.inventario = inventario;
+        this.productos = productos;
+        this.sucursales = sucursales;
+        this.usuario = usuario;
     }
-    public Ventas(Clientes clientes, Productos productos, Usuario usuario, Integer cantidad, Double monto, String fechaVenta, Sucursales sucursales, Inventario inventario, Set facturases) {
+    public Ventas(Clientes clientes, Inventario inventario, Productos productos, Sucursales sucursales, Usuario usuario, Integer cantidad, Double monto, String fechaVenta, Set facturases) {
        this.clientes = clientes;
+       this.inventario = inventario;
        this.productos = productos;
+       this.sucursales = sucursales;
        this.usuario = usuario;
        this.cantidad = cantidad;
        this.monto = monto;
        this.fechaVenta = fechaVenta;
-       this.sucursales = sucursales;
-       this.inventario = inventario;
        this.facturases = facturases;
     }
    
@@ -59,12 +59,26 @@ public class Ventas  implements java.io.Serializable {
     public void setClientes(Clientes clientes) {
         this.clientes = clientes;
     }
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+    
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
     public Productos getProductos() {
         return this.productos;
     }
     
     public void setProductos(Productos productos) {
         this.productos = productos;
+    }
+    public Sucursales getSucursales() {
+        return this.sucursales;
+    }
+    
+    public void setSucursales(Sucursales sucursales) {
+        this.sucursales = sucursales;
     }
     public Usuario getUsuario() {
         return this.usuario;
@@ -87,6 +101,13 @@ public class Ventas  implements java.io.Serializable {
     public void setMonto(Double monto) {
         this.monto = monto;
     }
+    public String getFechaVenta() {
+        return this.fechaVenta;
+    }
+    
+    public void setFechaVenta(String fechaVenta) {
+        this.fechaVenta = fechaVenta;
+    }
     public Set getFacturases() {
         return this.facturases;
     }
@@ -95,28 +116,9 @@ public class Ventas  implements java.io.Serializable {
         this.facturases = facturases;
     }
 
-    public String getFechaVenta() {
-        return fechaVenta;
-    }
 
-    public void setFechaVenta(String fechaVenta) {
-        this.fechaVenta = fechaVenta;
-    }
 
-    public Sucursales getSucursales() {
-        return sucursales;
-    }
-
-    public void setSucursales(Sucursales sucursales) {
-        this.sucursales = sucursales;
-    }
-
-    public Inventario getInventario() {
-        return inventario;
-    }
-
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
-    }
 
 }
+
+

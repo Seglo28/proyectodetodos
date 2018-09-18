@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Proveedores" table="proveedores" catalog="control_inventario" optimistic-lock="version">
         <id name="idProveedor" type="java.lang.Integer">
@@ -9,13 +9,13 @@
             <generator class="identity" />
         </id>
         <property name="proveedor" type="string">
-            <column name="proveedor" length="25" />
+            <column name="proveedor" length="50" />
         </property>
         <property name="rubro" type="string">
-            <column name="rubro" length="45" />
+            <column name="rubro" length="25" />
         </property>
         <property name="contacto" type="string">
-            <column name="contacto" length="55" />
+            <column name="contacto" length="25" />
         </property>
         <property name="telefono" type="string">
             <column name="telefono" length="25" />

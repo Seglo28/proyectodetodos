@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Clientes" table="clientes" catalog="control_inventario" optimistic-lock="version">
         <id name="idCliente" type="java.lang.Integer">
@@ -9,16 +9,16 @@
             <generator class="identity" />
         </id>
         <property name="cliente" type="string">
-            <column name="cliente" length="250" />
+            <column name="cliente" length="25" />
         </property>
         <property name="tipoPersona" type="string">
-            <column name="tipo_persona" length="250" />
+            <column name="tipo_persona" length="15" />
         </property>
         <property name="direccion" type="string">
-            <column name="direccion" length="250" />
+            <column name="direccion" length="50" />
         </property>
         <property name="telefono" type="string">
-            <column name="telefono" length="250" />
+            <column name="telefono" length="15" />
         </property>
         <set name="ventases" table="ventas" inverse="true" lazy="true" fetch="select">
             <key>

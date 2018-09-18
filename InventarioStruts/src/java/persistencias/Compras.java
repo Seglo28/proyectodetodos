@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1
+// Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,29 +10,29 @@ public class Compras  implements java.io.Serializable {
 
 
      private Integer idCompra;
+     private Inventario inventario;
      private Productos productos;
      private Proveedores proveedores;
      private Integer cantidad;
      private Double monto;
      private String fechaCompra;
-     private Inventario inventario;
 
     public Compras() {
     }
 
 	
-    public Compras(Productos productos, Proveedores proveedores, Inventario inventario) {
+    public Compras(Inventario inventario, Productos productos, Proveedores proveedores) {
+        this.inventario = inventario;
         this.productos = productos;
         this.proveedores = proveedores;
-        this.inventario = inventario;
     }
-    public Compras(Productos productos, Proveedores proveedores, Integer cantidad, Double monto, String fechaCompra, Inventario inventario) {
+    public Compras(Inventario inventario, Productos productos, Proveedores proveedores, Integer cantidad, Double monto, String fechaCompra) {
+       this.inventario = inventario;
        this.productos = productos;
        this.proveedores = proveedores;
        this.cantidad = cantidad;
        this.monto = monto;
        this.fechaCompra = fechaCompra;
-       this.inventario = inventario;
     }
    
     public Integer getIdCompra() {
@@ -41,6 +41,13 @@ public class Compras  implements java.io.Serializable {
     
     public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
+    }
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+    
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
     public Productos getProductos() {
         return this.productos;
@@ -70,21 +77,17 @@ public class Compras  implements java.io.Serializable {
     public void setMonto(Double monto) {
         this.monto = monto;
     }
-
     public String getFechaCompra() {
-        return fechaCompra;
+        return this.fechaCompra;
     }
-
+    
     public void setFechaCompra(String fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
 
-    public Inventario getInventario() {
-        return inventario;
-    }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
-    }
+
 
 }
+
+

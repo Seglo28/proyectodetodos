@@ -41,20 +41,21 @@ Contributor(s):
 -->
 <hibernate-configuration>
   <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/control_inventario</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
     <property name="hibernate.connection.pool_size">3</property>
-    <mapping resource="persistencias/Fabricantes.hbm.xml"/>
-    <mapping resource="persistencias/Proveedores.hbm.xml"/>
-    <mapping resource="persistencias/Inventario.hbm.xml"/>
-    <mapping resource="persistencias/Clientes.hbm.xml"/>
-    <mapping resource="persistencias/Compras.hbm.xml"/>
-    <mapping resource="persistencias/Productos.hbm.xml"/>
     <mapping resource="persistencias/Usuario.hbm.xml"/>
-    <mapping resource="persistencias/Facturas.hbm.xml"/>
+    <mapping resource="persistencias/Clientes.hbm.xml"/>
     <mapping resource="persistencias/Ventas.hbm.xml"/>
+    <mapping resource="persistencias/Fabricantes.hbm.xml"/>
+    <mapping resource="persistencias/Inventario.hbm.xml"/>
+    <mapping resource="persistencias/Facturas.hbm.xml"/>
+    <mapping resource="persistencias/Productos.hbm.xml"/>
+    <mapping resource="persistencias/Compras.hbm.xml"/>
+    <mapping resource="persistencias/Proveedores.hbm.xml"/>
     <mapping resource="persistencias/Sucursales.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Ventas" table="ventas" catalog="control_inventario" optimistic-lock="version">
         <id name="idVenta" type="java.lang.Integer">
@@ -11,8 +11,14 @@
         <many-to-one name="clientes" class="persistencias.Clientes" fetch="select">
             <column name="id_cliente" not-null="true" />
         </many-to-one>
+        <many-to-one name="inventario" class="persistencias.Inventario" fetch="select">
+            <column name="id_inventario" not-null="true" />
+        </many-to-one>
         <many-to-one name="productos" class="persistencias.Productos" fetch="select">
             <column name="id_producto" not-null="true" />
+        </many-to-one>
+        <many-to-one name="sucursales" class="persistencias.Sucursales" fetch="select">
+            <column name="id_sucursal" not-null="true" />
         </many-to-one>
         <many-to-one name="usuario" class="persistencias.Usuario" fetch="select">
             <column name="id_usuario" not-null="true" />
@@ -24,14 +30,8 @@
             <column name="monto" precision="22" scale="0" />
         </property>
         <property name="fechaVenta" type="string">
-            <column name="fecha_venta" length="25" />
+            <column name="fecha_venta" length="20" />
         </property>
-        <many-to-one name="sucursales" class="persistencias.Sucursales" fetch="select">
-            <column name="id_sucursal" not-null="true" />
-        </many-to-one>
-        <many-to-one name="inventario" class="persistencias.Inventario" fetch="select">
-            <column name="id_inventario" not-null="true" />
-        </many-to-one>
         <set name="facturases" table="facturas" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_venta" not-null="true" />
