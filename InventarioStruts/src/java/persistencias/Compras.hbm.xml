@@ -23,5 +23,8 @@
         <property name="fechaCompras" type="string">
             <column name="fecha_compras" length="25" />
         </property>
+        <many-to-one name="inventario" class="persistencias.Inventario" fetch="select">
+            <column name="id_inventario" not-null="true" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

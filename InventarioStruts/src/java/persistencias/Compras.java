@@ -14,22 +14,25 @@ public class Compras  implements java.io.Serializable {
      private Proveedores proveedores;
      private Integer cantidad;
      private Double monto;
-     private String fechaCompras;
+     private String fechaCompra;
+     private Inventario inventario;
 
     public Compras() {
     }
 
 	
-    public Compras(Productos productos, Proveedores proveedores) {
+    public Compras(Productos productos, Proveedores proveedores, Inventario inventario) {
         this.productos = productos;
         this.proveedores = proveedores;
+        this.inventario = inventario;
     }
-    public Compras(Productos productos, Proveedores proveedores, Integer cantidad, Double monto, String fechaCompra) {
+    public Compras(Productos productos, Proveedores proveedores, Integer cantidad, Double monto, String fechaCompra, Inventario inventario) {
        this.productos = productos;
        this.proveedores = proveedores;
        this.cantidad = cantidad;
        this.monto = monto;
-       this.fechaCompras = fechaCompras;
+       this.fechaCompra = fechaCompra;
+       this.inventario = inventario;
     }
    
     public Integer getIdCompra() {
@@ -68,14 +71,20 @@ public class Compras  implements java.io.Serializable {
         this.monto = monto;
     }
 
-    public String getFechaCompras() {
-        return fechaCompras;
+    public String getFechaCompra() {
+        return fechaCompra;
     }
 
-    public void setFechaCompras(String fechaCompras) {
-        this.fechaCompras = fechaCompras;
+    public void setFechaCompra(String fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
 
 }
-
-

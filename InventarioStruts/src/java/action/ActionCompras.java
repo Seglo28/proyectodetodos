@@ -131,7 +131,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
                  formBean.setIdProveedor(com.getProveedores().getIdProveedor());
                  formBean.setCantidad(com.getCantidad()); 
                  formBean.setMonto(com.getMonto());
-                 formBean.setFechaCompras(com.getFechaCompras());
+                 formBean.setFechaCompras(com.getFechaCompra());
                  
                  ProductosMantenimiento mprod = new ProductosMantenimiento();
                  List<Productos> listaProd = mprod.consultarTodosProductos();
@@ -174,7 +174,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
                  formBean.setIdProveedor(com.getProveedores().getIdProveedor());
                  formBean.setCantidad(com.getCantidad()); 
                  formBean.setMonto(com.getMonto());
-                 formBean.setFechaCompras(com.getFechaCompras());
+                 formBean.setFechaCompras(com.getFechaCompra());
                  
                  ProductosMantenimiento mprod = new ProductosMantenimiento();
                  List<Productos> listaProd = mprod.consultarTodosProductos();

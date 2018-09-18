@@ -18,24 +18,30 @@ public class Ventas  implements java.io.Serializable {
      private Integer cantidad;
      private Double monto;
      private String fechaVenta;
+     private Sucursales sucursales;
+     private Inventario inventario;
      private Set facturases = new HashSet(0);
 
     public Ventas() {
     }
 
 	
-    public Ventas(Clientes clientes, Productos productos, Usuario usuario) {
+    public Ventas(Clientes clientes, Productos productos, Usuario usuario, Sucursales sucursales, Inventario inventario) {
         this.clientes = clientes;
         this.productos = productos;
         this.usuario = usuario;
+        this.sucursales = sucursales;
+        this.inventario = inventario;
     }
-    public Ventas(Clientes clientes, Productos productos, Usuario usuario, Integer cantidad, Double monto, String fechaVenta, Set facturases) {
+    public Ventas(Clientes clientes, Productos productos, Usuario usuario, Integer cantidad, Double monto, String fechaVenta, Sucursales sucursales, Inventario inventario, Set facturases) {
        this.clientes = clientes;
        this.productos = productos;
        this.usuario = usuario;
        this.cantidad = cantidad;
        this.monto = monto;
        this.fechaVenta = fechaVenta;
+       this.sucursales = sucursales;
+       this.inventario = inventario;
        this.facturases = facturases;
     }
    
@@ -97,6 +103,20 @@ public class Ventas  implements java.io.Serializable {
         this.fechaVenta = fechaVenta;
     }
 
+    public Sucursales getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(Sucursales sucursales) {
+        this.sucursales = sucursales;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
 }
-
-

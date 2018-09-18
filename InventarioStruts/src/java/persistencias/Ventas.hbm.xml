@@ -26,6 +26,12 @@
         <property name="fechaVenta" type="string">
             <column name="fecha_venta" length="25" />
         </property>
+        <many-to-one name="sucursales" class="persistencias.Sucursales" fetch="select">
+            <column name="id_sucursal" not-null="true" />
+        </many-to-one>
+        <many-to-one name="inventario" class="persistencias.Inventario" fetch="select">
+            <column name="id_inventario" not-null="true" />
+        </many-to-one>
         <set name="facturases" table="facturas" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="id_venta" not-null="true" />

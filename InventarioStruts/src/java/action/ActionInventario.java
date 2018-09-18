@@ -148,6 +148,64 @@ public class ActionInventario extends org.apache.struts.action.Action {
 
             return mapping.findForward(irFormInventario);
         }
+        
+        if (action.equals("Actualizar")) {
+            String mensaje = "";
+            InventarioMantenimiento minv = new InventarioMantenimiento();
+            Inventario inv = minv.consultarInventario(idInventario);
+
+            if(inv == null){
+                
+                mensaje = "No hay datos en el Inventario";
+                request.setAttribute("error", mensaje);
+                return mapping.findForward(errorINV);
+                
+            }else{
+                
+                formBean.setIdInventario(inv.getIdInventario());
+                formBean.setIdProducto(inv.getProductos().getIdProducto());
+                formBean.setCant(inv.getCant());
+                formBean.setStock(inv.getStock());
+                formBean.setEstado(inv.getEstado());
+                formBean.setIdProveedor(inv.getProveedores().getIdProveedor());
+                formBean.setIdSucursal(inv.getSucursales().getIdSucursal());
+                 
+                ProductosMantenimiento mprod = new ProductosMantenimiento();
+                List<Productos> listaProd = mprod.consultarTodosProductos();
+                formBean.setListProd(listaProd);
+                request.setAttribute("listaProd", listaProd);
+
+                ProveedorMantenimiento mprov = new ProveedorMantenimiento();
+                List<Proveedores> listaProv = mprov.consultarTodosProveedores();
+                formBean.setListProv(listaProv);
+                request.setAttribute("listaProv", listaProv);
+
+                SucursalesMantenimiento msuc = new SucursalesMantenimiento();
+                List<Sucursales> listaSuc = msuc.consultarTodosSucursales();
+                formBean.setListSuc(listaSuc);
+                request.setAttribute("listaSuc", listaSuc);
+                
+                return mapping.findForward(modificarINV);
+            }
+        }
+        
+        if (action.equals("Modificar")) {
+            String mensaje;
+            InventarioMantenimiento minv = new InventarioMantenimiento();
+          
+            int r = minv.ActualizarInventario(idInventario, idProducto, cant, stock, estado, idProveedor, idSucursal);
+            
+            List<Inventario> listInv = minv.consultarTodosInventario();
+            formBean.setListaInv(listInv);
+            if(r == 1){
+                mensaje = "El Inventario se ha añadido Exitosamente";
+                request.setAttribute("mensaje", mensaje);
+            } else {
+                mensaje = "El Inventario no fue añadido Exitosamente";
+                request.setAttribute("error", mensaje);
+            }
+            return mapping.findForward(consultarINV);
+        }
 
         return null;
     }
