@@ -105,6 +105,19 @@ public class ActionCompras extends org.apache.struts.action.Action {
             }
         }
        
+       if (action.equals("Cancelar")) {
+           ComprasMantenimiento mcom= new ComprasMantenimiento();
+           List<Compras>listaCom=mcom.consultarTodosCompras();
+           System.out.println("lista es"+listaCom);
+            if (listaCom == null) {
+                formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados en la base de Compras </div>");
+                return mapping.findForward(consultarCOM);
+            } else {
+                formBean.setListaCom(listaCom);
+                return mapping.findForward(consultarCOM);
+            }
+        }
+       
         if (action.equals("Agregar Compra")) {
             ProveedorMantenimiento mprov = new ProveedorMantenimiento();
             List<Proveedores> listaProv = mprov.consultarTodosProveedores();
