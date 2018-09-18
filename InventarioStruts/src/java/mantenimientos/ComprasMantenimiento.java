@@ -76,7 +76,7 @@ public static void main(String[] args) {
         
         com.setCantidad(cantidad);
         com.setMonto(monto);
-        com.setFechaCompras(fechaCompras);
+        com.setFechaCompra(fechaCompras);
 
         try {
             session.beginTransaction();
@@ -115,7 +115,7 @@ public static void main(String[] args) {
         
         com.setCantidad(cantidad);
         com.setMonto(monto);
-        com.setFechaCompras(fechaCompras);
+        com.setFechaCompra(fechaCompras);
 
         try {
             session.beginTransaction();

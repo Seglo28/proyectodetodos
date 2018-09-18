@@ -67,6 +67,8 @@
         <forward name="insertarINV"  path="/verINV.jsp"/>
         <forward name="consultarINV"  path="/verINV.jsp"/>
         <forward name="errorINV"  path="/verINV.jsp"/>
+        <forward name="modificarINV"  path="/modINV.jsp"/>
+        <forward name="errorModINV"  path="/modINV.jsp"/>
         
         <!-- 5. acciones de ventas y redireccion-->
         

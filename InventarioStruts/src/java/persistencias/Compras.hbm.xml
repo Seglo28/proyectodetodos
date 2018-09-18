@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Compras" table="compras" catalog="control_inventario" optimistic-lock="version">
         <id name="idCompra" type="java.lang.Integer">
             <column name="id_compra" />
             <generator class="identity" />
         </id>
+        <many-to-one name="inventario" class="persistencias.Inventario" fetch="select">
+            <column name="id_inventario" not-null="true" />
+        </many-to-one>
         <many-to-one name="productos" class="persistencias.Productos" fetch="select">
             <column name="id_producto" not-null="true" />
         </many-to-one>
@@ -20,8 +23,8 @@
         <property name="monto" type="java.lang.Double">
             <column name="monto" precision="22" scale="0" />
         </property>
-        <property name="fechaCompras" type="string">
-            <column name="fecha_compras" length="25" />
+        <property name="fechaCompra" type="string">
+            <column name="fecha_compra" length="20" />
         </property>
     </class>
 </hibernate-mapping>

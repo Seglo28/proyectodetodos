@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1
+// Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1
 
 
 
@@ -10,26 +10,29 @@ public class Compras  implements java.io.Serializable {
 
 
      private Integer idCompra;
+     private Inventario inventario;
      private Productos productos;
      private Proveedores proveedores;
      private Integer cantidad;
      private Double monto;
-     private String fechaCompras;
+     private String fechaCompra;
 
     public Compras() {
     }
 
 	
-    public Compras(Productos productos, Proveedores proveedores) {
+    public Compras(Inventario inventario, Productos productos, Proveedores proveedores) {
+        this.inventario = inventario;
         this.productos = productos;
         this.proveedores = proveedores;
     }
-    public Compras(Productos productos, Proveedores proveedores, Integer cantidad, Double monto, String fechaCompra) {
+    public Compras(Inventario inventario, Productos productos, Proveedores proveedores, Integer cantidad, Double monto, String fechaCompra) {
+       this.inventario = inventario;
        this.productos = productos;
        this.proveedores = proveedores;
        this.cantidad = cantidad;
        this.monto = monto;
-       this.fechaCompras = fechaCompras;
+       this.fechaCompra = fechaCompra;
     }
    
     public Integer getIdCompra() {
@@ -38,6 +41,13 @@ public class Compras  implements java.io.Serializable {
     
     public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
+    }
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+    
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
     }
     public Productos getProductos() {
         return this.productos;
@@ -67,14 +77,16 @@ public class Compras  implements java.io.Serializable {
     public void setMonto(Double monto) {
         this.monto = monto;
     }
-
-    public String getFechaCompras() {
-        return fechaCompras;
+    public String getFechaCompra() {
+        return this.fechaCompra;
+    }
+    
+    public void setFechaCompra(String fechaCompra) {
+        this.fechaCompra = fechaCompra;
     }
 
-    public void setFechaCompras(String fechaCompras) {
-        this.fechaCompras = fechaCompras;
-    }
+
+
 
 }
 

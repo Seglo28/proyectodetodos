@@ -35,7 +35,7 @@ public class ProductosMantenimiento {
         Session session = factory.openSession();
         int flag = 0;
         Productos prod = new Productos();
-        prod.setIdProducto(0);
+        
 
         Fabricantes fabr = new Fabricantes();
         fabr.setIdFabricante(idFabricantes);
@@ -70,6 +70,7 @@ public class ProductosMantenimiento {
         Session session = factory.openSession();
         int flag = 0;
         Productos prod = new Productos();
+        prod.setIdProducto(idProducto);
         prod.setProducto(producto);
 
         Fabricantes fabr = new Fabricantes();

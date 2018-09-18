@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Productos" table="productos" catalog="control_inventario" optimistic-lock="version">
         <id name="idProducto" type="java.lang.Integer">
@@ -15,7 +15,7 @@
             <column name="id_proveedor" not-null="true" />
         </many-to-one>
         <property name="producto" type="string">
-            <column name="producto" length="25" />
+            <column name="producto" length="50" />
         </property>
         <set name="inventarios" table="inventario" inverse="true" lazy="true" fetch="select">
             <key>

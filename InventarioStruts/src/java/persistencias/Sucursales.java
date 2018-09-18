@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-04-2018 08:49:34 AM by Hibernate Tools 4.3.1
+// Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,18 +18,20 @@ public class Sucursales  implements java.io.Serializable {
      private String departamento;
      private String telefono;
      private Set inventarios = new HashSet(0);
+     private Set ventases = new HashSet(0);
      private Set facturases = new HashSet(0);
 
     public Sucursales() {
     }
 
-    public Sucursales(String sucursal, String direccion, String municipio, String departamento, String telefono, Set inventarios, Set facturases) {
+    public Sucursales(String sucursal, String direccion, String municipio, String departamento, String telefono, Set inventarios, Set ventases, Set facturases) {
        this.sucursal = sucursal;
        this.direccion = direccion;
        this.municipio = municipio;
        this.departamento = departamento;
        this.telefono = telefono;
        this.inventarios = inventarios;
+       this.ventases = ventases;
        this.facturases = facturases;
     }
    
@@ -81,6 +83,13 @@ public class Sucursales  implements java.io.Serializable {
     
     public void setInventarios(Set inventarios) {
         this.inventarios = inventarios;
+    }
+    public Set getVentases() {
+        return this.ventases;
+    }
+    
+    public void setVentases(Set ventases) {
+        this.ventases = ventases;
     }
     public Set getFacturases() {
         return this.facturases;

@@ -25,6 +25,7 @@ public class ActionInventario extends org.apache.struts.action.Action {
     private static final String eliminarINV = "eliminarINV";
     private static final String errorINV = "errorINV";
     private static final String errorIngresarINV = "errorIngresarINV";
+    private static final String errorModINV = "errorModINV";
     private static final String irFormInventario = "irFormInventario";
 
     @Override
@@ -51,10 +52,10 @@ public class ActionInventario extends org.apache.struts.action.Action {
             String adver2 = "";
             String mensaje = "";
             if (cant == null || cant.equals("") || cant == 0) {
-                adver = "- Escriba la cantidad del producto. ";
+                adver = "* Escriba la cantidad del producto.";
             }
             if (stock == null || stock.equals("") || cant == 0) {
-                adver2 = "- Escriba la cantidad del stock del producto.";
+                adver2 = "* Escriba la cantidad del stock del producto.";
             }
             if (!adver.equals("")) {
                 ProductosMantenimiento mprod = new ProductosMantenimiento();
@@ -120,7 +121,7 @@ public class ActionInventario extends org.apache.struts.action.Action {
             InventarioMantenimiento minv = new InventarioMantenimiento();
             List<Inventario> listaInv = minv.consultarTodosInventario();
             
-            if (listaInv == null) {
+            if (listaInv.isEmpty()) {
                 mensaje = "No hay datos en el Inventario";
                 request.setAttribute("info", mensaje);
                 return mapping.findForward(errorINV);
@@ -147,6 +148,57 @@ public class ActionInventario extends org.apache.struts.action.Action {
             request.setAttribute("listaSuc", listaSuc);
 
             return mapping.findForward(irFormInventario);
+        }
+        
+        if (action.equals("Actualizar")) {
+            String mensaje = "";
+            InventarioMantenimiento minv = new InventarioMantenimiento();
+            Inventario inv = minv.consultarInventario(idInventario);
+
+            if(inv == null){
+                
+                mensaje = "No hay datos en el Inventario";
+                request.setAttribute("error", mensaje);
+                return mapping.findForward(errorINV);
+                
+            }else{
+                
+                formBean.setIdInventario(inv.getIdInventario());
+                formBean.setIdProducto(inv.getProductos().getIdProducto());
+                formBean.setCant(inv.getCant());
+                formBean.setStock(inv.getStock());
+                formBean.setEstado(inv.getEstado());
+                formBean.setIdProveedor(inv.getProveedores().getIdProveedor());
+                formBean.setIdSucursal(inv.getSucursales().getIdSucursal());
+                
+                return mapping.findForward(modificarINV);
+            }
+        }
+        
+        if (action.equals("Modificar")) {
+            String mensaje = "";
+            InventarioMantenimiento minv = new InventarioMantenimiento();
+            
+            if (stock == null || stock.equals("") || cant == 0) {
+                mensaje = "Escriba la cantidad del stock del producto.";
+            }
+            if (!mensaje.equals("")) {
+                request.setAttribute("error", mensaje);
+                return mapping.findForward(errorModINV);
+            }
+          
+            int r = minv.ActualizarInventario(idInventario, idProducto, cant, stock, estado, idProveedor, idSucursal);
+            
+            List<Inventario> listInv = minv.consultarTodosInventario();
+            formBean.setListaInv(listInv);
+            if(r == 1){
+                mensaje = "El Inventario se ha actualizado Exitosamente";
+                request.setAttribute("mensaje", mensaje);
+            } else {
+                mensaje = "El Inventario no fue actualizado Exitosamente";
+                request.setAttribute("error", mensaje);
+            }
+            return mapping.findForward(consultarINV);
         }
 
         return null;

@@ -41,14 +41,14 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="control_inventario"/>
+  <table-filter match-name="productos"/>
+  <table-filter match-name="inventario"/>
   <table-filter match-name="ventas"/>
+  <table-filter match-name="clientes"/>
   <table-filter match-name="sucursales"/>
   <table-filter match-name="facturas"/>
-  <table-filter match-name="productos"/>
-  <table-filter match-name="clientes"/>
-  <table-filter match-name="inventario"/>
-  <table-filter match-name="proveedores"/>
-  <table-filter match-name="fabricantes"/>
   <table-filter match-name="usuario"/>
+  <table-filter match-name="fabricantes"/>
+  <table-filter match-name="proveedores"/>
   <table-filter match-name="compras"/>
 </hibernate-reverse-engineering>
