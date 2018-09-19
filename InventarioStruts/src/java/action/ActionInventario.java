@@ -26,7 +26,6 @@ public class ActionInventario extends org.apache.struts.action.Action {
     private static final String errorINV = "errorINV";
     private static final String errorIngresarINV = "errorIngresarINV";
     private static final String errorModINV = "errorModINV";
-    private static final String irFormInventario = "irFormInventario";
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -129,25 +128,6 @@ public class ActionInventario extends org.apache.struts.action.Action {
                 formBean.setListaInv(listaInv);
                 return mapping.findForward(consultarINV);
             }
-        }
-
-        if (action.equals("Agregar Inventario")) {
-            ProductosMantenimiento mprod = new ProductosMantenimiento();
-            List<Productos> listaProd = mprod.consultarTodosProductos();
-            formBean.setListProd(listaProd);
-            request.setAttribute("listaProd", listaProd);
-
-            ProveedorMantenimiento mprov = new ProveedorMantenimiento();
-            List<Proveedores> listaProv = mprov.consultarTodosProveedores();
-            formBean.setListProv(listaProv);
-            request.setAttribute("listaProv", listaProv);
-
-            SucursalesMantenimiento msuc = new SucursalesMantenimiento();
-            List<Sucursales> listaSuc = msuc.consultarTodosSucursales();
-            formBean.setListSuc(listaSuc);
-            request.setAttribute("listaSuc", listaSuc);
-
-            return mapping.findForward(irFormInventario);
         }
         
         if (action.equals("Actualizar")) {
