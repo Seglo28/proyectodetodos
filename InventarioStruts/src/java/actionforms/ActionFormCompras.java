@@ -1,26 +1,30 @@
-
 package actionforms;
 
 import java.util.List;
 import persistencias.Compras;
 import persistencias.Productos;
 import persistencias.Proveedores;
+import persistencias.Sucursales;
 
 public class ActionFormCompras extends org.apache.struts.action.ActionForm {
-     private Integer idCompra;
-     private Productos productos;
-     private Proveedores proveedores;
-     private Integer idProducto;    
-     private Integer idProveedor;
-     private Integer cantidad;
-     private Double monto;
-     private String error;
-     private String fechaCompras;
+
+    private Integer idCompra;
+    private Productos productos;
+    private Proveedores proveedores;
+    private Sucursales sucursales;
+    private Integer idProducto;
+    private Integer idProveedor;
+    private Integer idSucursal;
+    private Integer cantidad;
+    private Double monto;
+    private String error;
+    private String fechaCompra;
     private String action;
     private String mensaje;
     private List<Productos> listaProd;
     private List<Proveedores> listaProv;
     private List<Compras> listaCom;
+    private List<Sucursales> listSuc;
 
     public Integer getIdCompra() {
         return idCompra;
@@ -46,6 +50,14 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
         this.proveedores = proveedores;
     }
 
+    public Sucursales getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(Sucursales sucursales) {
+        this.sucursales = sucursales;
+    }
+
     public Integer getIdProducto() {
         return idProducto;
     }
@@ -60,6 +72,14 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     public void setIdProveedor(Integer idProveedor) {
         this.idProveedor = idProveedor;
+    }
+
+    public Integer getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(Integer idSucursal) {
+        this.idSucursal = idSucursal;
     }
 
     public Integer getCantidad() {
@@ -126,19 +146,25 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
         this.listaCom = listaCom;
     }
 
-    public String getFechaCompras() {
-        return fechaCompras;
+    public String getFechaCompra() {
+        return fechaCompra;
     }
 
-    public void setFechaCompras(String fechaCompras) {
-        this.fechaCompras = fechaCompras;
+    public void setFechaCompras(String fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+
+    public List<Sucursales> getListSuc() {
+        return listSuc;
+    }
+
+    public void setListSuc(List<Sucursales> listSuc) {
+        this.listSuc = listSuc;
     }
 
     @Override
     public String toString() {
-        return "ActionFormCompras{" + "idCompra=" + idCompra + ", productos=" + productos + ", proveedores=" + proveedores + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", cantidad=" + cantidad + ", monto=" + monto + ", error=" + error + ", fechaCompras=" + fechaCompras + ", action=" + action + ", mensaje=" + mensaje + ", listaProd=" + listaProd + ", listaProv=" + listaProv + ", listaCom=" + listaCom + '}';
+        return "ActionFormCompras{" + "idCompra=" + idCompra + ", productos=" + productos + ", proveedores=" + proveedores + ", sucursales=" + sucursales + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", cantidad=" + cantidad + ", monto=" + monto + ", error=" + error + ", fechaCompras=" + fechaCompra + ", action=" + action + ", mensaje=" + mensaje + '}';
     }
 
-    
-    
 }

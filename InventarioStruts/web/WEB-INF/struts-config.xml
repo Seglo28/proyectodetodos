@@ -75,7 +75,7 @@
         
         <!-- 6. acciones de compras y redirecion-->
         
-        <forward name="insertarCOM"  path="/formCompras.jsp"/>
+        <forward name="insertarCom"  path="/verCOM.jsp"/>
         <forward name="consultarCOM"  path="/verCOM.jsp"/>
         <forward name="consultarIdCOM"  path="/modCOM.jsp"/>
         <forward name="modificarCOM"  path="/modCOM.jsp"/>
@@ -83,6 +83,7 @@
         <forward name="errorCOM"  path="/formCompras.jsp"/>
         <forward name="borrarCOM"  path="/verCOM.jsp"/>
         <forward name="irFormCompras"  path="/formCompras.jsp"/>
+        <forward name="errorInsertarCom"  path="/formCompras.jsp"/>
         
         <!-- 7. acciones de  facturas y redireccion-->
 

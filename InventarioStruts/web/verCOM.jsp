@@ -9,13 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consulta de tabla Compras</title>
+        <title>Tabla de Compras</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://codeseven.github.com/toastr/toastr.js"></script>
+	<link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
+	<link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
         <style>
             .bg {
                 /* Imagen de Fondo */
@@ -37,139 +41,139 @@
         </style>
     </head>
     <body class="bg">
-     
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
-        <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
-            <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
-        </a>
-        <ul class="nav navbar-nav">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Usuarios
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/user">
-                        <html:link page="/formUser.jsp" styleClass="btn btn-outline-info">Ingresar Usuario</html:link>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/user">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Productos
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/productos">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/productos">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Compras
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/compras">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/compras">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Compras</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Fabricantes
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/fabricantes">
-                        <html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/fabricantes">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista deFabricantes</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Facturas
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/facturas">
-                        <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/facturas">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de facturas</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Clientes
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/clientes">
-                        <html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">Ingresar Cliente</html:link>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/clientes">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Clientes</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Sucursales
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/sucursales">
-                        <html:link page="/formSucursales.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/sucursales">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Proveedores
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                    Inventarios
-                </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/inventario">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Inventario">Agregar</html:submit>
-                    </html:form></a>
-                    <a class="dropdown-item" href=""><html:form action="/inventario">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
-                    </html:form></a>
-                </div>
-            </li>
+            <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
+                <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
+            </a>
+            <ul class="nav navbar-nav">
 
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
-            </li>
-        </ul>
-    </nav>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Usuarios
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/user">
+                                <html:link page="/formUser.jsp" styleClass="btn btn-outline-info">Ingresar Usuario</html:link>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/user">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Productos
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/productos">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/productos">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Compras
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/compras">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/compras">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Compras</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Fabricantes
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/fabricantes">
+                                <html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/fabricantes">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista deFabricantes</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Facturas
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/facturas">
+                                <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/facturas">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de facturas</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Clientes
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/clientes">
+                                <html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">Ingresar Cliente</html:link>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/clientes">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Clientes</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Sucursales
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/sucursales">
+                                <html:link page="/formSucursales.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/sucursales">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Proveedores
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/proveedores">
+                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/proveedores">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Inventarios
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/inventario">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Inventario">Agregar</html:submit>
+                            </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/inventario">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
+                    </li>
+                </ul>
+            </nav>
 
             <div class="container">
 
@@ -179,14 +183,13 @@
                         <table class="table table-hover">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>id</th>
-                                    <th>idProducto</th>
-                                    <th>idProveedor</th>
-                                    <th>Cantidad de producto</th>
-                                    <th>Monto de la compra</th>
-                                    <th>Fecha de la compra</th>
-                                    <th>Actualizar</th>
-                                    <th>Eliminar</th>
+                                    <th>ID</th>
+                                    <th>Producto</th>
+                                    <th>Proveedor</th>
+                                    <th>Cant.</th>
+                                    <th>Monto</th>
+                                    <th>Fecha de la Compra</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -196,14 +199,14 @@
                                         <html:form action="/compras">
                                             <td><bean:write name="compras" property="idCompra"/></td>
                                     <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div> </td>
-                                    <td><bean:write name="compras" property="productos.idProducto"/></td>
-                                    <td><bean:write name="compras" property="proveedores.idProveedor"/></td>
+                                    <td><bean:write name="compras" property="productos.producto"/></td>
+                                    <td><bean:write name="compras" property="proveedores.proveedor"/></td>
                                     <td><bean:write name="compras" property="cantidad"/></td>
-                                    <td><bean:write name="compras" property="monto"/></td>
-                                    <td><bean:write name="compras" property="fechaCompras"/></td>
-                                    <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
-                                    <td><html:submit styleClass="btn btn-danger" property="action" value="Eliminar"/></td>
-                                </html:form>
+                                    <td>$ <bean:write name="compras" property="monto"/></td>
+                                    <td><bean:write name="compras" property="fechaCompra"/></td>
+                                    <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/>
+                                        <html:submit styleClass="btn btn-danger" property="action" value="Eliminar"/></td>
+                                    </html:form>
                                 </tr>
                             </logic:iterate>
                         </logic:notEmpty>
@@ -211,9 +214,54 @@
                     </table>
                 </div>
                 <div class="col-4">
-                    ${error}
-                    ${mensaje}
+                    <div id="error" hidden="hidden">${error}</div>
+                    <div id="mensaje" hidden="hidden">${mensaje}</div>
+                    <div id="info" hidden="hidden">${info}</div>
                 </div>
             </div>
+            <script>
+                toastr.options = {
+                    "debug": false,
+                    "positionClass": "toast-bottom-right",
+                    "onclick": null,
+                    "fadeIn": 300,
+                    "fadeOut": 100,
+                    "timeOut": 5000,
+                    "extendedTimeOut": 1000
+                }
+
+                var showToastrs = false;
+
+                function error() {
+                    if (!showToastrs) {
+                        toastr.error($("#error").text(), 'Error!');
+                    }
+                }
+
+                function mensaje() {
+                    if (!showToastrs) {
+                        toastr.success($("#mensaje").text(), 'Éxito!');
+                    }
+                }
+                function info() {
+                    if (!showToastrs) {
+                        toastr.info($("#info").text(), 'Info!');
+                    }
+                }
+
+                window.onload = function () {
+                    if ($("#error").text() != "") {
+                        error();
+                    }
+                    if ($("#mensaje").text() != "") {
+                        mensaje();
+                    }
+                    if ($("#info").text() != "") {
+                        info();
+                    }
+                }
+
+            </script>
+
     </body>
 </html>

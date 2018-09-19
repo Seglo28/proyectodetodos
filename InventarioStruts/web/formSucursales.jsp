@@ -142,7 +142,7 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
                     </html:form></a>
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
                         <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
@@ -187,16 +187,16 @@
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 Sucursal:     
-                                                <html:text property="sucursal" size="50" maxlength="25" value=""></html:text>
+                                                <html:text property="sucursal" styleClass="form-control"></html:text>
                                                     Dirección:
-                                                <html:text property="direccion" size="50" maxlength="25" value=""></html:text>
+                                                <html:text property="direccion" styleClass="form-control"></html:text>
                                                     Municipio:
-                                                <html:text property="municipio" size="50" maxlength="25" value=""></html:text>
+                                                <html:text property="municipio" styleClass="form-control"></html:text>
                                                     Departamento:
-                                                <html:text property="departamento" size="50" maxlength="25" value=""></html:text></td>
+                                                <html:text property="departamento" styleClass="form-control"></html:text></td>
 
                                                     Telefono:
-                                                <html:text property="telefono" size="50" maxlength="25" value=""></html:text>
+                                                <html:text property="telefono" styleClass="form-control"></html:text>
                                                     <br>
                                                     <br>
                                                 <html:submit styleClass="btn btn-primary" property="action" value="Agregar"/>

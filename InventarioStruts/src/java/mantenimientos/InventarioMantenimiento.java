@@ -189,6 +189,7 @@ public class InventarioMantenimiento {
                 return inv = null;
             } else {
                 System.out.println("El producto ya existe en el Inventario");
+                inv = (Inventario) q.list().get(0);
                 return inv;
             }
             

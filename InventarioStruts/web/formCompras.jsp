@@ -14,6 +14,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://codeseven.github.com/toastr/toastr.js"></script>
+	<link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
+	<link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
         <style>
             .bg {
                 /* Imagen de Fondo */
@@ -193,18 +197,17 @@
                                         </logic:notEmpty>
                                     </html:select>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label form="Cantidad">Cantidad</label><br>
                                     <html:text property="cantidad" styleClass="form-control"></html:text>
                                 </div>
-                                
+                                <div class="form-group col-md-3">
+                                    <label form="Monto">Monto del Producto por Unidad</label><br>
+                                    <html:text property="monto" styleClass="form-control"></html:text>
+                                </div>
                             </div>
                                 
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label form="Monto">Monto de la Compra</label><br>
-                                    <html:text property="monto" styleClass="form-control"></html:text>
-                                </div>
                                 <div class="form-group col-md-6">
                                     <label form="id_proveedor">Proveedor</label><br>
                                     <html:select property="idProveedor" styleClass="form-control">
@@ -212,6 +215,17 @@
                                         <logic:notEmpty name="ActionFormCompras" property="listaProv">
                                             <logic:iterate id="prov" name="ActionFormCompras" property="listaProv">
                                                 <html:option value="${prov.idProveedor}">${prov.proveedor}</html:option>
+                                            </logic:iterate>
+                                        </logic:notEmpty>
+                                    </html:select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Sucursal</label><br>
+                                    <html:select property="idSucursal" styleClass="form-control">
+                                        <html:option value="-- Seleccionar --"></html:option>
+                                        <logic:notEmpty name="ActionFormCompras" property="listSuc">
+                                            <logic:iterate id="suc" name="ActionFormCompras" property="listSuc">
+                                                <html:option value="${suc.idSucursal}">${suc.sucursal}</html:option>
                                             </logic:iterate>
                                         </logic:notEmpty>
                                     </html:select>
@@ -226,9 +240,55 @@
                             
                 </html:form>
                 </div>
+                <div id="error" hidden="hidden">${error}</div>
+                <div id="mensaje" hidden="hidden">${mensaje}</div>
+                <div id="info" hidden="hidden">${info}</div>
             </div>
 
         </div>
+        <script>
+            toastr.options = {
+                "debug": false,
+  		"positionClass": "toast-bottom-right",
+  		"onclick": null,
+            	"fadeIn": 300,
+  		"fadeOut": 100,
+                "timeOut": 5000,
+  		"extendedTimeOut": 1000
+            }
+
+            var showToastrs = false;
+
+            function error() {
+                if(!showToastrs){
+                    toastr.error($("#error").text(), 'Error!');
+                }
+            }
+            
+            function mensaje() {
+                if(!showToastrs){
+                    toastr.success($("#mensaje").text(), 'Éxito!');
+                }
+            }
+            function info() {
+                if(!showToastrs){
+                    toastr.info($("#info").text(), 'Info!');
+                }
+            }
+            
+            window.onload = function(){
+                if($("#error").text() != ""){
+                    error();
+                }
+                if($("#mensaje").text() != ""){
+                    mensaje();
+                }
+                if($("#info").text() != ""){
+                    info();
+                }
+            }
+
+        </script>
     </body>
 </html>
 
