@@ -14,6 +14,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <style>
             .bg {
                 /* Imagen de Fondo */
@@ -32,6 +33,10 @@
                 left: auto !important;
                 right: 0px;
             }
+            
+            .dropdown-menu {
+                background-color: #343a40
+            }
         </style>
     </head>
     <body class="bg">
@@ -49,12 +54,12 @@
                         Usuarios
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/user">
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/user">
                                 <html:link page="/formUser.jsp" styleClass="btn btn-outline-info">Ingresar Usuario</html:link>
-                            </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/user">
+                            </html:form></div>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/user">
                                 <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
-                            </html:form></a>
+                            </html:form></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

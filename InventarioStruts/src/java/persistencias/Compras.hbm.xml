@@ -21,7 +21,7 @@
             <column name="monto" precision="22" scale="0" />
         </property>
         <property name="fechaCompra" type="string">
-            <column name="fecha_compra" length="20" />
+            <column name="fecha_compra" length="30" />
         </property>
     </class>
 </hibernate-mapping>

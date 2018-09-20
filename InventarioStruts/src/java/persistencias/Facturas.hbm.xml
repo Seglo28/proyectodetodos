@@ -15,7 +15,7 @@
             <column name="id_venta" not-null="true" />
         </many-to-one>
         <property name="fechaVenta" type="string">
-            <column name="fecha_venta" length="15" />
+            <column name="fecha_venta" length="30" />
         </property>
     </class>
 </hibernate-mapping>
