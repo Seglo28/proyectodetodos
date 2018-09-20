@@ -146,10 +146,10 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><html:form action="/proveedores">
-                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
                             </html:form></a>
                         <a class="dropdown-item" href=""><html:form action="/proveedores">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
                             </html:form></a>
                     </div>
                 </li>
@@ -158,9 +158,6 @@
                         Inventarios
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/inventario">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Inventario">Agregar</html:submit>
-                            </html:form></a>
                         <a class="dropdown-item" href=""><html:form action="/inventario">
                                 <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
                             </html:form></a>
@@ -204,8 +201,7 @@
                                     <td><bean:write name="compras" property="cantidad"/></td>
                                     <td>$ <bean:write name="compras" property="monto"/></td>
                                     <td><bean:write name="compras" property="fechaCompra"/></td>
-                                    <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/>
-                                        <html:submit styleClass="btn btn-danger" property="action" value="Eliminar"/></td>
+                                    <td><html:submit styleClass="btn btn-outline-success" property="action" value="Actualizar"/></td>
                                     </html:form>
                                 </tr>
                             </logic:iterate>

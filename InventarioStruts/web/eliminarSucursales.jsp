@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Agreagar Sucursal</title>
+        <title>Eliminar Sucursal</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -138,10 +138,10 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
                     </html:form></a>
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
                     </html:form></a>
                 </div>
             </li>
@@ -150,9 +150,6 @@
                     Inventarios
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href=""><html:form action="/inventario">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Inventario">Agregar</html:submit>
-                    </html:form></a>
                     <a class="dropdown-item" href=""><html:form action="/inventario">
                         <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
                     </html:form></a>

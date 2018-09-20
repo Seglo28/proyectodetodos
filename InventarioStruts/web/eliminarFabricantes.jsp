@@ -142,10 +142,10 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href=""><html:form action="/proveedores">
-                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
                             </html:form></a>
                         <a class="dropdown-item" href=""><html:form action="/proveedores">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
                             </html:form></a>
                     </div>
                 </li>
@@ -154,9 +154,6 @@
                         Inventarios
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/inventario">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Inventario">Agregar</html:submit>
-                            </html:form></a>
                         <a class="dropdown-item" href=""><html:form action="/inventario">
                                 <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
                             </html:form></a>

@@ -143,7 +143,7 @@
                                 <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
                             </html:form></a>
                         <a class="dropdown-item" href=""><html:form action="/proveedores">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
                             </html:form></a>
                     </div>
                 </li>

@@ -32,7 +32,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
     private static final String irFormCOM = "irFormCompras";
     private static final String errorInsertarCompra = "errorInsertarCom";
     
-    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy - HH:mm");
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy '-' hh:mm a");
 
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
@@ -88,7 +88,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
             }
             
             String fechaHoy = formatoFecha.format(new Date());
-
+            System.out.println("Fecha: "+fechaHoy);
             ComprasMantenimiento mcom = new ComprasMantenimiento();
             
             Double mont = monto*cantidad;
