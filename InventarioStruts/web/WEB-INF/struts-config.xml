@@ -15,6 +15,7 @@
         <form-bean name="ActionFormSucursales" type="actionforms.ActionFormSucursales"></form-bean>
         <form-bean name="ActionFormClientes" type="actionforms.ActionFormClientes"></form-bean>
         <form-bean name="ActionFormCompras" type="actionforms.ActionFormCompras"></form-bean>
+         <form-bean name="ActionFormVentas" type="actionforms.ActionFormVentas"/>
         <form-bean name="ActionFormFacturas" type="actionforms.ActionFormFacturas"/>
     </form-beans>
     
@@ -72,6 +73,14 @@
         
         <!-- 5. acciones de ventas y redireccion-->
         
+         <forward name="agregarVEN" path="/formVentas.jsp"/>
+         <forward name="consultarVEN" path="/verVEN.jsp"/>
+         <forward name="consultarIdVEN" path="/modVEN.jsp"/>
+         <forward name="modificarVEN" path="/modVEN.jsp"/>
+         <forward name="eliminarVEN" path="/eliminarVentas.jsp"/>
+         <forward name="borrarVEN" path="/verVEN.jsp"/>
+         <forward name="errorVEN" path="/formVentas.jsp"/>
+           <forward name="irFormVenta"  path="/formVentas.jsp"/>
         
         <!-- 6. acciones de compras y redirecion-->
         
@@ -137,6 +146,7 @@
                 <!--4. action de inventarios  falta-->
         <action name="ActionFormInventario" path="/inventario" scope="request" type="action.ActionInventario"/>
                 <!--5. action de ventas -->
+        <action name="ActionFormVentas" path="/ventas" scope="request" type="action.ActionVentas"/>
                 <!--6. action de compras -->
                 
         <action name="ActionFormCompras" path="/compras" scope="request" type="action.ActionCompras"/>

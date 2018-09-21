@@ -82,6 +82,19 @@
                     </html:form></a>
                 </div>
             </li>
+             <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Ventas
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=""><html:form action="/ventas">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Ventas">Agregar</html:submit>
+                        </html:form></a>
+                        <a class="dropdown-item" href=""><html:form action="/ventas">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Ventas</html:submit> 
+                        </html:form></a>
+                    </div>
+                </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                     Fabricantes

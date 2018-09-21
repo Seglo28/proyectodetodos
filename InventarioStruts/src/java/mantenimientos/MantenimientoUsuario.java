@@ -219,4 +219,22 @@ public class MantenimientoUsuario {
         }
     }
     
+     public List consultarTodosUsuarios() {
+        List<Usuario> listaUsu = null;
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+
+        try {
+            session.beginTransaction(); 
+            Query q = session.createQuery("from Usuario");
+            listaUsu = (List<Usuario>) q.list();
+            System.out.println("Consulta a todos los usuarios exitosa");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al consultar todos los usuario. "+e.getMessage());
+        } finally {
+        }
+        return listaUsu;
+    }
+    
 }

@@ -9,38 +9,24 @@ import persistencias.Clientes;
 import persistencias.Productos;
 import persistencias.Usuario;
 import persistencias.Ventas;
-import  com.myapp.struts.HibernateUtil;
+import com.myapp.struts.HibernateUtil;
+import persistencias.Sucursales;
 
 public class VentasMantenimiento {
 
     public static void main(String[] args) {
         VentasMantenimiento vm = new VentasMantenimiento();
         //// ---------------- insertar--------------------//////////
-        /*  int idVenta=0;
-        int idCliente=1;
-        int idProducto=1;
-        int idUsuario=1;
-        Integer cantidad=1455;
-        Double monto=1.0;
-        
-        
-        int r= vm.guardarVenta(idVenta, idCliente,idProducto,idUsuario, cantidad, monto);
-        System.out.println();
+        /* 
+        int r= vm.guardarVenta(0, 1, 4, 1, 1, 22, 22.44, "hoy");
+        System.out.println(r);
          */
         //  /---- actualizar---------------////
 
         /*
-        int idVenta = 1;
-        int idCliente = 2;
-        int idProducto = 1;
-        int idUsuario = 1;
-        Integer cantidad = 123;
-        Double monto = 48.22;
-        String fechaVenta = "10/09/2018 11:17";
-        int r = vm.ActualizarVenta(idVenta, idCliente, idProducto, idUsuario, cantidad, monto, fechaVenta);
-        System.out.println("Actualizar, si es 1 funvionó: "+r);
-        */
-         
+        int r= vm.ActualizarVenta(8, 1, 4, 1, 1, 22, 22.45, "mañana");
+        System.out.println(r);
+         */
         ////----- eliminar-------///////////
         /*
          int idVenta=3;
@@ -48,9 +34,8 @@ public class VentasMantenimiento {
       System.out.println(r);
         System.exit(0);
          */
-     
         //////*********** consultar id*/////////////////////
-      /*  int idVenta=5;
+        /*  int idVenta=5;
         Ventas ven= vm.consultarVentas(idVenta);
         System.out.println(ven.getIdVenta());
         System.out.println(ven.getClientes().getIdCliente());
@@ -58,27 +43,12 @@ public class VentasMantenimiento {
         System.out.println(ven.getUsuario().getIdUsuario());
         System.out.println(ven.getCantidad());
         System.out.println(ven.getMonto());
-       
-       ////------------- consultar Todos--------------/////
-        
-*/
-      /*
-      
-      
-      List<Ventas>listven=vm.consultarTodosVentas();
-     for( Ventas  ven:listven){
-         System.out.println(ven.getIdCVentas());
-         System.out.println(ven.getIdCliente());
-         System.out.println(ven.getIdProducto());
-         System.out.println(ven.getIdUsuario());
-         System.out.println(ven.getCantidad());
-         System.out.println(ven.getMonto());
-         System.exit(0);
-*/
+         */
+        ////------------- consultar Todos--------------/////
+        vm.eliminarVentas(8);
     }
 
-   
-     public int guardarVenta(int idVenta, int idClientes, int idProductos, int idUsuario, Integer cantidad,
+    public int guardarVenta(Integer idClientes, Integer idProductos, Integer idUsuario, Integer idSucursal, Integer cantidad,
             Double monto, String fechaVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -87,20 +57,23 @@ public class VentasMantenimiento {
 
         Ventas ven = new Ventas();
 
-        ven.setIdVenta(idVenta);
-        Clientes cli=new Clientes();
+        ven.setIdVenta(0);
+        Clientes cli = new Clientes();
         cli.setIdCliente(idClientes);
         ven.setClientes(cli);
-        
-        Productos prod=new Productos();
+
+        Productos prod = new Productos();
         prod.setIdProducto(idProductos);
         ven.setProductos(prod);
-        
-        Usuario usu= new Usuario();
+
+        Usuario usu = new Usuario();
         usu.setIdUsuario(idUsuario);
         ven.setUsuario(usu);
-        
-        
+
+        Sucursales suc = new Sucursales();
+        suc.setIdSucursal(idSucursal);
+        ven.setSucursales(suc);
+
         ven.setCantidad(cantidad);
         ven.setMonto(monto);
         ven.setFechaVenta(fechaVenta);
@@ -115,7 +88,7 @@ public class VentasMantenimiento {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
                 flag = 0;
-                System.out.println("Error al guardar la venta "+e);
+                System.out.println("Error al guardar la venta " + e);
             }
         } finally {
             session.close();
@@ -123,33 +96,36 @@ public class VentasMantenimiento {
         return flag;
 
     }
-    
 
-public int ActualizarVenta(int idVenta, int idClientes, int idProductos, int idUsuario, Integer cantidad,
+    public int ActualizarVenta(Integer idVenta, Integer idClientes, Integer idProductos, Integer idUsuario, Integer idSucursal, Integer cantidad,
             Double monto, String fechaVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
-       Ventas ven = new Ventas();
+        Ventas ven = new Ventas();
 
         ven.setIdVenta(idVenta);
-        Clientes cli=new Clientes();
+        Clientes cli = new Clientes();
         cli.setIdCliente(idClientes);
         ven.setClientes(cli);
-        
-        Productos prod=new Productos();
+
+        Productos prod = new Productos();
         prod.setIdProducto(idProductos);
         ven.setProductos(prod);
-        
-        Usuario usu= new Usuario();
+
+        Usuario usu = new Usuario();
         usu.setIdUsuario(idUsuario);
         ven.setUsuario(usu);
-        
+
+        Sucursales suc = new Sucursales();
+        suc.setIdSucursal(idSucursal);
+        ven.setSucursales(suc);
+
         ven.setCantidad(cantidad);
         ven.setMonto(monto);
         ven.setFechaVenta(fechaVenta);
-        
+
         try {
             session.beginTransaction();
             session.saveOrUpdate(ven);
@@ -160,15 +136,13 @@ public int ActualizarVenta(int idVenta, int idClientes, int idProductos, int idU
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
                 flag = 0;
-                System.out.println("Error al actualizar la venta "+e);
+                System.out.println("Error al actualizar la venta " + e);
             }
         } finally {
             session.close();
         }
         return flag;
-
     }
-
 
     public Ventas consultarVentas(Integer idVenta) {
 
@@ -183,7 +157,7 @@ public int ActualizarVenta(int idVenta, int idClientes, int idProductos, int idU
         } catch (Exception ex) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                System.out.println("Error al Consultar Ventas "+ex);
+                System.out.println("Error al Consultar Ventas " + ex);
             }
         } finally {
             session.close();
@@ -210,7 +184,7 @@ public int ActualizarVenta(int idVenta, int idClientes, int idProductos, int idU
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
                 flag = 0;
-                System.out.println("Error al eliminar Venta "+ex);
+                System.out.println("Error al eliminar Venta " + ex);
             }
 
         } finally {
@@ -230,9 +204,9 @@ public int ActualizarVenta(int idVenta, int idClientes, int idProductos, int idU
             listaVentas = (List<Ventas>) q.list();
             System.out.println("exito al consultar todo");
         } catch (Exception e) {
-            System.out.println("Error Consultar Lista Ventas "+e);
+            System.out.println("Error Consultar Lista Ventas " + e);
         } finally {
         }
         return listaVentas;
     }
-         }
+}
