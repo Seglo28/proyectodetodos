@@ -89,7 +89,7 @@
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/compras">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Compra"></html:submit>
                         </div>
                         <div class="dropdown-item" style="background-color: #343a40">
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Compras</html:submit> 
@@ -187,38 +187,40 @@
 
         <div class="container">
 
-                <br>
-                <div class="row">
-                    <div class="col-12">
-                        <table id="table" class="table table-hover">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Producto</th>
-                                    <th>Proveedor</th>
-                                    <th>Cant.</th>
-                                    <th>Monto</th>
-                                    <th>Fecha de la Compra</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <logic:notEmpty name="ActionFormCompras" property="listaCom">
-                                <logic:iterate id="compras" name="ActionFormCompras" property="listaCom">
-                                    <tr>
-                                        <html:form action="/compras">
-                                            <td><bean:write name="compras" property="idCompra"/>
-                                                <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div></td>
-                                            <td><bean:write name="compras" property="productos.producto"/></td>
-                                            <td><bean:write name="compras" property="proveedores.proveedor"/></td>
-                                            <td><bean:write name="compras" property="cantidad"/></td>
-                                            <td>$ <bean:write name="compras" property="monto"/></td>
-                                            <td><bean:write name="compras" property="fechaCompra"/></td>
-                                            <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
-                                            </html:form>
-                                    </tr>
-                                </logic:iterate>
-                            </logic:notEmpty>
+            <br>
+            <div class="row">
+                <div class="col-12">
+                    <table id="table" class="table table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>N° de Doc.</th>
+                                <th>Producto</th>
+                                <th>Proveedor</th>
+                                <th>Cant.</th>
+                                <th>Monto</th>
+                                <th>Fecha de la Compra</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <logic:notEmpty name="ActionFormCompras" property="listaCom">
+                            <logic:iterate id="compras" name="ActionFormCompras" property="listaCom">
+                            <tr>
+                            <html:form action="/compras">
+                                <td><bean:write name="compras" property="idCompra"/>
+                                    <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div></td>
+                                <td><bean:write name="compras" property="nDocumento"/></td>
+                                <td><bean:write name="compras" property="productos.producto"/></td>
+                                <td><bean:write name="compras" property="proveedores.proveedor"/></td>
+                                <td><bean:write name="compras" property="cantidad"/></td>
+                                <td>$ <bean:write name="compras" property="monto"/></td>
+                                <td><bean:write name="compras" property="fechaCompra"/></td>
+                                <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
+                            </html:form>
+                            </tr>
+                            </logic:iterate>
+                        </logic:notEmpty>
                         </tbody>
                     </table>
                 </div>

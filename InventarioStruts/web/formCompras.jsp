@@ -183,7 +183,11 @@
                         <div class="card-body">
 
                             <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
+                                    <label form="NDocumento">N° de Documento</label><br>
+                                    <html:text property="nDocumento" styleClass="form-control"></html:text>
+                                </div>
+                                <div class="form-group col-md-3">
                                     <label form="id_producto">Producto</label><br>
                                     <html:select property="idProducto" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -219,7 +223,7 @@
                                 <div class="form-group col-md-6">
                                     <label>Sucursal</label><br>
                                     <html:select property="idSucursal" styleClass="form-control">
-                                        <html:option value="-- Seleccionar --"></html:option>
+                                        <html:option value="--Seleccionar--"></html:option>
                                         <logic:notEmpty name="ActionFormCompras" property="listSuc">
                                             <logic:iterate id="suc" name="ActionFormCompras" property="listSuc">
                                                 <html:option value="${suc.idSucursal}">${suc.sucursal}</html:option>
@@ -227,14 +231,12 @@
                                         </logic:notEmpty>
                                     </html:select>
                                 </div>
-                            </div>
-                                
+                            </div>   
                         <br>
-                        <html:submit styleClass="btn btn-outline-success" property="action" value="Insertar"/>
+                        <html:submit styleClass="btn btn-outline-success" property="action" value="Ingresar"/>
                         <html:submit styleClass="btn btn-outline-danger" property="action" value="Cancelar"/>
                         </div>
                     </div>
-                            
                 </html:form>
                 </div>
                 <div id="error" hidden="hidden">${error}</div>

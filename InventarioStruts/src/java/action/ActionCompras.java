@@ -41,6 +41,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
 
         ActionFormCompras formBean = (ActionFormCompras) form;
         Integer idCompra = formBean.getIdCompra();
+        String nDocumento = formBean.getnDocumento();
         Integer idProducto = formBean.getIdProducto();
         Integer idProveedor = formBean.getIdProveedor();
         Integer idSucursal = formBean.getIdSucursal();
@@ -56,15 +57,31 @@ public class ActionCompras extends org.apache.struts.action.Action {
             return mapping.findForward(errorCOM);
         }
 
-        if (action.equals("Insertar")) {
+        if (action.equals("Ingresar")) {
             String adver = "";
+            String adver1 = "";
             String adver2 = "";
+            String adver3 = "";
+            String adver4 = "";
+            String adver5 = "";
 
-            if (cantidad == null || cantidad.equals("") || cantidad == 0) {
-                adver = "- Cantidad. <br>";
+            if (nDocumento == null || nDocumento.equals("")) {
+                adver = "- N° de Doc. <br>";
             }
-            if (monto == null || monto.equals("") || monto == 0) {
-                adver2 = "- Monto.";
+            if (idProducto.equals("--Seleccionar--")) {
+                adver1 = "- Producto. <br>";
+            }
+            if (cantidad == null || cantidad == 0) {
+                adver2 = "- Cantidad. <br>";
+            }
+            if (monto == null || monto == 0) {
+                adver3 = "- Monto.";
+            }
+            if (idProveedor.equals("--Seleccionar--")) {
+                adver4 = "- Proveedor. <br>";
+            }
+            if (idSucursal.equals("--Seleccionar--")) {
+                adver5 = "- Sucursal. <br>";
             }
             if (!adver.equals("")) {
                 ProveedorMantenimiento mprov = new ProveedorMantenimiento();
@@ -82,18 +99,17 @@ public class ActionCompras extends org.apache.struts.action.Action {
                 formBean.setListSuc(listaSuc);
                 request.setAttribute("listaSuc", listaSuc);
                 
-                mensaje = "Por favor completar las casillas: <br>" + adver + adver2 + "";
+                mensaje = "Por favor completar las casillas: <br>" + adver + adver1 + adver2 + adver3 + adver4 + adver5 + "";
                 request.setAttribute("error", mensaje);
                 return mapping.findForward(errorInsertarCompra);
             }
             
             String fechaHoy = formatoFecha.format(new Date());
-            System.out.println("Fecha: "+fechaHoy);
             ComprasMantenimiento mcom = new ComprasMantenimiento();
             
             Double mont = monto*cantidad;
             
-            int com2 = mcom.guardarCompras(idProducto, idProveedor, cantidad, mont, fechaHoy);
+            int com2 = mcom.guardarCompras(nDocumento, idProducto, idProveedor, cantidad, mont, fechaHoy);
             List<Compras> listaCom = mcom.consultarTodosCompras();
             formBean.setListaCom(listaCom);
             if(com2 == 1){
@@ -110,8 +126,6 @@ public class ActionCompras extends org.apache.struts.action.Action {
             System.out.println("inv: "+inv);
             
             if(inv != null){
-                System.out.println("Hola Mundo");
-                System.out.println("Producto: "+inv.getProductos().getIdProducto());
                 Integer idInventario = inv.getIdInventario();
                 Integer idProduc = inv.getProductos().getIdProducto();
                 Integer cant = inv.getCant() + cantidad;
@@ -162,7 +176,6 @@ public class ActionCompras extends org.apache.struts.action.Action {
             
             if (listaCom.isEmpty()) {
                 mensaje = "No Se ha hecho ninguna Compra Aún";
-                System.out.println("Mensaje: "+mensaje);
                 request.setAttribute("info", mensaje);
             } else {
                 formBean.setListaCom(listaCom);
@@ -183,7 +196,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
             }
         }
 
-        if (action.equals("Agregar Compra")) {
+        if (action.equals("Ingresar Compra")) {
             ProveedorMantenimiento mprov = new ProveedorMantenimiento();
             List<Proveedores> listaProv = mprov.consultarTodosProveedores();
             formBean.setListaProv(listaProv);

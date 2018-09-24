@@ -82,7 +82,7 @@
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/compras">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Compra"></html:submit>
                         </div>
                         <div class="dropdown-item" style="background-color: #343a40">
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Compras</html:submit> 

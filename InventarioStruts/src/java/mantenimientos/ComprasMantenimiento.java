@@ -15,25 +15,19 @@ public class ComprasMantenimiento {
 public static void main(String[] args) {
         ComprasMantenimiento mant = new ComprasMantenimiento();
         
-        /* ------ Guardar -------- */
-        
-     /*
-        int productos = 3;
-        int proveedores = 4;
-        int cantidad = 20;
-        double monto = 6.50;
-        String fechaCompras="11/06/11";
-
-        int r = mant.guardarCompras(productos, proveedores, cantidad, monto,fechaCompras); 
+        // ------ Guardar -------- 
+        /*
+        int r = mant.guardarCompras("F-010203-N", 1, 1, 10, 10.0, "24/09/2018 04:24 PM");
+        System.out.println("Respuesta: "+r);
         System.exit(0);
-    */    
+        */
         
-                /* ----- Actualizar ----- */
+        // ----- Actualizar -----
         /*
         int actua = mant.ActualizarCompras(1, 1, 2, 20, 6.50, "10/01/2018 17:32");
-       */
+        */
         
-        /* ----- Consultar ----- */
+        // ----- Consultar -----
         /*/
         List<Compras> list;
         list = mant.consultarTodosCompras();
@@ -56,8 +50,9 @@ public static void main(String[] args) {
         
     }
 
-    public int guardarCompras(Integer idProductos, Integer idProveedores, Integer cantidad,
+    public int guardarCompras(String nDocumento, Integer idProductos, Integer idProveedores, Integer cantidad,
             Double monto, String fechaCompras) {
+        
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
@@ -65,6 +60,7 @@ public static void main(String[] args) {
         Compras com = new Compras();
         
         com.setIdCompra(0);
+        com.setnDocumento(nDocumento);
         
         Productos producto = new Productos();
         producto.setIdProducto(idProductos);
