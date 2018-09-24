@@ -15,6 +15,7 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
     private Integer idFactura;
     private Sucursales sucursales;
     private Ventas ventas;
+    private String nDocumento;
     private String fechaVenta;
     private String action;
     private String error;
@@ -44,6 +45,14 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
 
     public void setVentas(Ventas ventas) {
         this.ventas = ventas;
+    }
+
+    public String getnDocumento() {
+        return nDocumento;
+    }
+
+    public void setnDocumento(String nDocumento) {
+        this.nDocumento = nDocumento;
     }
 
     public String getFechaVenta() {
@@ -93,4 +102,10 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
     public void setListaVen(List<Ventas> ListaVen) {
         this.ListaVen = ListaVen;
     }
+
+    @Override
+    public String toString() {
+        return "ActionFormFacturas{" + "idFactura=" + idFactura + ", sucursales=" + sucursales + ", ventas=" + ventas + ", nDocumento=" + nDocumento + ", fechaVenta=" + fechaVenta + ", action=" + action + ", error=" + error + ", ListaFac=" + ListaFac + ", ListaSuc=" + ListaSuc + ", ListaVen=" + ListaVen + '}';
+    }
+    
 }

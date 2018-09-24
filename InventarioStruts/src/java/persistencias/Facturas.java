@@ -12,6 +12,7 @@ public class Facturas  implements java.io.Serializable {
      private Integer idFactura;
      private Sucursales sucursales;
      private Ventas ventas;
+     private String nDocumento;
      private String fechaVenta;
 
     public Facturas() {
@@ -22,9 +23,10 @@ public class Facturas  implements java.io.Serializable {
         this.sucursales = sucursales;
         this.ventas = ventas;
     }
-    public Facturas(Sucursales sucursales, Ventas ventas, String fechaVenta) {
+    public Facturas(Sucursales sucursales, Ventas ventas, String nDocumento, String fechaVenta) {
        this.sucursales = sucursales;
        this.ventas = ventas;
+       this.nDocumento = nDocumento;
        this.fechaVenta = fechaVenta;
     }
    
@@ -49,6 +51,15 @@ public class Facturas  implements java.io.Serializable {
     public void setVentas(Ventas ventas) {
         this.ventas = ventas;
     }
+
+    public String getnDocumento() {
+        return nDocumento;
+    }
+
+    public void setnDocumento(String nDocumento) {
+        this.nDocumento = nDocumento;
+    }
+    
     public String getFechaVenta() {
         return this.fechaVenta;
     }
@@ -56,9 +67,6 @@ public class Facturas  implements java.io.Serializable {
     public void setFechaVenta(String fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
-
-
-
 
 }
 

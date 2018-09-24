@@ -27,6 +27,7 @@ id_inventario int(12) not null
 
 create table facturas(
 id_factura int(12) not null auto_increment primary key,
+n_documento varchar(25) not null,
 id_venta int(12) not null,
 fecha_venta varchar(30),
 id_sucursal int(12) not null

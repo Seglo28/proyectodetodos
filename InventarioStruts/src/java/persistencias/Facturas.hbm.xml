@@ -14,6 +14,9 @@
         <many-to-one name="ventas" class="persistencias.Ventas" fetch="select">
             <column name="id_venta" not-null="true" />
         </many-to-one>
+        <property name="nDocumento" type="string">
+            <column name="n_documento" length="25" />
+        </property>
         <property name="fechaVenta" type="string">
             <column name="fecha_venta" length="30" />
         </property>
