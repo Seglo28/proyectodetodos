@@ -8,6 +8,7 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import persistencias.Clientes;
 import persistencias.Facturas;
+import persistencias.Inventario;
 import persistencias.Productos;
 import persistencias.Sucursales;
 import persistencias.Usuario;
@@ -19,6 +20,8 @@ public class ActionFormVentas extends org.apache.struts.action.ActionForm {
     private Clientes clientes;
     private Integer idCliente;
     private Productos productos;
+    private Inventario inventario;
+    private Integer idInventario;
     private Integer idProducto;
     private Usuario usuario;
     private Integer idUsuario;
@@ -66,6 +69,22 @@ public class ActionFormVentas extends org.apache.struts.action.ActionForm {
 
     public void setProductos(Productos productos) {
         this.productos = productos;
+    }
+
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
+    public Integer getIdInventario() {
+        return idInventario;
+    }
+
+    public void setIdInventario(Integer idInventario) {
+        this.idInventario = idInventario;
     }
 
     public Integer getIdProducto() {
@@ -148,6 +167,14 @@ public class ActionFormVentas extends org.apache.struts.action.ActionForm {
         this.error = error;
     }
 
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
     public List<Ventas> getListaVen() {
         return listaVen;
     }
@@ -188,18 +215,16 @@ public class ActionFormVentas extends org.apache.struts.action.ActionForm {
         this.listaSuc = listaSuc;
     }
 
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
-
     @Override
     public String toString() {
-        return "ActionFormVentas{" + "idVenta=" + idVenta + ", clientes=" + clientes + ", idCliente=" + idCliente + ", productos=" + productos + ", idProducto=" + idProducto + ", usuario=" + usuario + ", idUsuario=" + idUsuario + ", sucursales=" + sucursales + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", fechaVenta=" + fechaVenta + ", action=" + action + ", error=" + error + ", mensaje=" + mensaje + ", listaVen=" + listaVen + ", listaPro=" + listaPro + ", listaCli=" + listaCli + ", listaUsu=" + listaUsu + ", listaSuc=" + listaSuc + '}';
+        return "ActionFormVentas{" + "idVenta=" + idVenta + ", clientes=" + clientes + ", idCliente=" + idCliente + ", productos=" + productos + ", inventario=" + inventario + ", idInventario=" + idInventario + ", idProducto=" + idProducto + ", usuario=" + usuario + ", idUsuario=" + idUsuario + ", sucursales=" + sucursales + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", fechaVenta=" + fechaVenta + ", action=" + action + ", error=" + error + ", mensaje=" + mensaje + ", listaVen=" + listaVen + ", listaPro=" + listaPro + ", listaCli=" + listaCli + ", listaUsu=" + listaUsu + ", listaSuc=" + listaSuc + '}';
     }
 
+   
+
+    
+
+ 
+   
    
 }

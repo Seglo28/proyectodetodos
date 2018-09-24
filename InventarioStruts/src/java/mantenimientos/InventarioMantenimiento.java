@@ -33,9 +33,9 @@ public class InventarioMantenimiento {
         */
         
         /*-- ACTUALIZAR --*/
-        /*
-        m.ActualizarInventario(1, 1, 10, 5, "Disponible", 1, 1);
-        */
+        
+        m.actualizarInventario(2, 1, 1, 1, "Disponible", 1, 1);
+        
         
         /*--- CONSULTAR TODOS---*/
         /*
@@ -50,10 +50,10 @@ public class InventarioMantenimiento {
         */
         
         // --- CONSULTAR UNO ---
-        
+        /*
         Inventario mostrarU = m.consultarInventarioProducto(1, 1);
         System.out.println(mostrarU);
-        
+*/        
         
         /* --- ELIMINAR ---*/
         /*
@@ -61,14 +61,15 @@ public class InventarioMantenimiento {
         */
     }
 
-    public int guardarInventario(Integer idInventario, int idProducto, Integer cant, Integer stock, String estado,
-        int idProveedor, int idSucursal) {
+    public int guardarInventario(Integer idInventario, Integer idProducto, Integer cant, Integer stock, String estado,
+        Integer idProveedor, Integer idSucursal) {
         
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
 
         Inventario inv = new Inventario();
+        
         inv.setIdInventario(idInventario);
         
         Productos r = new Productos();
@@ -105,53 +106,53 @@ public class InventarioMantenimiento {
         }
         return flag;
     }
-
-    public int ActualizarInventario(Integer idInventario, int idProducto, Integer cant, Integer stock,
-        String estado, int idProveedor, int idSucursal) {
+    
+    public int actualizarInventario(Integer idInventario, Integer idProducto, Integer cant, Integer stock, String estado,
+        Integer idProveedor, Integer idSucursal) {
         
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
 
         Inventario inv = new Inventario();
+        
         inv.setIdInventario(idInventario);
-
+        
         Productos r = new Productos();
         r.setIdProducto(idProducto);
         inv.setProductos(r);
-
+        
         inv.setCant(cant);
         inv.setStock(stock);
         inv.setEstado(estado);
         
-        Proveedores p = new Proveedores(); 
-        p.setIdProveedor(idProveedor);
-        inv.setProveedores(p);
-
+        Proveedores prov = new Proveedores(); 
+        prov.setIdProveedor(idProveedor);
+        inv.setProveedores(prov);
+        
         Sucursales s = new Sucursales();
         s.setIdSucursal(idSucursal);
         inv.setSucursales(s);
         
-        session.beginTransaction();
-        
         try {
-            
+            session.beginTransaction();
             session.update(inv);
             session.getTransaction().commit();
             flag = 1;
-            System.out.println("Se ha actualizado el inventario.");
+            System.out.println("Se ha modificado el inventario.");
+            
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
                 flag = 0;
-                System.out.println("Error Actualizar Inventario "+e);
+            System.out.println("Ha ocurrido un error al modificar el inventario "+e);
             }
         } finally {
             session.close();
         }
         return flag;
     }
-        
+
     public Inventario consultarInventario(Integer idInventario) {
         Inventario inv = new Inventario();
         SessionFactory factory = HibernateUtil.getSessionFactory();

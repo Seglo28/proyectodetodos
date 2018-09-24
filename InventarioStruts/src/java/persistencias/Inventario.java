@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1
+// Generated 09-24-2018 10:53:31 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -19,7 +19,6 @@ public class Inventario  implements java.io.Serializable {
      private Integer stock;
      private String estado;
      private Set ventases = new HashSet(0);
-     private Set comprases = new HashSet(0);
 
     public Inventario() {
     }
@@ -30,7 +29,7 @@ public class Inventario  implements java.io.Serializable {
         this.proveedores = proveedores;
         this.sucursales = sucursales;
     }
-    public Inventario(Productos productos, Proveedores proveedores, Sucursales sucursales, Integer cant, Integer stock, String estado, Set ventases, Set comprases) {
+    public Inventario(Productos productos, Proveedores proveedores, Sucursales sucursales, Integer cant, Integer stock, String estado, Set ventases) {
        this.productos = productos;
        this.proveedores = proveedores;
        this.sucursales = sucursales;
@@ -38,7 +37,6 @@ public class Inventario  implements java.io.Serializable {
        this.stock = stock;
        this.estado = estado;
        this.ventases = ventases;
-       this.comprases = comprases;
     }
    
     public Integer getIdInventario() {
@@ -96,13 +94,6 @@ public class Inventario  implements java.io.Serializable {
     
     public void setVentases(Set ventases) {
         this.ventases = ventases;
-    }
-    public Set getComprases() {
-        return this.comprases;
-    }
-    
-    public void setComprases(Set comprases) {
-        this.comprases = comprases;
     }
 
 

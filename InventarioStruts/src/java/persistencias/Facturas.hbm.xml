@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-18-2018 03:26:31 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-24-2018 10:53:32 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Facturas" table="facturas" catalog="control_inventario" optimistic-lock="version">
         <id name="idFactura" type="java.lang.Integer">

@@ -10,17 +10,26 @@ import persistencias.Productos;
 import persistencias.Usuario;
 import persistencias.Ventas;
 import com.myapp.struts.HibernateUtil;
+import persistencias.Inventario;
 import persistencias.Sucursales;
 
 public class VentasMantenimiento {
 
     public static void main(String[] args) {
         VentasMantenimiento vm = new VentasMantenimiento();
+        Integer idCliente=3;
+        Integer idInventario=1;
+        Integer idProducto=1; 
+        Integer idUsuario=2;
+        Integer idSucursal=1;
+        Integer cantidad=45;
+        Double monto= 20.30;
+        String fechaVenta="11/15/16 12:36AM";
         //// ---------------- insertar--------------------//////////
-        /* 
-        int r= vm.guardarVenta(0, 1, 4, 1, 1, 22, 22.44, "hoy");
+        
+        int r= vm. guardarVenta(idCliente, idInventario, idProducto, idUsuario, idSucursal, cantidad, monto, fechaVenta);
         System.out.println(r);
-         */
+        
         //  /---- actualizar---------------////
 
         /*
@@ -45,10 +54,12 @@ public class VentasMantenimiento {
         System.out.println(ven.getMonto());
          */
         ////------------- consultar Todos--------------/////
+        /*
         vm.eliminarVentas(8);
+*/
     }
 
-    public int guardarVenta(Integer idClientes, Integer idProductos, Integer idUsuario, Integer idSucursal, Integer cantidad,
+    public int guardarVenta(Integer idCliente, Integer idInventario, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
             Double monto, String fechaVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -58,12 +69,17 @@ public class VentasMantenimiento {
         Ventas ven = new Ventas();
 
         ven.setIdVenta(0);
+        
         Clientes cli = new Clientes();
-        cli.setIdCliente(idClientes);
+        cli.setIdCliente(idCliente);
         ven.setClientes(cli);
+        
+        Inventario inv = new Inventario();
+        inv.setIdInventario(idInventario);
+        ven.setInventario(inv);
 
         Productos prod = new Productos();
-        prod.setIdProducto(idProductos);
+        prod.setIdProducto(idProducto);
         ven.setProductos(prod);
 
         Usuario usu = new Usuario();
@@ -97,7 +113,7 @@ public class VentasMantenimiento {
 
     }
 
-    public int ActualizarVenta(Integer idVenta, Integer idClientes, Integer idProductos, Integer idUsuario, Integer idSucursal, Integer cantidad,
+    public int ActualizarVenta(Integer idVenta, Integer idCliente, Integer idInventario, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
             Double monto, String fechaVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -107,11 +123,11 @@ public class VentasMantenimiento {
 
         ven.setIdVenta(idVenta);
         Clientes cli = new Clientes();
-        cli.setIdCliente(idClientes);
+        cli.setIdCliente(idCliente);
         ven.setClientes(cli);
 
         Productos prod = new Productos();
-        prod.setIdProducto(idProductos);
+        prod.setIdProducto(idProducto);
         ven.setProductos(prod);
 
         Usuario usu = new Usuario();
