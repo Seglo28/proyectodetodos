@@ -167,7 +167,7 @@ public class ActionInventario extends org.apache.struts.action.Action {
                 return mapping.findForward(errorModINV);
             }
           
-            int r = minv.ActualizarInventario(idInventario, idProducto, cant, stock, estado, idProveedor, idSucursal);
+            int r = minv.actualizarInventario(idInventario, idProducto, cant, stock, estado, idProveedor, idSucursal);
             
             List<Inventario> listInv = minv.consultarTodosInventario();
             formBean.setListaInv(listInv);

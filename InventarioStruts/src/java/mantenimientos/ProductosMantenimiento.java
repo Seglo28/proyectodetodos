@@ -22,10 +22,10 @@ public class ProductosMantenimiento {
         */
         
         // --- MODIFICAR ---
-        
+        /*
         int r = man.ActualizarProductos(4, 2, 1, "Porozas");
         System.out.println("R: "+r);
-        
+        */
         
     }
 

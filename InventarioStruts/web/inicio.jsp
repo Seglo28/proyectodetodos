@@ -77,9 +77,9 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Compras
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/compras">
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
@@ -91,9 +91,9 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Fabricantes
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/fabricantes">
                             <html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link>
@@ -105,9 +105,9 @@
                 </li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Facturas
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
                             <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
@@ -119,9 +119,9 @@
                 </li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Clientes
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/clientes">
                             <html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">Ingresar Cliente</html:link>
@@ -133,9 +133,9 @@
                 </li>
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Sucursales
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/sucursales">
                             <html:link page="/formSucursales.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
@@ -146,26 +146,26 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Proveedores
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/proveedores">
-                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
-                            </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/proveedores">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
-                            </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/proveedores">
+                            <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Inventarios
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/inventario">
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/inventario">
                                 <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
-                            </html:form></a>
+                        </html:form></div>
                     </div>
                 </li>
 
@@ -178,13 +178,11 @@
             </ul>
         </nav>
 
-        <div class="container" style="margin-top: 20px">
-
+        <div class="container">
             <br>
             <div class="row">
                 <div class="col-12">
                     <h1>Inicio</h1>
-
                 </div>
             </div>
         </div>

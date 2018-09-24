@@ -148,7 +148,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
                 } else {
                     estado = "Sin Existencias";
                 }
-                int r = minv.ActualizarInventario(idInv, idProduc, cant, stock, estado, idProv, idSuc);
+                int r = minv.actualizarInventario(idInv, idProduc, cant, stock, estado, idProv, idSuc);
                 if (r == 1) {
                     System.out.println("El Inventario ha sido modificado Exitosamente");
                 } else {

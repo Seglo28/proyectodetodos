@@ -33,9 +33,9 @@ public class InventarioMantenimiento {
         */
         
         /*-- ACTUALIZAR --*/
-        
+        /*
         m.actualizarInventario(2, 1, 1, 1, "Disponible", 1, 1);
-        
+        */
         
         /*--- CONSULTAR TODOS---*/
         /*
@@ -53,7 +53,7 @@ public class InventarioMantenimiento {
         /*
         Inventario mostrarU = m.consultarInventarioProducto(1, 1);
         System.out.println(mostrarU);
-*/        
+        */        
         
         /* --- ELIMINAR ---*/
         /*

@@ -1,9 +1,10 @@
-create database control_inventario DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE SCHEMA control_inventario DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 
 use control_inventario;
 
 create table compras(
 id_compra int(12) not null auto_increment primary key,
+n_documento varchar(25) not null,
 id_producto int(12) not null,
 cantidad int(10),
 monto double,

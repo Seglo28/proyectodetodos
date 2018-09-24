@@ -126,7 +126,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
                 } else {
                     estado = "Sin Existencias";
                 }
-                int r = minv.ActualizarInventario(idInventario, idProduc, cant, stock, estado, idProv, idSuc);
+                int r = minv.actualizarInventario(idInventario, idProduc, cant, stock, estado, idProv, idSuc);
                 if(r == 1){
                     System.out.println("El Inventario ha sido modificado Exitosamente");
                 } else {
@@ -265,6 +265,11 @@ public class ActionCompras extends org.apache.struts.action.Action {
                 List<Proveedores> listaProv = mprov.consultarTodosProveedores();
                 formBean.setListaProv(listaProv);
                 request.setAttribute("listaProv", listaProv);
+                
+                SucursalesMantenimiento msuc = new SucursalesMantenimiento();
+                List<Sucursales> listaSuc = msuc.consultarTodosSucursales();
+                formBean.setListSuc(listaSuc);
+                request.setAttribute("listaSuc", listaSuc);
 
                 return mapping.findForward(modificarCOM);
             }
