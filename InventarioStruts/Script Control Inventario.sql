@@ -14,6 +14,7 @@ fecha_compra varchar(30)
 
 create table ventas(
 id_venta int(12) not null auto_increment primary key,
+n_documento varchar(25) not null,
 id_producto int(12) not null,
 cantidad int(10),
 monto double,

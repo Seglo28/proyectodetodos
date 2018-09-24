@@ -17,6 +17,7 @@ import persistencias.Ventas;
 public class ActionFormVentas extends org.apache.struts.action.ActionForm {
 
     private Integer idVenta;
+    private String nDocumento;
     private Clientes clientes;
     private Integer idCliente;
     private Productos productos;
@@ -45,6 +46,14 @@ public class ActionFormVentas extends org.apache.struts.action.ActionForm {
 
     public void setIdVenta(Integer idVenta) {
         this.idVenta = idVenta;
+    }
+
+    public String getnDocumento() {
+        return nDocumento;
+    }
+
+    public void setnDocumento(String nDocumento) {
+        this.nDocumento = nDocumento;
     }
 
     public Clientes getClientes() {
@@ -217,14 +226,7 @@ public class ActionFormVentas extends org.apache.struts.action.ActionForm {
 
     @Override
     public String toString() {
-        return "ActionFormVentas{" + "idVenta=" + idVenta + ", clientes=" + clientes + ", idCliente=" + idCliente + ", productos=" + productos + ", inventario=" + inventario + ", idInventario=" + idInventario + ", idProducto=" + idProducto + ", usuario=" + usuario + ", idUsuario=" + idUsuario + ", sucursales=" + sucursales + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", fechaVenta=" + fechaVenta + ", action=" + action + ", error=" + error + ", mensaje=" + mensaje + ", listaVen=" + listaVen + ", listaPro=" + listaPro + ", listaCli=" + listaCli + ", listaUsu=" + listaUsu + ", listaSuc=" + listaSuc + '}';
+        return "ActionFormVentas{" + "idVenta=" + idVenta + ", nDocumento=" + nDocumento + ", clientes=" + clientes + ", idCliente=" + idCliente + ", productos=" + productos + ", inventario=" + inventario + ", idInventario=" + idInventario + ", idProducto=" + idProducto + ", usuario=" + usuario + ", idUsuario=" + idUsuario + ", sucursales=" + sucursales + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", fechaVenta=" + fechaVenta + ", action=" + action + ", error=" + error + ", mensaje=" + mensaje + ", listaVen=" + listaVen + ", listaPro=" + listaPro + ", listaCli=" + listaCli + ", listaUsu=" + listaUsu + ", listaSuc=" + listaSuc + '}';
     }
 
-   
-
-    
-
- 
-   
-   
 }

@@ -12,6 +12,7 @@ public class Compras  implements java.io.Serializable {
      private Integer idCompra;
      private Productos productos;
      private Proveedores proveedores;
+     private String nDocumento;
      private Integer cantidad;
      private Double monto;
      private String fechaCompra;
@@ -24,9 +25,10 @@ public class Compras  implements java.io.Serializable {
         this.productos = productos;
         this.proveedores = proveedores;
     }
-    public Compras(Productos productos, Proveedores proveedores, Integer cantidad, Double monto, String fechaCompra) {
+    public Compras(Productos productos, Proveedores proveedores, String nDocumento, Integer cantidad, Double monto, String fechaCompra) {
        this.productos = productos;
        this.proveedores = proveedores;
+       this.nDocumento = nDocumento;
        this.cantidad = cantidad;
        this.monto = monto;
        this.fechaCompra = fechaCompra;
@@ -53,6 +55,15 @@ public class Compras  implements java.io.Serializable {
     public void setProveedores(Proveedores proveedores) {
         this.proveedores = proveedores;
     }
+
+    public String getnDocumento() {
+        return nDocumento;
+    }
+
+    public void setnDocumento(String nDocumento) {
+        this.nDocumento = nDocumento;
+    }
+    
     public Integer getCantidad() {
         return this.cantidad;
     }
@@ -74,9 +85,6 @@ public class Compras  implements java.io.Serializable {
     public void setFechaCompra(String fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
-
-
-
 
 }
 

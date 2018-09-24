@@ -9,6 +9,7 @@ import persistencias.Sucursales;
 public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     private Integer idCompra;
+    private String nDocumento;
     private Productos productos;
     private Proveedores proveedores;
     private Sucursales sucursales;
@@ -32,6 +33,14 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
+    }
+
+    public String getnDocumento() {
+        return nDocumento;
+    }
+
+    public void setnDocumento(String nDocumento) {
+        this.nDocumento = nDocumento;
     }
 
     public Productos getProductos() {
@@ -164,7 +173,7 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     @Override
     public String toString() {
-        return "ActionFormCompras{" + "idCompra=" + idCompra + ", productos=" + productos + ", proveedores=" + proveedores + ", sucursales=" + sucursales + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", cantidad=" + cantidad + ", monto=" + monto + ", error=" + error + ", fechaCompras=" + fechaCompra + ", action=" + action + ", mensaje=" + mensaje + '}';
+        return "ActionFormCompras{" + "idCompra=" + idCompra + ", nDocumento=" + nDocumento + ", productos=" + productos + ", proveedores=" + proveedores + ", sucursales=" + sucursales + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", error=" + error + ", fechaCompra=" + fechaCompra + ", action=" + action + ", mensaje=" + mensaje + ", listaProd=" + listaProd + ", listaProv=" + listaProv + ", listaCom=" + listaCom + ", listSuc=" + listSuc + '}';
     }
 
 }
