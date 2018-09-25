@@ -182,8 +182,7 @@
                                     <th>Usuario</th>
                                     <th>Correo</th>
                                     <th>Cargo</th>
-                                    <th>Modificar</th>
-                                    <th>Eliminar</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -198,8 +197,7 @@
                                             <td><bean:write name="user" property="correo"/></td>
                                             <td><bean:write name="user" property="cargo"/></td>
                                             <td>
-                                                <html:submit styleClass="btn btn-success" property="action" value="Modificar"/></td>
-                                            <td>
+                                                <html:submit styleClass="btn btn-success" property="action" value="Modificar"/>
                                                 <html:submit styleClass="btn btn-danger" property="action" value="Eliminar"/>
                                             </td>
                                         </html:form>

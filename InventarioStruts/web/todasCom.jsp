@@ -15,7 +15,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <script src="http://codeseven.github.com/toastr/toastr.js"></script>
         <link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
@@ -92,7 +94,7 @@
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
                         </div>
                         <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Todas las Compras"></html:submit> 
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivadas"></html:submit> 
                         </html:form></div>
                     </div>
                 </li>
@@ -211,25 +213,42 @@
                             <html:form action="/compras">
                                 <td><bean:write name="compras" property="idCompra"/>
                                     <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div></td>
-                                <td><bean:write name="compras" property="nDocumento"/></td>
+                                <td><bean:write name="compras" property="NDocumento"/></td>
                                 <td><bean:write name="compras" property="productos.producto"/></td>
                                 <td><bean:write name="compras" property="proveedores.proveedor"/></td>
                                 <td><bean:write name="compras" property="cantidad"/></td>
                                 <td>$ <bean:write name="compras" property="monto"/></td>
                                 <td><bean:write name="compras" property="fechaCompra"/></td>
                                 <td><bean:write name="compras" property="estadoCompra"/></td>
-                                <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
                             </html:form>
+                                <td><button class="btn btn-outline-success btnActivar" data-id="<bean:write name="compras" property="idCompra"/>">Activar</button></td>
                             </tr>
                             </logic:iterate>
                         </logic:notEmpty>
                         </tbody>
                     </table>
                 </div>
-                <div class="col-4">
-                    <div id="error" hidden="hidden">${error}</div>
-                    <div id="mensaje" hidden="hidden">${mensaje}</div>
-                    <div id="info" hidden="hidden">${info}</div>
+                <div id="error" hidden="hidden">${error}</div>
+                <div id="mensaje" hidden="hidden">${mensaje}</div>
+                <div id="info" hidden="hidden">${info}</div>
+            </div>
+        </div>
+            
+        <div id="activar" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de activar de nuevo este registro?</p>                            
+                    </div>
+                    <div id="modalDeleteFooter" class="modal-footer">                            
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -275,6 +294,15 @@
                     info();
                 }
             }
+            
+            $("#table").on("click", ".btnActivar", function () {
+                var dataID = $(this).data("id");
+                $("#modalDeleteFooter").empty();
+                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='compras.do?action=Activar&id="+dataID+"'>Activar</a>");
+                $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
+                
+                $("#activar").modal("show");
+            });
         </script>
 
     </body>

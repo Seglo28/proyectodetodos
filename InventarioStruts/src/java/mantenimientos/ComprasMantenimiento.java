@@ -28,25 +28,30 @@ public static void main(String[] args) {
         */
         
         // ----- Consultar -----
-        /*/
+        /*
         List<Compras> list;
         list = mant.consultarTodosCompras();
-        System.out.println(list);
+        System.out.println(list.toString());
+        
+        List<Compras> list2;
+        list2 = mant.consultarComprasDisponibles();
+        System.out.println(list2.toString());
         System.exit(0);
         */
 
-        /* ----- Eliminar ----- */
+        // ----- Eliminar ----- 
         /*
         int borrar = mant.eliminarCompra(2);
-*/
-        ////////// - consultar Por id-//////
+        */
+        // ---- consultar Por ID ----
         
-     /*   int idCompra = 2;
+        /*   
+        int idCompra = 2;
         List<Compras> listaCompras = null;
         listaCompras = (List<Compras>) mant.consultarCompra(idCompra);
         System.out.println(listaCompras);
         System.exit(0);
-*/
+        */
         
     }
 
@@ -94,33 +99,36 @@ public static void main(String[] args) {
         return flag;
 
     }
-    public int ActualizarCompras(Integer idCompra, Integer idProductos, Integer idProveedores, Integer cantidad,
-            Double monto, String fechaCompras) {
+    public int actualizarCompras(Integer idCompra, String nDocumento, Integer idProducto, Integer cantidad, Double monto, 
+            Integer idProveedor, String fechaCompra, String estadoCompra) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
 
         Compras com = new Compras();
         com.setIdCompra(idCompra);
+        com.setNDocumento(nDocumento);
         
         Productos producto = new Productos();
-        producto.setIdProducto(idProductos);
+        producto.setIdProducto(idProducto);
         com.setProductos(producto);
-        
-        Proveedores proveedor = new Proveedores();
-        proveedor.setIdProveedor(idProveedores);
-        com.setProveedores(proveedor);
         
         com.setCantidad(cantidad);
         com.setMonto(monto);
-        com.setFechaCompra(fechaCompras);
+        
+        Proveedores proveedor = new Proveedores();
+        proveedor.setIdProveedor(idProveedor);
+        com.setProveedores(proveedor);
+        
+        com.setFechaCompra(fechaCompra);
+        com.setEstadoCompra(estadoCompra);
 
         try {
             session.beginTransaction();
             session.update(com);
             session.getTransaction().commit();
             flag = 1;
-            System.out.println("Si modificó la Compra");
+            System.out.println("Se modificó la Compra");
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
@@ -185,25 +193,6 @@ public static void main(String[] args) {
 
     }
 
-    public List consultarTodosCompras() {
-        List<Compras> listaCompras = null;
-        SessionFactory factory = HibernateUtil.getSessionFactory();
-        Session session = factory.openSession();
-
-        session.beginTransaction();
-        try {
-            Query q = session.createQuery("from Compras");
-            listaCompras = (List<Compras>) q.list();
-            
-            System.out.println("Consulta Exitosa Compras");
-        } catch (Exception e) {
-            System.out.println("Falló consultar Compras "+e);
-        } finally {
-
-        }
-        return listaCompras;
-    }
-
     public List consultarComprasDisponibles() {
         List<Compras> listaCompras = null;
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -216,13 +205,119 @@ public static void main(String[] args) {
             System.out.println("TAMAÑO: "+q.list().size());
             listaCompras = q.list();
             
-            System.out.println("Consulta Exitosa Compras");
+            System.out.println("Éxito Consulta Compras Disponibles");
         } catch (Exception e) {
-            System.out.println("Falló consultar Compras "+e);
+            System.out.println("Falló consultar Compras Disponibles "+e);
         } finally {
 
         }
         return listaCompras;
+
+    }
+
+    public List consultarComprasArchivadas() {
+        List<Compras> listaCompras = null;
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+
+        session.beginTransaction();
+        try {
+            
+            Query q = session.createQuery("FROM Compras c where c.estadoCompra='Archivado'");
+            System.out.println("TAMAÑO: "+q.list().size());
+            listaCompras = q.list();
+            
+            System.out.println("Éxito Consulta Compras Archivadas");
+        } catch (Exception e) {
+            System.out.println("Falló consultar Compras Archivadas "+e);
+        } finally {
+
+        }
+        return listaCompras;
+
+    }
+    
+    public int archivarCompras(Integer idCompra, String nDocumento, Integer idProducto, Integer cantidad, Double monto, 
+            Integer idProveedor, String fechaCompra) {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        int flag = 0;
+
+        Compras com = new Compras();
+        com.setIdCompra(idCompra);
+        com.setNDocumento(nDocumento);
+        
+        Productos producto = new Productos();
+        producto.setIdProducto(idProducto);
+        com.setProductos(producto);
+        
+        Proveedores proveedor = new Proveedores();
+        proveedor.setIdProveedor(idProveedor);
+        com.setProveedores(proveedor);
+        
+        com.setCantidad(cantidad);
+        com.setMonto(monto);
+        com.setFechaCompra(fechaCompra);
+        com.setEstadoCompra("Archivado");
+
+        try {
+            session.beginTransaction();
+            session.update(com);
+            session.getTransaction().commit();
+            flag = 1;
+            System.out.println("Se archivó la Compra");
+        } catch (Exception e) {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+                flag = 0;
+                System.out.println("No se archivó la Compra "+e);
+            }
+        } finally {
+            session.close();
+        }
+        return flag;
+
+    }
+    
+    public int activarCompra(Integer idCompra, String nDocumento, Integer idProducto, Integer cantidad, Double monto, 
+            Integer idProveedor, String fechaCompra) {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        int flag = 0;
+
+        Compras com = new Compras();
+        com.setIdCompra(idCompra);
+        com.setNDocumento(nDocumento);
+        
+        Productos producto = new Productos();
+        producto.setIdProducto(idProducto);
+        com.setProductos(producto);
+        
+        Proveedores proveedor = new Proveedores();
+        proveedor.setIdProveedor(idProveedor);
+        com.setProveedores(proveedor);
+        
+        com.setCantidad(cantidad);
+        com.setMonto(monto);
+        com.setFechaCompra(fechaCompra);
+        com.setEstadoCompra("Disponible");
+
+        try {
+            session.beginTransaction();
+            session.update(com);
+            session.getTransaction().commit();
+            flag = 1;
+            System.out.println("Se archivó la Compra");
+        } catch (Exception e) {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+                flag = 0;
+                System.out.println("No se archivó la Compra "+e);
+            }
+        } finally {
+            session.close();
+        }
+        return flag;
 
     }
 

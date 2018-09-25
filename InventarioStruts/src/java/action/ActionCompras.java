@@ -42,13 +42,14 @@ public class ActionCompras extends org.apache.struts.action.Action {
 
         ActionFormCompras formBean = (ActionFormCompras) form;
         Integer idCompra = formBean.getIdCompra();
-        String nDocumento = formBean.getnDocumento();
+        String nDocumento = formBean.getNDocumento();
         Integer idProducto = formBean.getIdProducto();
         Integer idProveedor = formBean.getIdProveedor();
         Integer idSucursal = formBean.getIdSucursal();
         Integer cantidad = formBean.getCantidad();
         Double monto = formBean.getMonto();
         String fechaCompras = formBean.getFechaCompra();
+        String estadoCompra = formBean.getEstadoCompra();
         String action = formBean.getAction();
         String mensaje = "";
 
@@ -187,21 +188,21 @@ public class ActionCompras extends org.apache.struts.action.Action {
             ComprasMantenimiento mcom = new ComprasMantenimiento();
             List<Compras> listaCom = mcom.consultarComprasDisponibles();
 
-            if (listaCom == null) {
-                formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados en la base de Compras </div>");
-                return mapping.findForward(consultarCOM);
+            if (listaCom.isEmpty()) {
+                mensaje = "No Se ha hecho ninguna Compra Aún";
+                request.setAttribute("info", mensaje);
             } else {
                 formBean.setListaCom(listaCom);
                 return mapping.findForward(consultarCOM);
             }
         }
         
-        if (action.equals("Todas las Compras")) {
+        if (action.equals("Archivadas")) {
             ComprasMantenimiento mcom = new ComprasMantenimiento();
-            List<Compras> listaCom = mcom.consultarTodosCompras();
+            List<Compras> listaCom = mcom.consultarComprasArchivadas();
             
             if (listaCom.isEmpty()) {
-                mensaje = "No Se ha hecho ninguna Compra Aún";
+                mensaje = "No Se ha archivado ninguna Compra Aún";
                 request.setAttribute("info", mensaje);
             } else {
                 formBean.setListaCom(listaCom);
@@ -228,53 +229,16 @@ public class ActionCompras extends org.apache.struts.action.Action {
             return mapping.findForward(irFormCOM);
         }
 
-        if (action.equals("Eliminar")) {
-            ComprasMantenimiento mcom = new ComprasMantenimiento();
-            Compras com = mcom.consultarCompra(idCompra);
-            if (com == null) {
-                formBean.setError("<div class='alert alert-danger'>No se pudo realizar la consulat par poder eliminar el ID</div>");
-                return mapping.findForward(errorCOM);
-            } else {
-                formBean.setIdCompra(com.getIdCompra());
-                formBean.setIdProducto(com.getProductos().getIdProducto());
-                formBean.setIdProveedor(com.getProveedores().getIdProveedor());
-                formBean.setCantidad(com.getCantidad());
-                formBean.setMonto(com.getMonto());
-                formBean.setFechaCompras(com.getFechaCompra());
-
-                ProductosMantenimiento mprod = new ProductosMantenimiento();
-                List<Productos> listaProd = mprod.consultarTodosProductos();
-                formBean.setListaProd(listaProd);
-                request.setAttribute("listaProd", listaProd);
-
-                ProveedorMantenimiento mprov = new ProveedorMantenimiento();
-                List<Proveedores> listaProv = mprov.consultarTodosProveedores();
-                formBean.setListaProv(listaProv);
-                request.setAttribute("listaProv", listaProv);
-
-                return mapping.findForward(eliminarCOM);
-
-            }
-        }
-        if (action.equals("Borrar")) {
-            ComprasMantenimiento mcom = new ComprasMantenimiento();
-            mcom.eliminarCompra(idCompra);
-            formBean.setError(borrarCOM);
-            List<Compras> listaCom = mcom.consultarTodosCompras();
-            formBean.setListaCom(listaCom);
-            return mapping.findForward(borrarCOM);
-        }
-
         if (action.equals("Actualizar")) {
             ComprasMantenimiento mcom = new ComprasMantenimiento();
             Compras com = mcom.consultarCompra(idCompra);
 
             if (com == null) {
-                formBean.setError("<div class='alert alert-danger'> No se puede realizar la consulta para actualizar...</div>");
+                mensaje = "Hay un problema en el Sistema!";
+                request.setAttribute("error", mensaje);
                 return mapping.findForward(errorCOM);
             } else {
 
-                System.out.println("ID: " + com.getIdCompra());
                 formBean.setIdCompra(com.getIdCompra());
                 formBean.setIdProducto(com.getProductos().getIdProducto());
                 formBean.setIdProveedor(com.getProveedores().getIdProveedor());
@@ -303,30 +267,77 @@ public class ActionCompras extends org.apache.struts.action.Action {
 
         if (action.equals("Modificar")) {
             ComprasMantenimiento mcom = new ComprasMantenimiento();
-            System.out.println("ID: " + idCompra);
-            System.out.println("ID Producto: " + idProducto);
-            System.out.println("ID Prov: " + idProveedor);
-            System.out.println("Cant: " + cantidad);
-            System.out.println("Monto: $" + monto);
-            System.out.println("Fecha: " + fechaCompras);
-            int r = mcom.ActualizarCompras(idCompra, idProducto, idProveedor, cantidad, monto, fechaCompras);
-            System.out.println("Ya sabes 1: " + r);
-            List<Compras> listaCom = mcom.consultarTodosCompras();
+            int r = mcom.actualizarCompras(idCompra, nDocumento, idProducto, cantidad, monto, idProveedor, fechaCompras, estadoCompra);
+            
+            if(r == 1){
+                mensaje = "Se ha modificado con Éxito!";
+                request.setAttribute("mensaje", mensaje);
+            } else {
+                mensaje = "Error al modificar!";
+                request.setAttribute("error", mensaje);
+            }
+            
+            List<Compras> listaCom = mcom.consultarComprasDisponibles();
             formBean.setListaCom(listaCom);
             return mapping.findForward(consultarCOM);
         }
 
-        if (action.equals("Volver")) {
+        if (action.equals("Archivar")) {
             ComprasMantenimiento mcom = new ComprasMantenimiento();
-            List<Compras> listaCom = mcom.consultarTodosCompras();
-            System.out.println("lista es" + listaCom);
-            if (listaCom == null) {
-                formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados en la base de Compras </div>");
-                return mapping.findForward(consultarCOM);
+            int key = Integer.parseInt(request.getParameter("id"));
+            
+            Compras arch = mcom.consultarCompra(key);
+            String nD = arch.getNDocumento();
+            int idPro = arch.getProductos().getIdProducto();
+            int cant = arch.getCantidad();
+            double mont = arch.getMonto();
+            int idProv = arch.getProveedores().getIdProveedor();
+            String fechaCom = arch.getFechaCompra();
+            int r = mcom.archivarCompras(key, nD, idPro, cant, mont, idProv, fechaCom);
+            
+            if(r == 1){
+                mensaje = "Se ha archivado con Éxito!";
+                request.setAttribute("mensaje", mensaje);
+            } else {
+                mensaje = "Error al archivar!";
+                request.setAttribute("error", mensaje);
+            }
+            
+            List<Compras> listaCom = mcom.consultarComprasDisponibles();
+            formBean.setListaCom(listaCom);
+            return mapping.findForward(consultarCOM);
+        }
+        
+        if (action.equals("Activar")) {
+            ComprasMantenimiento mcom = new ComprasMantenimiento();
+            int key = Integer.parseInt(request.getParameter("id"));
+            
+            Compras arch = mcom.consultarCompra(key);
+            String nD = arch.getNDocumento();
+            int idPro = arch.getProductos().getIdProducto();
+            int cant = arch.getCantidad();
+            double mont = arch.getMonto();
+            int idProv = arch.getProveedores().getIdProveedor();
+            String fechaCom = arch.getFechaCompra();
+            int r = mcom.activarCompra(key, nD, idPro, cant, mont, idProv, fechaCom);
+            
+            if(r == 1){
+                mensaje = "Se ha activado con Éxito!";
+                request.setAttribute("mensaje", mensaje);
+            } else {
+                mensaje = "Error al activar!";
+                request.setAttribute("error", mensaje);
+            }
+            
+            List<Compras> listaCom = mcom.consultarComprasArchivadas();
+            
+            if (listaCom.isEmpty()) {
+                mensaje = "No Se ha archivado ninguna Compra Aún";
+                request.setAttribute("info", mensaje);
             } else {
                 formBean.setListaCom(listaCom);
-                return mapping.findForward(consultarCOM);
             }
+            return mapping.findForward(todasCom);
         }
 
         return null;

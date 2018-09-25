@@ -9,7 +9,7 @@ import persistencias.Sucursales;
 public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     private Integer idCompra;
-    private String nDocumento;
+    private String NDocumento;
     private Productos productos;
     private Proveedores proveedores;
     private Sucursales sucursales;
@@ -18,8 +18,9 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
     private Integer idSucursal;
     private Integer cantidad;
     private Double monto;
-    private String error;
+    private String estadoCompra;
     private String fechaCompra;
+    private String error;
     private String action;
     private String mensaje;
     private List<Productos> listaProd;
@@ -35,12 +36,12 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
         this.idCompra = idCompra;
     }
 
-    public String getnDocumento() {
-        return nDocumento;
+    public String getNDocumento() {
+        return NDocumento;
     }
 
-    public void setnDocumento(String nDocumento) {
-        this.nDocumento = nDocumento;
+    public void setnDocumento(String NDocumento) {
+        this.NDocumento = NDocumento;
     }
 
     public Productos getProductos() {
@@ -105,6 +106,14 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     public void setMonto(Double monto) {
         this.monto = monto;
+    }
+
+    public String getEstadoCompra() {
+        return estadoCompra;
+    }
+
+    public void setEstadoCompra(String estadoCompra) {
+        this.estadoCompra = estadoCompra;
     }
 
     public String getError() {
@@ -173,7 +182,7 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     @Override
     public String toString() {
-        return "ActionFormCompras{" + "idCompra=" + idCompra + ", nDocumento=" + nDocumento + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", fechaCompra=" + fechaCompra + '}';
+        return "ActionFormCompras{" + "idCompra=" + idCompra + ", NDocumento=" + NDocumento + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", estadoCompra=" + estadoCompra + ", fechaCompra=" + fechaCompra + '}';
     }
-
+    
 }

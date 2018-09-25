@@ -87,7 +87,7 @@
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
                         </div>
                         <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Todas las Compras"></html:submit> 
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivadas"></html:submit> 
                         </html:form></div>
                     </div>
                 </li>
@@ -97,12 +97,12 @@
                         Ventas
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/ventas">
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/ventas">
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Ventas"></html:submit>
-                        </a>
-                        <a class="dropdown-item" href="">
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                        </html:form></a>
+                        </html:form></div>
                     </div>
                 </li>
 

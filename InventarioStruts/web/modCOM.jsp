@@ -235,12 +235,10 @@
                             </html:form>
                         </div>
                     </div>
-            </div>
-        <div class="col-4">
-                    <div id="error" hidden="hidden">${error}</div>
-                    <div id="mensaje" hidden="hidden">${mensaje}</div>
-                    <div id="info" hidden="hidden">${info}</div>
                 </div>
+                <div id="error" hidden="hidden">${error}</div>
+                <div id="mensaje" hidden="hidden">${mensaje}</div>
+                <div id="info" hidden="hidden">${info}</div>
             </div>
         </div>
 
