@@ -63,27 +63,17 @@ public class ActionCompras extends org.apache.struts.action.Action {
             String adver = "";
             String adver1 = "";
             String adver2 = "";
-            String adver3 = "";
-            String adver4 = "";
-            String adver5 = "";
+            
+            System.out.println("ND: "+nDocumento);
 
             if (nDocumento == null || nDocumento.equals("")) {
                 adver = "- N° de Doc. <br>";
             }
-            if (idProducto.equals("--Seleccionar--")) {
-                adver1 = "- Producto. <br>";
-            }
             if (cantidad == null || cantidad == 0) {
-                adver2 = "- Cantidad. <br>";
+                adver1 = "- Cantidad. <br>";
             }
             if (monto == null || monto == 0) {
-                adver3 = "- Monto.";
-            }
-            if (idProveedor.equals("--Seleccionar--")) {
-                adver4 = "- Proveedor. <br>";
-            }
-            if (idSucursal.equals("--Seleccionar--")) {
-                adver5 = "- Sucursal. <br>";
+                adver2 = "- Monto.";
             }
             if (!adver.equals("")) {
                 ProveedorMantenimiento mprov = new ProveedorMantenimiento();
@@ -101,13 +91,36 @@ public class ActionCompras extends org.apache.struts.action.Action {
                 formBean.setListSuc(listaSuc);
                 request.setAttribute("listaSuc", listaSuc);
                 
-                mensaje = "Por favor completar las casillas: <br>" + adver + adver1 + adver2 + adver3 + adver4 + adver5 + "";
+                mensaje = "Por favor completar las casillas: <br>" + adver + adver1 + adver2 + "";
                 request.setAttribute("error", mensaje);
                 return mapping.findForward(errorInsertarCompra);
             }
             
             String fechaHoy = formatoFecha.format(new Date());
             ComprasMantenimiento mcom = new ComprasMantenimiento();
+            
+            Compras val = mcom.valNDoc(nDocumento);
+            
+            if(val != null){
+                ProveedorMantenimiento mprov = new ProveedorMantenimiento();
+                List<Proveedores> listaProv = mprov.consultarTodosProveedores();
+                formBean.setListaProv(listaProv);
+                request.setAttribute("listaProv", listaProv);
+
+                ProductosMantenimiento mprod = new ProductosMantenimiento();
+                List<Productos> listaProd = mprod.consultarTodosProductos();
+                formBean.setListaProd(listaProd);
+                request.setAttribute("listaProd", listaProd);
+                
+                SucursalesMantenimiento msuc = new SucursalesMantenimiento();
+                List<Sucursales> listaSuc = msuc.consultarTodosSucursales();
+                formBean.setListSuc(listaSuc);
+                request.setAttribute("listaSuc", listaSuc);
+                
+                mensaje = "El N° de Factura ya Existe";
+                request.setAttribute("error", mensaje);
+                return mapping.findForward(errorInsertarCompra);
+            }
             
             Double mont = monto*cantidad;
             

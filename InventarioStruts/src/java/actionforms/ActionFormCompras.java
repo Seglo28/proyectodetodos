@@ -40,7 +40,7 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
         return NDocumento;
     }
 
-    public void setnDocumento(String NDocumento) {
+    public void setNDocumento(String NDocumento) {
         this.NDocumento = NDocumento;
     }
 

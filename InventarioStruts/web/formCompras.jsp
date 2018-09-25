@@ -196,8 +196,8 @@
 
                             <div class="row">
                                 <div class="form-group col-md-3">
-                                    <label form="NDocumento">N° de Documento</label><br>
-                                    <html:text property="nDocumento" styleClass="form-control"></html:text>
+                                    <label form="nDocumento">N° de Documento</label><br>
+                                    <html:text property="NDocumento" styleClass="form-control"></html:text>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label form="id_producto">Producto</label><br>

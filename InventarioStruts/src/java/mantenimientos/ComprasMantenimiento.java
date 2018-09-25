@@ -164,6 +164,32 @@ public static void main(String[] args) {
         }
         return com;
     }
+    
+    public Compras valNDoc(String NDocumento){
+        Compras com = new Compras();
+        SessionFactory fac = HibernateUtil.getSessionFactory();
+        Session sess = fac.openSession();
+        
+        try {
+            
+            Query q = sess.createQuery("FROM Compras c where c.NDocumento=:NDocumento").setParameter("NDocumento", NDocumento);
+            System.out.println("TAMAÑO: "+q.list().size());
+        
+            if(q.list().isEmpty()){
+                System.out.println("Sirve");
+                return com = null;
+            } else {
+                System.out.println("No funciona para factura");
+                return com;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error valNDoc "+e);
+            return com = null;
+        } finally {
+            sess.close();
+        }
+    }
 
     public int eliminarCompra(Integer idCompra) {
         Compras com = new Compras();

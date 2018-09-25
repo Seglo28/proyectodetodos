@@ -79,14 +79,13 @@
                                 </div>
                                 <br>
                                 <label>Correo</label><br>
-                                <html:text property="correo" styleClass="form-control"></html:text><br>
+                                <html:text property="correo" styleClass="form-control"></html:text>
                                 <label>Contraseña</label><br>
                                 <html:password property="contra" styleClass="form-control"></html:password>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <br>
-                                        <html:submit styleClass="btn btn-outline-success" property="action" value="Entrar">Entrar</html:submit>
+                                        <html:submit styleClass="btn btn-outline-success btn-block" property="action" value="Entrar">Entrar</html:submit>
                                     </div>
                                 </div>
                             </div>
