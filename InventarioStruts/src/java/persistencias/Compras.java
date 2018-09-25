@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-24-2018 10:53:31 AM by Hibernate Tools 4.3.1
+// Generated 09-25-2018 08:37:16 AM by Hibernate Tools 4.3.1
 
 
 
@@ -12,26 +12,29 @@ public class Compras  implements java.io.Serializable {
      private Integer idCompra;
      private Productos productos;
      private Proveedores proveedores;
-     private String nDocumento;
+     private String NDocumento;
      private Integer cantidad;
      private Double monto;
      private String fechaCompra;
+     private String estadoCompra;
 
     public Compras() {
     }
 
 	
-    public Compras(Productos productos, Proveedores proveedores) {
+    public Compras(Productos productos, Proveedores proveedores, String NDocumento) {
         this.productos = productos;
         this.proveedores = proveedores;
+        this.NDocumento = NDocumento;
     }
-    public Compras(Productos productos, Proveedores proveedores, String nDocumento, Integer cantidad, Double monto, String fechaCompra) {
+    public Compras(Productos productos, Proveedores proveedores, String NDocumento, Integer cantidad, Double monto, String fechaCompra, String estadoCompra) {
        this.productos = productos;
        this.proveedores = proveedores;
-       this.nDocumento = nDocumento;
+       this.NDocumento = NDocumento;
        this.cantidad = cantidad;
        this.monto = monto;
        this.fechaCompra = fechaCompra;
+       this.estadoCompra = estadoCompra;
     }
    
     public Integer getIdCompra() {
@@ -55,15 +58,13 @@ public class Compras  implements java.io.Serializable {
     public void setProveedores(Proveedores proveedores) {
         this.proveedores = proveedores;
     }
-
-    public String getnDocumento() {
-        return nDocumento;
-    }
-
-    public void setnDocumento(String nDocumento) {
-        this.nDocumento = nDocumento;
+    public String getNDocumento() {
+        return this.NDocumento;
     }
     
+    public void setNDocumento(String NDocumento) {
+        this.NDocumento = NDocumento;
+    }
     public Integer getCantidad() {
         return this.cantidad;
     }
@@ -85,6 +86,16 @@ public class Compras  implements java.io.Serializable {
     public void setFechaCompra(String fechaCompra) {
         this.fechaCompra = fechaCompra;
     }
+    public String getEstadoCompra() {
+        return this.estadoCompra;
+    }
+    
+    public void setEstadoCompra(String estadoCompra) {
+        this.estadoCompra = estadoCompra;
+    }
+
+
+
 
 }
 

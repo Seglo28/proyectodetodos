@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-24-2018 10:53:31 AM by Hibernate Tools 4.3.1
+// Generated 09-25-2018 08:37:16 AM by Hibernate Tools 4.3.1
 
 
 
@@ -12,22 +12,25 @@ public class Facturas  implements java.io.Serializable {
      private Integer idFactura;
      private Sucursales sucursales;
      private Ventas ventas;
-     private String nDocumento;
+     private String NDocumento;
      private String fechaVenta;
+     private String estadoFactura;
 
     public Facturas() {
     }
 
 	
-    public Facturas(Sucursales sucursales, Ventas ventas) {
+    public Facturas(Sucursales sucursales, Ventas ventas, String NDocumento) {
         this.sucursales = sucursales;
         this.ventas = ventas;
+        this.NDocumento = NDocumento;
     }
-    public Facturas(Sucursales sucursales, Ventas ventas, String nDocumento, String fechaVenta) {
+    public Facturas(Sucursales sucursales, Ventas ventas, String NDocumento, String fechaVenta, String estadoFactura) {
        this.sucursales = sucursales;
        this.ventas = ventas;
-       this.nDocumento = nDocumento;
+       this.NDocumento = NDocumento;
        this.fechaVenta = fechaVenta;
+       this.estadoFactura = estadoFactura;
     }
    
     public Integer getIdFactura() {
@@ -51,15 +54,13 @@ public class Facturas  implements java.io.Serializable {
     public void setVentas(Ventas ventas) {
         this.ventas = ventas;
     }
-
-    public String getnDocumento() {
-        return nDocumento;
-    }
-
-    public void setnDocumento(String nDocumento) {
-        this.nDocumento = nDocumento;
+    public String getNDocumento() {
+        return this.NDocumento;
     }
     
+    public void setNDocumento(String NDocumento) {
+        this.NDocumento = NDocumento;
+    }
     public String getFechaVenta() {
         return this.fechaVenta;
     }
@@ -67,6 +68,16 @@ public class Facturas  implements java.io.Serializable {
     public void setFechaVenta(String fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
+    public String getEstadoFactura() {
+        return this.estadoFactura;
+    }
+    
+    public void setEstadoFactura(String estadoFactura) {
+        this.estadoFactura = estadoFactura;
+    }
+
+
+
 
 }
 

@@ -3,17 +3,18 @@ CREATE SCHEMA control_inventario DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode
 use control_inventario;
 
 create table compras(
-id_compra int(12) not null auto_increment primary key,
+id_compra int(20) not null auto_increment primary key,
 n_documento varchar(25) not null,
 id_producto int(12) not null,
 cantidad int(10),
 monto double,
 id_proveedor int(12) not null,
-fecha_compra varchar(30)
+fecha_compra varchar(30),
+estado_compra varchar(25)
 );
 
 create table ventas(
-id_venta int(12) not null auto_increment primary key,
+id_venta int(20) not null auto_increment primary key,
 n_documento varchar(25) not null,
 id_producto int(12) not null,
 cantidad int(10),
@@ -22,15 +23,17 @@ id_cliente int(12) not null,
 id_usuario int(12) not null,
 fecha_venta varchar(30),
 id_sucursal int(12) not null,
-id_inventario int(12) not null
+id_inventario int(12) not null,
+estado_venta varchar(25)
 );
 
 create table facturas(
-id_factura int(12) not null auto_increment primary key,
+id_factura int(20) not null auto_increment primary key,
 n_documento varchar(25) not null,
-id_venta int(12) not null,
+id_venta int(20) not null,
 fecha_venta varchar(30),
-id_sucursal int(12) not null
+id_sucursal int(12) not null,
+estado_factura varchar(25)
 );
 
 create table productos(
@@ -66,15 +69,15 @@ telefono varchar(25)
 );
 
 create table clientes(
-id_cliente int(12) not null auto_increment primary key,
+id_cliente int(20) not null auto_increment primary key,
 cliente varchar(25),
-tipo_persona varchar(15),
+tipo_persona varchar(20),
 direccion varchar(50),
 telefono varchar(15)
 );
 
 create table inventario(
-id_inventario int(12) not null auto_increment primary key,
+id_inventario int(30) not null auto_increment primary key,
 id_producto int(12) not null,
 cant int(12),
 stock int(12),

@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" href="img/logo.png">
-        <title>Control Inventario - Productos</title>
+        <title>Control Inventario - Compras</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -72,7 +72,7 @@
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/productos">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Producto">Agregar</html:submit>
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
                         </div>
                         <div class="dropdown-item" style="background-color: #343a40">
                             <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
@@ -186,42 +186,51 @@
         </nav>
 
         <div class="container">
-            
+
             <br>
             <div class="row">
                 <div class="col-12">
-                    <table class="table table-hover">
+                    <table id="table" class="table table-hover">
                         <thead class="thead-dark">
                             <tr>
                                 <th>ID</th>
-                                <th>Proveedor</th>
-                                <th>Fabricante</th>
+                                <th>N° de Doc.</th>
                                 <th>Producto</th>
+                                <th>Proveedor</th>
+                                <th>Cant.</th>
+                                <th>Monto</th>
+                                <th>Fecha de la Compra</th>
+                                <th>Estado</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                        <logic:notEmpty name="ActionFormProductos" property="listaProd">
-                            <logic:iterate id="ver" name="ActionFormProductos" property="listaProd">
-                                <tr>
-                                    <html:form action="/productos">
-                                    <td><bean:write name="ver" property="idProducto"/>
-                                        <div hidden="hidden"><html:text  name="ver" property="idProducto"></html:text></div></td>
-                                    <td><bean:write name="ver" property="proveedores.proveedor"/></td>
-                                    <td><bean:write name="ver" property="fabricantes.fabricante"/></td>
-                                    <td><bean:write name="ver" property="producto"/></td>
-                                    <td><html:submit styleClass="btn btn-outline-success" property="action" value="Actualizar"/>
-                                        <html:submit styleClass="btn btn-outline-danger" property="action" value="Eliminar"/></td>
-                                    </html:form>
-                                </tr>
+                        <logic:notEmpty name="ActionFormCompras" property="listaCom">
+                            <logic:iterate id="compras" name="ActionFormCompras" property="listaCom">
+                            <tr>
+                            <html:form action="/compras">
+                                <td><bean:write name="compras" property="idCompra"/>
+                                    <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div></td>
+                                <td><bean:write name="compras" property="nDocumento"/></td>
+                                <td><bean:write name="compras" property="productos.producto"/></td>
+                                <td><bean:write name="compras" property="proveedores.proveedor"/></td>
+                                <td><bean:write name="compras" property="cantidad"/></td>
+                                <td>$ <bean:write name="compras" property="monto"/></td>
+                                <td><bean:write name="compras" property="fechaCompra"/></td>
+                                <td><bean:write name="compras" property="estadoCompra"/></td>
+                                <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
+                            </html:form>
+                            </tr>
                             </logic:iterate>
                         </logic:notEmpty>
                         </tbody>
                     </table>
                 </div>
-                <div id="error" hidden="hidden">${error}</div>
-                <div id="mensaje" hidden="hidden">${mensaje}</div>
-                <div id="info" hidden="hidden">${info}</div>
+                <div class="col-4">
+                    <div id="error" hidden="hidden">${error}</div>
+                    <div id="mensaje" hidden="hidden">${mensaje}</div>
+                    <div id="info" hidden="hidden">${info}</div>
+                </div>
             </div>
         </div>
 
@@ -267,7 +276,6 @@
                 }
             }
         </script>
-        
+
     </body>
 </html>
-

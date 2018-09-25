@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-24-2018 10:53:32 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-25-2018 08:37:17 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Facturas" table="facturas" catalog="control_inventario" optimistic-lock="version">
         <id name="idFactura" type="java.lang.Integer">
@@ -14,11 +14,14 @@
         <many-to-one name="ventas" class="persistencias.Ventas" fetch="select">
             <column name="id_venta" not-null="true" />
         </many-to-one>
-        <property name="nDocumento" type="string">
-            <column name="n_documento" length="25" />
+        <property name="NDocumento" type="string">
+            <column name="n_documento" length="25" not-null="true" />
         </property>
         <property name="fechaVenta" type="string">
             <column name="fecha_venta" length="30" />
+        </property>
+        <property name="estadoFactura" type="string">
+            <column name="estado_factura" length="25" />
         </property>
     </class>
 </hibernate-mapping>

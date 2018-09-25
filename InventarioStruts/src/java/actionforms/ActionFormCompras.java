@@ -173,7 +173,7 @@ public class ActionFormCompras extends org.apache.struts.action.ActionForm {
 
     @Override
     public String toString() {
-        return "ActionFormCompras{" + "idCompra=" + idCompra + ", nDocumento=" + nDocumento + ", productos=" + productos + ", proveedores=" + proveedores + ", sucursales=" + sucursales + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", error=" + error + ", fechaCompra=" + fechaCompra + ", action=" + action + ", mensaje=" + mensaje + ", listaProd=" + listaProd + ", listaProv=" + listaProv + ", listaCom=" + listaCom + ", listSuc=" + listSuc + '}';
+        return "ActionFormCompras{" + "idCompra=" + idCompra + ", nDocumento=" + nDocumento + ", idProducto=" + idProducto + ", idProveedor=" + idProveedor + ", idSucursal=" + idSucursal + ", cantidad=" + cantidad + ", monto=" + monto + ", fechaCompra=" + fechaCompra + '}';
     }
 
 }

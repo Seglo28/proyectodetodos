@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 09-24-2018 10:53:32 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated 09-25-2018 08:37:17 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="persistencias.Clientes" table="clientes" catalog="control_inventario" optimistic-lock="version">
         <id name="idCliente" type="java.lang.Integer">
@@ -12,7 +12,7 @@
             <column name="cliente" length="25" />
         </property>
         <property name="tipoPersona" type="string">
-            <column name="tipo_persona" length="15" />
+            <column name="tipo_persona" length="20" />
         </property>
         <property name="direccion" type="string">
             <column name="direccion" length="50" />

@@ -86,6 +86,7 @@
         
         <forward name="insertarCom"  path="/verCOM.jsp"/>
         <forward name="consultarCOM"  path="/verCOM.jsp"/>
+        <forward name="todasCom"  path="/todasCom.jsp"/>
         <forward name="consultarIdCOM"  path="/modCOM.jsp"/>
         <forward name="modificarCOM"  path="/modCOM.jsp"/>
         <forward name="eliminarCOM"  path="/eliminarCompra.jsp"/>

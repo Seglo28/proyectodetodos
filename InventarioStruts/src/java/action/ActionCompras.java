@@ -24,6 +24,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
 
     private static final String agregarCOM = "insertarCom";
     private static final String consultarCOM = "consultarCOM";
+    private static final String todasCom = "todasCom";
     private static final String consultarIdCOM = "consultarIdCOM";
     private static final String modificarCOM = "modificarCOM";
     private static final String eliminarCOM = "eliminarCOM";
@@ -109,8 +110,8 @@ public class ActionCompras extends org.apache.struts.action.Action {
             
             Double mont = monto*cantidad;
             
-            int com2 = mcom.guardarCompras(nDocumento, idProducto, idProveedor, cantidad, mont, fechaHoy);
-            List<Compras> listaCom = mcom.consultarTodosCompras();
+            int com2 = mcom.guardarCompras(nDocumento, idProducto, cantidad, mont, idProveedor, fechaHoy);
+            List<Compras> listaCom = mcom.consultarComprasDisponibles();
             formBean.setListaCom(listaCom);
             if(com2 == 1){
                 mensaje = "La Compra ha sido registrada con Éxito";
@@ -123,7 +124,6 @@ public class ActionCompras extends org.apache.struts.action.Action {
             // --- Insertar Inventario de la Compra ---
             InventarioMantenimiento minv = new InventarioMantenimiento();
             Inventario inv = minv.consultarInventarioProducto(idProducto, idSucursal);
-            System.out.println("inv: "+inv);
             
             if(inv != null){
                 Integer idInventario = inv.getIdInventario();
@@ -172,7 +172,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
 
         if (action.equals("Consultar")) {
             ComprasMantenimiento mcom = new ComprasMantenimiento();
-            List<Compras> listaCom = mcom.consultarTodosCompras();
+            List<Compras> listaCom = mcom.consultarComprasDisponibles();
             
             if (listaCom.isEmpty()) {
                 mensaje = "No Se ha hecho ninguna Compra Aún";
@@ -185,7 +185,7 @@ public class ActionCompras extends org.apache.struts.action.Action {
 
         if (action.equals("Cancelar")) {
             ComprasMantenimiento mcom = new ComprasMantenimiento();
-            List<Compras> listaCom = mcom.consultarTodosCompras();
+            List<Compras> listaCom = mcom.consultarComprasDisponibles();
 
             if (listaCom == null) {
                 formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados en la base de Compras </div>");
@@ -194,6 +194,19 @@ public class ActionCompras extends org.apache.struts.action.Action {
                 formBean.setListaCom(listaCom);
                 return mapping.findForward(consultarCOM);
             }
+        }
+        
+        if (action.equals("Todas las Compras")) {
+            ComprasMantenimiento mcom = new ComprasMantenimiento();
+            List<Compras> listaCom = mcom.consultarTodosCompras();
+            
+            if (listaCom.isEmpty()) {
+                mensaje = "No Se ha hecho ninguna Compra Aún";
+                request.setAttribute("info", mensaje);
+            } else {
+                formBean.setListaCom(listaCom);
+            }
+            return mapping.findForward(todasCom);
         }
 
         if (action.equals("Ingresar Compra")) {

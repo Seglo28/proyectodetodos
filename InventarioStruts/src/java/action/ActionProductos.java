@@ -46,7 +46,7 @@ public class ActionProductos extends org.apache.struts.action.Action {
               formBean.setError("<div class='alert alert-danger'>Lamentamos el inconveniente, Inténtelo más Tarde</div>");
             return mapping.findForward(errorPROD);
         }
-        if (action.equals("Insertar")) {
+        if (action.equals("Ingresar")) {
             String adver = "";
             String adver2 = "";
             String adver3 = "";
@@ -69,25 +69,36 @@ public class ActionProductos extends org.apache.struts.action.Action {
                 return mapping.findForward(errorIngresarProducto);
             }
             ProductosMantenimiento mprod = new ProductosMantenimiento();
-            System.out.println("Nombre del producto"+ producto);
             Productos prod = mprod.consultarNombreProducto(producto);
-            System.out.println(" consultando producto" +prod);
             if (prod != null) {
                 errorProd= ("<div class='alert alert-danger'>Este Producto ya Existe, Ingrese otro no registrado... </div>");             
                 return mapping.findForward(errorIngresarProducto);
             }
             int prod2 = mprod.guardarProductos(idFabricante, idProveedor, producto);
-            mensajeProd= "<div class='alert alert-success'>Guardando producto de manera exitosa<div>";
-             request.setAttribute("mensajeProd", mensajeProd);
-             
-            System.out.println("Si es 1 Funcionó " + prod2);
+            List<Productos> listaProd = mprod.consultarTodosProductos();
+            formBean.setListaProd(listaProd);
+            
+            request.setAttribute("mensajeProd", mensajeProd);
+            
+            
             return mapping.findForward(agregarPROD);
         }
 
         if (action.equals("Consultar")) {
             ProductosMantenimiento mprod = new ProductosMantenimiento();
             List<Productos> listaProd = mprod.consultarTodosProductos();
-            System.out.println("lista es :"+listaProd);
+            if (listaProd == null) {
+                formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados en la base de datos sobre Productos</div>");
+                return mapping.findForward(consultarPROD);
+            } else {
+                formBean.setListaProd(listaProd);
+                return mapping.findForward(consultarPROD);
+            }
+        }
+        
+        if (action.equals("Cancelar")) {
+            ProductosMantenimiento mprod = new ProductosMantenimiento();
+            List<Productos> listaProd = mprod.consultarTodosProductos();
             if (listaProd == null) {
                 formBean.setError("<div class='alert alert-danger'>No hay Datos Guardados en la base de datos sobre Productos</div>");
                 return mapping.findForward(consultarPROD);
@@ -97,7 +108,7 @@ public class ActionProductos extends org.apache.struts.action.Action {
             }
         }
 
-         if (action.equals("Agregar Producto")) {
+         if (action.equals("Ingresar Producto")) {
             ProveedorMantenimiento mprov = new ProveedorMantenimiento();
             List<Proveedores> listaProv = mprov.consultarTodosProveedores();
             formBean.setListaProv(listaProv);
