@@ -17,17 +17,18 @@ public class VentasMantenimiento {
 
     public static void main(String[] args) {
         VentasMantenimiento vm = new VentasMantenimiento();
-        Integer idCliente=3;
+        Integer idCliente=1;
         Integer idInventario=1;
         Integer idProducto=1; 
-        Integer idUsuario=2;
+        Integer idUsuario=1;
         Integer idSucursal=1;
         Integer cantidad=45;
         Double monto= 20.30;
+        String nDocumento="n-hgsdfhg-6";
         String fechaVenta="11/15/16 12:36AM";
         //// ---------------- insertar--------------------//////////
         
-        int r= vm. guardarVenta(idCliente, idInventario, idProducto, idUsuario, idSucursal, cantidad, monto, fechaVenta);
+        int r= vm. guardarVenta(idCliente, idInventario, nDocumento, idProducto, idUsuario, idSucursal, cantidad, monto, fechaVenta);
         System.out.println(r);
         
         //  /---- actualizar---------------////
@@ -59,7 +60,7 @@ public class VentasMantenimiento {
 */
     }
 
-    public int guardarVenta(Integer idCliente, Integer idInventario, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
+    public int guardarVenta(Integer idCliente, Integer idInventario,String nDocumento, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
             Double monto, String fechaVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -69,6 +70,7 @@ public class VentasMantenimiento {
         Ventas ven = new Ventas();
 
         ven.setIdVenta(0);
+        ven.setNDocumento(nDocumento);
         
         Clientes cli = new Clientes();
         cli.setIdCliente(idCliente);
@@ -93,6 +95,7 @@ public class VentasMantenimiento {
         ven.setCantidad(cantidad);
         ven.setMonto(monto);
         ven.setFechaVenta(fechaVenta);
+        ven.setEstadoVenta("Disponible");
 
         try {
             session.beginTransaction();

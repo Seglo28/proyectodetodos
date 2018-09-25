@@ -200,7 +200,23 @@
                         <div class="card-body">
 
                             <div class="row">
-                                <div class="form-group col-md-6">
+                                
+                                <div class="form-group col-md-4">
+                                    <label form="cantidad">Cantidad de producto</label><br>
+                                    <html:text property="cantidad" styleClass="form-control"></html:text>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label form="monto">Monto de la venta</label><br>
+                                    <html:text property="monto" styleClass="form-control"></html:text>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label form="nDocumento">Numero de serie de la factura emitida:</label><br>
+                                    <html:text property="nDocumento" styleClass="form-control"></html:text>
+                                </div>
+                            </div>
+                                
+                            <div class="row">
+                                <div class="form-group col-md-3">
                                     <label form="id_producto">Producto</label><br>
                                     <html:select property="idProducto" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -211,19 +227,8 @@
                                         </logic:notEmpty>
                                     </html:select>
                                 </div>
-                                <div class="form-group col-md-3">
-                                    <label form="Cantidad">Cantidad de producto</label><br>
-                                    <html:text property="cantidad" styleClass="form-control"></html:text>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label form="Monto">Monto de la venta</label><br>
-                                    <html:text property="monto" styleClass="form-control"></html:text>
-                                </div>
-                            </div>
                                 
-                            <div class="row">
-                                
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                     <label form="id_cliente">Cliente</label><br>
                                     <html:select property="idCliente" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -235,7 +240,7 @@
                                     </html:select>
                                 </div>
                                 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-3">
                                         <label form="id_usuario"> Usuario</label><br>
                                     <html:select property="idUsuario" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -247,7 +252,7 @@
                                     </html:select>
                                 </div>
                                 
-                           <div class="form-group col-md-4">
+                           <div class="form-group col-md-3">
                                         <label form="id_sucursal">Sucursal</label><br>
                                     <html:select property="idSucursal" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>

@@ -196,7 +196,12 @@
                             <html:form action="/sucursales">
                                 <!-- CHANGE 1-->
                                 <div class="card">
-                                    <div class="card-body bg-light">
+                        <div class="card bg-info text-white">
+                            <div class="card-header">Registro de Sucursales:</div>
+                        </div>
+                        <div class="card-body">
+                                
+                                    
                                         <div class="row">
                                             <div class="form-group col-md-6">
                                                 Sucursal:     
@@ -221,9 +226,10 @@
                                         ${error}
                                         ${mensaje}
                                     </html:form>
-                                </div>
-                            </div>
+                        
                         </div>
+                                </div>
+                                </div>
                         <div class="col-md-3">
 
                         </div>

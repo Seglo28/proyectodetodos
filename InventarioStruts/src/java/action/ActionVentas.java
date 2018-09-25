@@ -54,6 +54,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
         Integer idSucursal = af.getIdSucursal();
         Integer cantidad = af.getCantidad();
         Double monto = af.getMonto();
+        String nDocumento=af.getnDocumento();
         String fechaVenta = af.getFechaVenta();
         String action = af.getAction();
         String mensaje = af.getMensaje();
@@ -67,12 +68,16 @@ public class ActionVentas extends org.apache.struts.action.Action {
             String adver = "";
             String adver5 = "";
             String adver6 = "";
+            String adver7 = "";
 
             if (cantidad == null || cantidad.equals("") || cantidad == 0) {
                 adver5 = "*Ingrese la cantidad de producto deseado.";
             }
             if (monto == null || monto.equals("") || monto == 0) {
                 adver6 = "Ingrese el monto total.";
+            }
+              if (nDocumento == null || nDocumento.equals("")) {
+                adver7 = "Ingrese el  numero de serie del documento total.";
             }
 
             if (!adver.equals("")) {
@@ -96,7 +101,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
                 af.setListaSuc(listaSuc);
                 request.setAttribute("listasSuc", listaSuc);
 
-                mensaje = ("<div class='alert alert-danger'>Debe completar todos los requerimientos. <br>" + adver5 + adver6 + "</div>");
+                mensaje = ("<div class='alert alert-danger'>Debe completar todos los requerimientos. <br>" + adver5 + adver6 +adver7+ "</div>");
                 request.setAttribute("error", mensaje);
                 return map.findForward(irFormVenta);
             }
@@ -108,6 +113,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
             System.out.println("idProducto:" + idProducto);
             System.out.println("idUsuario:" + idUsuario);
             System.out.println("idSucursal:" + idSucursal);
+            System.out.println("nDocumento:"+nDocumento);
             System.out.println("cantidad:" + cantidad);
             System.out.println("monto: $" + monto);
 
@@ -119,7 +125,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
 
             Double mont = monto * cantidad;
 
-            int vent = ven.guardarVenta(idCliente, idInv, idProducto, idUsuario, idSucursal, cantidad, mont, fechaHoy);
+            int vent = ven.guardarVenta(idCliente, idInv, nDocumento, idProducto, idUsuario, idSucursal, cantidad, mont, fechaHoy);
             List<Ventas> listaVen = ven.consultarTodosVentas();
             af.setListaVen(listaVen);
             if (vent == 1) {

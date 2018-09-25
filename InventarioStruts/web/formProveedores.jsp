@@ -153,10 +153,10 @@
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                        <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedores</html:link>
                     </html:form></a>
                     <a class="dropdown-item" href=""><html:form action="/proveedores">
-                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                        <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
                     </html:form></a>
                 </div>
             </li>
@@ -203,11 +203,11 @@
                                                 Proveedor:
                                                 <html:text property="proveedor" styleClass="form-control"></html:text>
                                                     Rubro:
-                                                <html:text property="rubro" size="50" maxlength="25" value=""></html:text>
+                                                <html:text property="rubro" styleClass="form-control"></html:text>
                                                     Contacto:
-                                                <html:text property="contacto" size="50" maxlength="25" value=""></html:text></td>
+                                                <html:text property="contacto" styleClass="form-control"></html:text></td>
                                                     Teléfono:
-                                                <html:text property="telefono" size="50" maxlength="25" value=""></html:text>
+                                                <html:text property="telefono" styleClass="form-control" size="50" maxlength="25" value=""></html:text>
                                                     <br>
                                                     <br>
                                                 <html:submit styleClass="btn btn-primary" property="action" value="Agregar"/>
