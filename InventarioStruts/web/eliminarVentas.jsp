@@ -7,17 +7,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>Fromulario de Actualización de Ventas</title>
+        <title>Fromulario de compras</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://codeseven.github.com/toastr/toastr.js"></script>
-	<link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
-	<link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
         <style>
             .bg {
                 /* Imagen de Fondo */
@@ -193,15 +189,15 @@
             <div class="row">
                 <div class="col-12">
                 <html:form action="/ventas">
-                    <div hidden="hidden"><html:text property="idVenta"></html:text></div> 
                     <div class="card">
                         <div class="card bg-info text-white">
-                            <div class="card-header">Actualización de Ventas</div>
+                            <div class="card-header">Registro de Ventas</div>
                         </div>
                         <div class="card-body">
 
                             <div class="row">
                                 <div class="form-group col-md-6">
+                                    <div hidden="hidden"><html:text property="idVenta"></html:text></div>
                                     <label form="id_producto">Producto</label><br>
                                     <html:select property="idProducto" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -224,7 +220,7 @@
                                 
                             <div class="row">
                                 
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
                                     <label form="id_cliente">Cliente</label><br>
                                     <html:select property="idCliente" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -235,8 +231,10 @@
                                         </logic:notEmpty>
                                     </html:select>
                                 </div>
-                                
-                                <div class="form-group col-md-4">
+                            </div>
+                          
+                                <div class="row">
+                                    <div class="form-group col-md-6">
                                         <label form="id_usuario"> Usuario</label><br>
                                     <html:select property="idUsuario" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -247,8 +245,7 @@
                                         </logic:notEmpty>
                                     </html:select>
                                 </div>
-                                
-                           <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label form="id_sucursal">Sucursal</label><br>
                                     <html:select property="idSucursal" styleClass="form-control">
                                         <html:option value="--Seleccionar--"></html:option>
@@ -258,80 +255,27 @@
                                             </logic:iterate>
                                         </logic:notEmpty>
                                     </html:select>
-                                </div>      
-                            </div>
-                          
-                                <div class="row">
-                                    
-                                    
+                                </div>
                                     </div>
                                  <div class="row">
-                                
-                                    <div hidden="hidden"><html:text property="fechaVenta"></html:text></div>
+                                    <div class="form-group col-md-6">
+                                        <label form="fechaVenta">Fecha de la Venta</label><br>
+                                    <html:text property="fechaVenta" styleClass="form-control"></html:text>
+                                </div>
+                                    
                                     </div>
-                                      </table><br>
-                           <html:submit styleClass="btn btn-primary" property="action" value="Modificar" />
-                           <html:submit styleClass="btn btn-primary" property="action" value="Volver"/>
+                                <html:submit styleClass="btn btn-primary" property="action" value="Borrar" />
+                        <html:submit styleClass="btn btn-primary" property="action" value="Volver"/>
                         <br>
                         <bean:write name="ActionFormVentas" property="error" filter="false"/>
-                        <a href="verPROV.jsp"></a>
+                        
                         </div>
-                    </div>
-                        <br>
-                        <br>
-                        <br>
-                         
+                    </div>   
                 </html:form>
                 </div>
-                 <div id="error" hidden="hidden">${error}</div>
-                <div id="mensaje" hidden="hidden">${mensaje}</div>
-                <div id="info" hidden="hidden">${info}</div>
             </div>
-        
+
         </div>
-            <script>
-            toastr.options = {
-                "debug": false,
-  		"positionClass": "toast-bottom-right",
-  		"onclick": null,
-            	"fadeIn": 300,
-  		"fadeOut": 100,
-                "timeOut": 5000,
-  		"extendedTimeOut": 1000
-            }
-
-            var showToastrs = false;
-
-            function error() {
-                if(!showToastrs){
-                    toastr.error($("#error").text(), 'Error!');
-                }
-            }
-            
-            function mensaje() {
-                if(!showToastrs){
-                    toastr.success($("#mensaje").text(), 'Éxito!');
-                }
-            }
-            function info() {
-                if(!showToastrs){
-                    toastr.info($("#info").text(), 'Info!');
-                }
-            }
-            
-            window.onload = function(){
-                if($("#error").text() != ""){
-                    error();
-                }
-                if($("#mensaje").text() != ""){
-                    mensaje();
-                }
-                if($("#info").text() != ""){
-                    info();
-                }
-            }
-
-        </script>
     </body>
 </html>
 

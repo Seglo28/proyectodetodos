@@ -17,6 +17,7 @@ import mantenimientos.MantenimientoUsuario;
 import mantenimientos.ProductosMantenimiento;
 import mantenimientos.SucursalesMantenimiento;
 import mantenimientos.VentasMantenimiento;
+import mantenimientos.MantenimientoUsuario;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -54,7 +55,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
         Integer idSucursal = af.getIdSucursal();
         Integer cantidad = af.getCantidad();
         Double monto = af.getMonto();
-        String nDocumento=af.getnDocumento();
+        String nDocumento = af.getnDocumento();
         String fechaVenta = af.getFechaVenta();
         String action = af.getAction();
         String mensaje = af.getMensaje();
@@ -76,7 +77,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
             if (monto == null || monto.equals("") || monto == 0) {
                 adver6 = "Ingrese el monto total.";
             }
-              if (nDocumento == null || nDocumento.equals("")) {
+            if (nDocumento == null || nDocumento.equals("")) {
                 adver7 = "Ingrese el  numero de serie del documento total.";
             }
 
@@ -101,7 +102,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
                 af.setListaSuc(listaSuc);
                 request.setAttribute("listasSuc", listaSuc);
 
-                mensaje = ("<div class='alert alert-danger'>Debe completar todos los requerimientos. <br>" + adver5 + adver6 +adver7+ "</div>");
+                mensaje = ("<div class='alert alert-danger'>Debe completar todos los requerimientos. <br>" + adver5 + adver6 + adver7 + "</div>");
                 request.setAttribute("error", mensaje);
                 return map.findForward(irFormVenta);
             }
@@ -113,14 +114,14 @@ public class ActionVentas extends org.apache.struts.action.Action {
             System.out.println("idProducto:" + idProducto);
             System.out.println("idUsuario:" + idUsuario);
             System.out.println("idSucursal:" + idSucursal);
-            System.out.println("nDocumento:"+nDocumento);
+            System.out.println("nDocumento:" + nDocumento);
             System.out.println("cantidad:" + cantidad);
             System.out.println("monto: $" + monto);
 
             InventarioMantenimiento minv = new InventarioMantenimiento();
             Inventario inv = minv.consultarInventarioProducto(idProducto, idSucursal);
             System.out.println("inv: " + inv);
-            
+
             Integer idInv = inv.getIdInventario();
 
             Double mont = monto * cantidad;
@@ -140,7 +141,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
             if (inv != null) {
                 System.out.println("Hola Mundo");
                 System.out.println("Producto: " + inv.getProductos().getIdProducto());
-                
+
                 Integer idProduc = inv.getProductos().getIdProducto();
                 Integer cant = inv.getCant() - cantidad;
                 Integer stock = inv.getStock();
@@ -265,6 +266,67 @@ public class ActionVentas extends org.apache.struts.action.Action {
 
         }
 
-        return null;
+        if (action.equals("Borrar")) {
+            VentasMantenimiento venMan = new VentasMantenimiento();
+            venMan.eliminarVentas(idVenta);
+            af.setError(borrarVEN);
+            List<Ventas> listaVen = venMan.consultarTodosVentas();
+            af.setListaVen(listaVen);
+            return map.findForward(borrarVEN);
+        }
+
+        if (action.equals("Eliminar")) {
+            VentasMantenimiento ven = new VentasMantenimiento();
+            Ventas ventas = ven.consultarVentas(idVenta);
+            if (ventas == null) {
+                af.setError("<div class='alert alert-danger'>No se puede realizar la consulta</div>");
+                return map.findForward(errorVEN);
+            } else {
+                af.setIdVenta(ventas.getIdVenta());
+                af.setIdCliente(ventas.getClientes().getIdCliente());
+                af.setIdProducto(ventas.getProductos().getIdProducto());
+                af.setIdUsuario(ventas.getUsuario().getIdUsuario());
+                af.setIdSucursal(ventas.getSucursales().getIdSucursal());
+                af.setCantidad(ventas.getCantidad());
+                af.setMonto(ventas.getMonto());
+                af.setFechaVenta(ventas.getFechaVenta());
+
+                ClienteMantenimiento cliMan = new ClienteMantenimiento();
+                List<Clientes> listaCli = cliMan.consultarTodosClientes();
+                af.setListaCli(listaCli);
+                request.setAttribute("listaCli", listaCli);
+
+                ProductosMantenimiento proMan = new ProductosMantenimiento();
+                List<Productos> listaPro = proMan.consultarTodosProductos();
+                af.setListaPro(listaPro);
+                request.setAttribute("listaPro", listaPro);
+
+                MantenimientoUsuario usuMan = new MantenimientoUsuario();
+                List<Usuario> listaUsu = usuMan.consultarTodosUsuarios();
+                af.setListaUsu(listaUsu);
+                request.setAttribute("listaUsu", listaUsu);
+
+                SucursalesMantenimiento sucMan = new SucursalesMantenimiento();
+                List<Sucursales> listaSuc = sucMan.consultarTodosSucursales();
+                af.setListaSuc(listaSuc);
+                request.setAttribute("listaSuc", listaSuc);
+
+                return map.findForward(eliminarVEN);
+            }
+        }
+
+        if (action.equals("Volver")) {
+            VentasMantenimiento ven = new VentasMantenimiento();
+            List<Ventas> listaVEN = ven.consultarTodosVentas();
+            System.out.println("ESTA ES SU LISTA: " + listaVEN);
+            if (listaVEN == null) {
+                af.setError("<div class='alert alert-danger'>No hay Datos Guardados en la base de datos sobre ventas.</div>");
+                return map.findForward(consultarVEN);
+            } else {
+                af.setListaVen(listaVEN);
+                return map.findForward(consultarVEN);
+            }
+        }
+            return null;
+        }
     }
-}
