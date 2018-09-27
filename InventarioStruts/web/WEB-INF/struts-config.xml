@@ -73,7 +73,7 @@
         
         <!-- 5. acciones de ventas y redireccion-->
         
-         <forward name="agregarVEN" path="/formVentas.jsp"/>
+         <forward name="agregarVEN" path="/verVEN.jsp"/>
          <forward name="consultarVEN" path="/verVEN.jsp"/>
          <forward name="consultarIdVEN" path="/modVEN.jsp"/>
          <forward name="modificarVEN" path="/modVEN.jsp"/>

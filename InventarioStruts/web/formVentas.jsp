@@ -211,7 +211,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label form="nDocumento">Numero de serie de la factura emitida:</label><br>
-                                    <html:text property="nDocumento" styleClass="form-control"></html:text>
+                                    <html:text property="NDocumento" styleClass="form-control"></html:text>
                                 </div>
                             </div>
                                 
@@ -288,6 +288,7 @@
                  <div id="error" hidden="hidden">${error}</div>
                 <div id="mensaje" hidden="hidden">${mensaje}</div>
                 <div id="info" hidden="hidden">${info}</div>
+                <div id="warning" hidden="hidden">${warning}</div>
             </div>
         
         </div>
@@ -320,6 +321,11 @@
                     toastr.info($("#info").text(), 'Info!');
                 }
             }
+            function warning() {
+                if(!showToastrs){
+                    toastr.warning($("#warning").text(), 'Advertencia!');
+                }
+            }
             
             window.onload = function(){
                 if($("#error").text() != ""){
@@ -330,6 +336,9 @@
                 }
                 if($("#info").text() != ""){
                     info();
+                }
+                if($("#warning").text() != ""){
+                    warning();
                 }
             }
 

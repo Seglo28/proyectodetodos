@@ -115,6 +115,31 @@ public class VentasMantenimiento {
         return flag;
 
     }
+    public Ventas valNDoc(String NDocumento){
+        Ventas com = new Ventas();
+        SessionFactory fac = HibernateUtil.getSessionFactory();
+        Session sess = fac.openSession();
+        
+        try {
+            
+            Query q = sess.createQuery("FROM Ventas v where v.NDocumento=:NDocumento").setParameter("NDocumento", NDocumento);
+            System.out.println("TAMAÑO: "+q.list().size());
+        
+            if(q.list().isEmpty()){
+                System.out.println("Sirve");
+                return com = null;
+            } else {
+                System.out.println("No funciona para factura");
+                return com;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error valNDoc "+e);
+            return com = null;
+        } finally {
+            sess.close();
+        }
+    }
 
     public int ActualizarVenta(Integer idVenta, Integer idCliente, Integer idInventario, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
             Double monto, String fechaVenta) {
