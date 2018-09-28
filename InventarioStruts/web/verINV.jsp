@@ -218,10 +218,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-4">
+                <div>
                     <div id="error" hidden="hidden">${error}</div>
                     <div id="mensaje" hidden="hidden">${mensaje}</div>
                     <div id="info" hidden="hidden">${info}</div>
+                    <div id="warning" hidden="hidden">${warning}</div> 
                 </div>
             </div>
         </div>
@@ -267,6 +268,14 @@
                 }
             }
 
+            $("#table").on("click", ".btnArchivar", function () {
+                var dataID = $(this).data("id");
+                $("#modalDeleteFooter").empty();
+                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='ventas.do?action=Archivar&id=" + dataID + "'>Archivar</a>");
+                $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
+
+                $("#archivar").modal("show");
+            });
         </script>
     </body>
 </html>

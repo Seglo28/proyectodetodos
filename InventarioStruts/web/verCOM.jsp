@@ -25,7 +25,7 @@
         <link href="css/Style.css" rel="stylesheet">
     </head>
     <body class="bg ">
-       <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
             <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
                 <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
@@ -181,49 +181,53 @@
                 </ul>
             </nav>
 
-        <div class="container">
+            <div class="container">
 
-            <br>
-            <div class="row scroll">
-                <div class="col-12">
-                    <table id="table" class="table table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>ID</th>
-                                <th>N° de Doc.</th>
-                                <th>Producto</th>
-                                <th>Proveedor</th>
-                                <th>Cant.</th>
-                                <th>Monto</th>
-                                <th>Fecha de la Compra</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <logic:notEmpty name="ActionFormCompras" property="listaCom">
-                            <logic:iterate id="compras" name="ActionFormCompras" property="listaCom">
+                <br>
+                <div class="row scroll">
+                    <div class="col-12">
+                        <table id="table" class="table table-hover">
+                            <thead class="thead-dark">
                                 <tr>
-                                    <html:form action="/compras">
-                                    <td><bean:write name="compras" property="idCompra"/>
-                                        <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div></td>
-                                    <td><bean:write name="compras" property="NDocumento"/></td>
-                                    <td><bean:write name="compras" property="productos.producto"/></td>
-                                    <td><bean:write name="compras" property="proveedores.proveedor"/></td>
-                                    <td><bean:write name="compras" property="cantidad"/></td>
-                                    <td>$ <bean:write name="compras" property="monto"/></td>
-                                    <td><bean:write name="compras" property="fechaCompra"/></td>
-                                    <td><html:submit styleClass="btn btn-outline-success" property="action" value="Actualizar"/>  
-                                    </html:form>
-                                        <button class="btn btn-outline-secondary btnArchivar" data-id="<bean:write name="compras" property="idCompra"/>">Archivar</button></td>
+                                    <th>ID</th>
+                                    <th>N° de Doc.</th>
+                                    <th>Producto</th>
+                                    <th>Proveedor</th>
+                                    <th>Cant.</th>
+                                    <th>Monto</th>
+                                    <th>Fecha de la Compra</th>
+                                    <th></th>
                                 </tr>
-                            </logic:iterate>
-                        </logic:notEmpty>
+                            </thead>
+                            <tbody>
+                            <logic:notEmpty name="ActionFormCompras" property="listaCom">
+                                <logic:iterate id="compras" name="ActionFormCompras" property="listaCom">
+                                    <tr>
+                                        <html:form action="/compras">
+                                            <td><bean:write name="compras" property="idCompra"/>
+                                                <div hidden="hidden"><html:text  name="compras" property="idCompra"></html:text></div></td>
+                                            <td><bean:write name="compras" property="NDocumento"/></td>
+                                            <td><bean:write name="compras" property="productos.producto"/></td>
+                                            <td><bean:write name="compras" property="proveedores.proveedor"/></td>
+                                            <td><bean:write name="compras" property="cantidad"/></td>
+                                            <td>$ <bean:write name="compras" property="monto"/></td>
+                                            <td><bean:write name="compras" property="fechaCompra"/></td>
+                                            <td><html:submit styleClass="btn btn-outline-success" property="action" value="Actualizar"/>  
+                                            </html:form>
+                                            <button class="btn btn-outline-secondary btnArchivar" data-id="<bean:write name="compras" property="idCompra"/>">Archivar</button></td>
+                                    </tr>
+                                </logic:iterate>
+                            </logic:notEmpty>
                         </tbody>
                     </table>
                 </div>
-                <div id="error" hidden="hidden">${error}</div>
-                <div id="mensaje" hidden="hidden">${mensaje}</div>
-                <div id="info" hidden="hidden">${info}</div>
+                <div>
+                    <div id="error" hidden="hidden">${error}</div>
+                    <div id="mensaje" hidden="hidden">${mensaje}</div>
+                    <div id="info" hidden="hidden">${info}</div>
+                    <div id="warning" hidden="hidden">${warning}</div> 
+                </div>
+
             </div>
         </div>
 
@@ -240,12 +244,12 @@
                         <p>¿Está seguro de archivar este registro?</p>                            
                     </div>
                     <div id="modalDeleteFooter" class="modal-footer">                            
-                    
+
                     </div>
                 </div>
             </div>
         </div>
-            
+
         <script>
             toastr.options = {
                 "debug": false,
@@ -287,13 +291,13 @@
                     info();
                 }
             }
-            
+
             $("#table").on("click", ".btnArchivar", function () {
                 var dataID = $(this).data("id");
                 $("#modalDeleteFooter").empty();
-                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='compras.do?action=Archivar&id="+dataID+"'>Archivar</a>");
+                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='compras.do?action=Archivar&id=" + dataID + "'>Archivar</a>");
                 $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
-                
+
                 $("#archivar").modal("show");
             });
         </script>

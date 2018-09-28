@@ -25,7 +25,7 @@
         <link href="css/Style.css" rel="stylesheet">
     </head>
     <body class="bg ">
-       <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
             <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
                 <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
@@ -177,8 +177,67 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
-                    </li>
-                </ul>
-            </nav>
+                </li>
+            </ul>
+        </nav>
+                <div>
+                    <div id="error" hidden="hidden">${error}</div>
+                    <div id="mensaje" hidden="hidden">${mensaje}</div>
+                    <div id="info" hidden="hidden">${info}</div>
+                    <div id="warning" hidden="hidden">${warning}</div> 
+                </div>
 </html>
 
+
+
+<script>
+    toastr.options = {
+        "debug": false,
+        "positionClass": "toast-bottom-right",
+        "onclick": null,
+        "fadeIn": 300,
+        "fadeOut": 100,
+        "timeOut": 5000,
+        "extendedTimeOut": 1000
+    }
+
+    var showToastrs = false;
+
+    function error() {
+        if (!showToastrs) {
+            toastr.error($("#error").text(), 'Error!');
+        }
+    }
+
+    function mensaje() {
+        if (!showToastrs) {
+            toastr.success($("#mensaje").text(), 'Éxito!');
+        }
+    }
+    function info() {
+        if (!showToastrs) {
+            toastr.info($("#info").text(), 'Info!');
+        }
+    }
+
+    window.onload = function () {
+        if ($("#error").text() != "") {
+            error();
+        }
+        if ($("#mensaje").text() != "") {
+            mensaje();
+        }
+        if ($("#info").text() != "") {
+            info();
+        }
+    }
+
+    $("#table").on("click", ".btnArchivar", function () {
+        var dataID = $(this).data("id");
+        $("#modalDeleteFooter").empty();
+        $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='ventas.do?action=Archivar&id=" + dataID + "'>Archivar</a>");
+        $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
+
+        $("#archivar").modal("show");
+    });
+</script>

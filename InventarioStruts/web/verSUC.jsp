@@ -218,11 +218,64 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-4">
-                    ${error}
-                    ${mensaje}
+                <div>
+                    <div id="error" hidden="hidden">${error}</div>
+                    <div id="mensaje" hidden="hidden">${mensaje}</div>
+                    <div id="info" hidden="hidden">${info}</div>
+                    <div id="warning" hidden="hidden">${warning}</div> 
                 </div>
             </div>
         </div>
+        <script>
+            toastr.options = {
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 100,
+                "timeOut": 5000,
+                "extendedTimeOut": 1000
+            }
+
+            var showToastrs = false;
+
+            function error() {
+                if (!showToastrs) {
+                    toastr.error($("#error").text(), 'Error!');
+                }
+            }
+
+            function mensaje() {
+                if (!showToastrs) {
+                    toastr.success($("#mensaje").text(), 'Éxito!');
+                }
+            }
+            function info() {
+                if (!showToastrs) {
+                    toastr.info($("#info").text(), 'Info!');
+                }
+            }
+
+            window.onload = function () {
+                if ($("#error").text() != "") {
+                    error();
+                }
+                if ($("#mensaje").text() != "") {
+                    mensaje();
+                }
+                if ($("#info").text() != "") {
+                    info();
+                }
+            }
+
+            $("#table").on("click", ".btnArchivar", function () {
+                var dataID = $(this).data("id");
+                $("#modalDeleteFooter").empty();
+                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='ventas.do?action=Archivar&id=" + dataID + "'>Archivar</a>");
+                $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
+
+                $("#archivar").modal("show");
+            });
+        </script>        
     </body>
 </html>

@@ -222,9 +222,12 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="error" hidden="hidden">${error}</div>
-                <div id="mensaje" hidden="hidden">${mensaje}</div>
-                <div id="info" hidden="hidden">${info}</div>
+               <div>
+                    <div id="error" hidden="hidden">${error}</div>
+                    <div id="mensaje" hidden="hidden">${mensaje}</div>
+                    <div id="info" hidden="hidden">${info}</div>
+                    <div id="warning" hidden="hidden">${warning}</div> 
+                </div>
             </div>
         </div>
 
