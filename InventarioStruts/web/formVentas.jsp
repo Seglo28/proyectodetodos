@@ -6,192 +6,177 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <title>Fromulario de compras</title>
+        <title>Control Inventario - Inicio</title>
+        <link rel="icon" href="img/logo.png">
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://codeseven.github.com/toastr/toastr.js"></script>
-	<link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
-	<link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
-        <style>
-            .bg {
-                /* Imagen de Fondo */
-                background-image: url("img/login.jpg");
-
-                /* Tamaño del Fondo */
-                height: 100%;
-
-                /* Configuraciones */
-                background-position: initial;
-                background-repeat: initial;
-                background-size: cover;
-            }
-
-            .ml-auto .dropdown-menu {
-                left: auto !important;
-                right: 0px;
-            }
-        </style>
+        <script src="http://codeseven.github.com/toastr/toastr.js"></script>
+        <link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
+        <link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
+        <link href="css/Style.css" rel="stylesheet">
     </head>
-    <body class="bg">
-
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <body class="bg ">
+       <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
             <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
                 <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
             </a>
+
             <ul class="nav navbar-nav">
+                <li class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Usuarios
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:link page="/formUser.jsp" styleClass="btn btn-outline-info">Ingresar Usuario</html:link></div>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/user">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
+                            </html:form></div>
+                    </div>
+                </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Usuarios
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/user">
-                            <html:link page="/formUser.jsp" styleClass="btn btn-outline-info">Ingresar Usuario</html:link>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/user">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
-                        </html:form></a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Productos
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/productos">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/productos">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
-                         </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/productos">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Producto"></html:submit>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
+
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Compras
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/compras">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Compra"></html:submit>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivadas"></html:submit> 
-                        </html:form></div>
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Compra"></html:submit>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Archivadas"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
-                
-                  <li class="nav-item dropdown">
+
+                <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                       Ventas
+                        Ventas
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/ventas">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Ventas"></html:submit>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Ventas"></html:submit> 
-                        </html:form></div>
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Ventas"></html:submit>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Ventas"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Fabricantes
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/fabricantes">
-                            <html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/fabricantes">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista deFabricantes</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/fabricantes">
+                                <html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Facturas
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/facturas">
-                            <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/facturas">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de facturas</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
+                                <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Clientes
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/clientes">
-                            <html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">Ingresar Cliente</html:link>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/clientes">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Clientes</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/clientes">
+                                <html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">Ingresar Cliente</html:link>
+                                </div>
+                                <a class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></a>
                     </div>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Sucursales
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/sucursales">
-                            <html:link page="/formSucursales.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/sucursales">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/sucursales">
+                                <html:link page="/formSucursales.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Proveedores
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/proveedores">
-                            <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/proveedores">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/proveedores">
+                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Inventarios
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/inventario">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Inventario">Agregar</html:submit>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/inventario">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/inventario">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
+
 
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
-                </li>
-            </ul>
-        </nav>
+                    </li>
+                </ul>
+            </nav>
 
         <div class="container">
 

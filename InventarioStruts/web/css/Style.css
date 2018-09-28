@@ -1,0 +1,30 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 09-25-2018, 03:33:48 PM
+    Author     : diego.rodriguezUSAM
+*/
+.bg {
+    /* Imagen de Fondo */
+    background-image: url("../img/wallpaper2.jpg");
+    
+    /* Tamaño del Fondo */
+    height: 100%;
+
+    /* Configuraciones */
+    background-position: initial;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+.ml-auto .dropdown-menu {
+    left: auto !important;
+    right: 0px;
+}
+
+.dropdown-menu {
+    background-color: #343a40
+}
