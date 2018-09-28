@@ -74,30 +74,36 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Compras
-                    </a>
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/compras">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Compra">Agregar</html:submit>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/compras">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Compras</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/compras">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Compra"></html:submit>
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivadas"></html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
                 
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Ventas
-                    </a>
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                       Ventas
+                    </div>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href=""><html:form action="/ventas">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Ventas">Agregar</html:submit>
-                        </html:form></a>
-                        <a class="dropdown-item" href=""><html:form action="/ventas">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Ventas</html:submit> 
-                        </html:form></a>
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/ventas">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Ventas"></html:submit>
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Ventas"></html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

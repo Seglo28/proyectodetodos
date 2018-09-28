@@ -141,8 +141,8 @@ public class VentasMantenimiento {
         }
     }
 
-    public int ActualizarVenta(Integer idVenta, Integer idCliente, Integer idInventario, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
-            Double monto, String fechaVenta) {
+    public int ActualizarVenta(Integer idVenta,Integer idCliente, Integer idInventario,String nDocumento, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
+            Double monto, String fechaVenta,String estadoVenta) {
 
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
@@ -150,6 +150,7 @@ public class VentasMantenimiento {
         Ventas ven = new Ventas();
 
         ven.setIdVenta(idVenta);
+        
         Clientes cli = new Clientes();
         cli.setIdCliente(idCliente);
         ven.setClientes(cli);
@@ -169,6 +170,7 @@ public class VentasMantenimiento {
         ven.setCantidad(cantidad);
         ven.setMonto(monto);
         ven.setFechaVenta(fechaVenta);
+        ven.setEstadoVenta(estadoVenta);
 
         try {
             session.beginTransaction();
@@ -197,11 +199,12 @@ public class VentasMantenimiento {
             session.beginTransaction();
             ven = (Ventas) session.get(Ventas.class, idVenta);
             session.getTransaction().commit();
+            System.out.println("Exito al consultar por Id la venta");
             return ven;
         } catch (Exception ex) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                System.out.println("Error al Consultar Ventas " + ex);
+                System.out.println("Error al Consultar  por las Ventas " + ex);
             }
         } finally {
             session.close();
@@ -253,4 +256,173 @@ public class VentasMantenimiento {
         }
         return listaVentas;
     }
+    
+    
+     public List consultarVentasDisponibles() {
+        List<Ventas> listaVentas = null;
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+
+        session.beginTransaction();
+        try {
+            
+            Query q = session.createQuery("FROM Ventas v where v.estadoVenta='Disponible'");
+            System.out.println("TAMAÑO: "+q.list().size());
+            listaVentas = q.list();
+            
+            System.out.println("Éxito Consulta Ventas Disponibles");
+        } catch (Exception e) {
+            System.out.println("Falló consultar Ventas Disponibles "+e);
+        } finally {
+
+        }
+        return listaVentas;
+
+    }
+
+    public List consultarVentasArchivadas() {
+        List<Ventas> listaVentas = null;
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+
+        session.beginTransaction();
+        try {
+            
+            Query q = session.createQuery("FROM Ventas v where v.estadoVenta='Archivado'");
+            System.out.println("TAMAÑO: "+q.list().size());
+            listaVentas = q.list();
+            
+            System.out.println("Éxito  Consulta Ventas Archivadas");
+        } catch (Exception e) {
+            System.out.println("Falló  Consulta Ventas Archivadas "+e);
+        } finally {
+
+        }
+        return listaVentas;
+
+    }
+    
+     public int archivarVenta(Integer idVenta,Integer idCliente, Integer idInventario,String nDocumento, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
+            Double monto, String fechaVenta) {
+
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        int flag = 0;
+        Ventas ven = new Ventas();
+
+        ven.setIdVenta(idVenta);
+        
+        Clientes cli = new Clientes();
+        cli.setIdCliente(idCliente);
+        ven.setClientes(cli);
+        
+        Inventario inv = new Inventario();
+        inv.setIdInventario(idInventario);
+        ven.setInventario(inv);
+        
+        ven.setNDocumento(nDocumento);
+
+        Productos prod = new Productos();
+        prod.setIdProducto(idProducto);
+        ven.setProductos(prod);
+
+        Usuario usu = new Usuario();
+        usu.setIdUsuario(idUsuario);
+        ven.setUsuario(usu);
+
+        Sucursales suc = new Sucursales();
+        suc.setIdSucursal(idSucursal);
+        ven.setSucursales(suc);
+
+        ven.setCantidad(cantidad);
+        ven.setMonto(monto);
+        ven.setFechaVenta(fechaVenta);
+        ven.setEstadoVenta("Archivado");
+
+        try {
+            session.beginTransaction();
+            session.update(ven);
+            session.getTransaction().commit();
+            flag = 1;
+            System.out.println("Exito al actualizar la venta");
+        } catch (Exception e) {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+                flag = 0;
+                System.out.println("Error al actualizar la venta " + e);
+            }
+        } finally {
+            session.close();
+        }
+        return flag;
+    }
+    
+    public int activarVenta(Integer idVenta,Integer idCliente, Integer idInventario,String nDocumento, Integer idProducto, Integer idUsuario, Integer idSucursal, Integer cantidad,
+            Double monto, String fechaVenta) {
+
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        int flag = 0;
+        Ventas ven = new Ventas();
+
+        ven.setIdVenta(idVenta);
+        
+        Clientes cli = new Clientes();
+        cli.setIdCliente(idCliente);
+        ven.setClientes(cli);
+        
+        Inventario inv = new Inventario();
+        inv.setIdInventario(idInventario);
+        ven.setInventario(inv);
+        
+        ven.setNDocumento(nDocumento);
+
+        Productos prod = new Productos();
+        prod.setIdProducto(idProducto);
+        ven.setProductos(prod);
+
+        Usuario usu = new Usuario();
+        usu.setIdUsuario(idUsuario);
+        ven.setUsuario(usu);
+
+        Sucursales suc = new Sucursales();
+        suc.setIdSucursal(idSucursal);
+        ven.setSucursales(suc);
+
+        ven.setCantidad(cantidad);
+        ven.setMonto(monto);
+        ven.setFechaVenta(fechaVenta);
+        ven.setEstadoVenta("Disponible");
+
+        try {
+            session.beginTransaction();
+            session.update(ven);
+            session.getTransaction().commit();
+            flag = 1;
+            System.out.println("Exito al actualizar la venta");
+        } catch (Exception e) {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+                flag = 0;
+                System.out.println("Error al actualizar la venta " + e);
+            }
+        } finally {
+            session.close();
+        }
+        return flag;
+    }
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

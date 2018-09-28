@@ -190,7 +190,7 @@
         <div class="container">
 
             <br>
-            <div class="row">
+            <div class="row scroll">
                 <div class="col-12">
                     <table id="table" class="table table-hover">
                         <thead class="thead-dark">
