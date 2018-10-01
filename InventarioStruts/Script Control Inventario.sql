@@ -9,6 +9,7 @@ id_producto int(12) not null,
 cantidad int(10),
 monto double,
 id_proveedor int(12) not null,
+id_sucursal int(12) not null,
 fecha_compra varchar(30),
 estado_compra varchar(25)
 );
@@ -93,8 +94,17 @@ direccion varchar(50),
 telefono varchar(15)
 );
 
+create table monedas(
+id_moneda int(12) not null auto_increment primary key,
+moneda varchar(50) not null,
+simbolo varchar(5) not null,
+equivalencia double,
+equivalente varchar(50)
+);
+
 ALTER TABLE compras ADD CONSTRAINT fk_compras_1 foreign key (id_producto) references productos (id_producto);
 ALTER TABLE compras ADD CONSTRAINT fk_compras_2 foreign key (id_proveedor) references proveedores (id_proveedor);
+ALTER TABLE compras ADD CONSTRAINT fk_compras_3 foreign key (id_sucursal) references sucursales (id_sucursal);
 ALTER TABLE ventas ADD CONSTRAINT fk_ventas_1 foreign key (id_producto) references productos (id_producto);
 ALTER TABLE ventas ADD CONSTRAINT fk_ventas_2 foreign key (id_cliente) references clientes (id_cliente);
 ALTER TABLE ventas ADD CONSTRAINT fk_ventas_3 foreign key (id_usuario) references usuario (id_usuario);
