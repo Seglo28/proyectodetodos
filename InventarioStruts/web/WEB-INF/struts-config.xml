@@ -100,6 +100,7 @@
 
          <forward name="agregarFACT" path="/formFacturas.jsp"/>
          <forward name="consultarFACT" path="/verFACT.jsp"/>
+         <forward name="todasFACT"  path="/todasFACT.jsp"/>
          <forward name="consultarIdFACT" path="/modFACT.jsp"/>
          <forward name="modificarFACT" path="/modFACT.jsp"/>
          <forward name="eliminarFACT" path="/eliminarFacturas.jsp"/>

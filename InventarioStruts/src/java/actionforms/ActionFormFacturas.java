@@ -14,11 +14,13 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
 
     private Integer idFactura;
     private Sucursales sucursales;
-    private Ventas ventas;
+    private Integer idSucursal;
     private String nDocumento;
     private String fechaVenta;
+    private String estadoFactura;  
     private String action;
     private String error;
+    private String mensaje;
     private List<Facturas> ListaFac;
     private List<Sucursales> ListaSuc;
     private List<Ventas> ListaVen;
@@ -39,14 +41,15 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
         this.sucursales = sucursales;
     }
 
-    public Ventas getVentas() {
-        return ventas;
+    public String getEstadoFactura() {
+        return estadoFactura;
     }
 
-    public void setVentas(Ventas ventas) {
-        this.ventas = ventas;
+    public void setEstadoFactura(String estadoFactura) {
+        this.estadoFactura = estadoFactura;
     }
 
+   
     public String getnDocumento() {
         return nDocumento;
     }
@@ -103,9 +106,30 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
         this.ListaVen = ListaVen;
     }
 
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public Integer getIdSucursal() {
+        return idSucursal;
+    }
+
+    public void setIdSucursal(Integer idSucursal) {
+        this.idSucursal = idSucursal;
+    }
+
     @Override
     public String toString() {
-        return "ActionFormFacturas{" + "idFactura=" + idFactura + ", sucursales=" + sucursales + ", ventas=" + ventas + ", nDocumento=" + nDocumento + ", fechaVenta=" + fechaVenta + ", action=" + action + ", error=" + error + ", ListaFac=" + ListaFac + ", ListaSuc=" + ListaSuc + ", ListaVen=" + ListaVen + '}';
+        return "ActionFormFacturas{" + "idFactura=" + idFactura + ", sucursales=" + sucursales + ", idSucursal=" + idSucursal + ", nDocumento=" + nDocumento + ", fechaVenta=" + fechaVenta + ", estadoFactura=" + estadoFactura + ", action=" + action + ", error=" + error + ", mensaje=" + mensaje + ", ListaFac=" + ListaFac + ", ListaSuc=" + ListaSuc + ", ListaVen=" + ListaVen + '}';
     }
+
+    
+  
+    
+    
     
 }

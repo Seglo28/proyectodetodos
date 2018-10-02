@@ -64,28 +64,22 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
         */
     }
 
-    public int guardarFacturas(
-            int idFactura,
-            int idVentas,
-            String fechaVenta,
-            int idSucursales
-    ) {
+    public int guardarFacturas(String nDocumento, String fechaVenta, Integer idSucursales) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
 
         Facturas fac = new Facturas();
-        fac.setIdFactura(idFactura);
-
-        Ventas ven = new Ventas();
-        ven.setIdVenta(idVentas);
-        fac.setVentas(ven);
+        fac.setIdFactura(0);
+        fac.setNDocumento(nDocumento);
 
         fac.setFechaVenta(fechaVenta);
 
         Sucursales sucur = new Sucursales();
         sucur.setIdSucursal(idSucursales);
         fac.setSucursales(sucur);
+        
+        fac.setEstadoFactura("Disponible");
 
         try {
             session.beginTransaction();
@@ -105,47 +99,42 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
         return flag;
 
     }
-
-    /*public int ActualizarFacturas(
-            int idFactura,
-            int idVentas,
-            String fechaVenta,
-            int idSucursales
-    ) {
+ public int ActualizarFacturas(Integer idFactura, String nDocumento, String fechaVenta, Integer idSucursal, String estadoFactura) {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
 
         Facturas fac = new Facturas();
         fac.setIdFactura(idFactura);
-
-        Ventas ven = new Ventas();
-        ven.setIdVenta(idVentas);
-        fac.setVentas(ven);
+        fac.setNDocumento(nDocumento);
 
         fac.setFechaVenta(fechaVenta);
 
         Sucursales sucur = new Sucursales();
-        sucur.setIdSucursal(idSucursales);
+        sucur.setIdSucursal(idSucursal);
         fac.setSucursales(sucur);
+        
+        fac.setEstadoFactura(estadoFactura);
+
         try {
             session.beginTransaction();
-            session.saveOrUpdate(fac);
+            session.update(fac);
             session.getTransaction().commit();
             flag = 1;
-            System.out.println("exito al actualizar los datos de la factura");
+            System.out.println(" exito al guaradar al factura");
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
                 flag = 1;
-                System.out.println(" la factura no se pudo actualizar");
+                System.out.println("Error al guaradar la factura");
             }
         } finally {
             session.close();
         }
         return flag;
 
-    }*/
+    }
+  
 
     public Facturas consultarFacturaId(int idFactura) {
         Facturas fac = new Facturas();
@@ -167,6 +156,35 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
             session.close();
         }
         return fac;
+
+    }
+    
+    public Facturas consultarInventarioVenta(String nDocumento, int idSucursal) {
+        
+        Facturas inv = new Facturas();
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        session.beginTransaction();
+
+        try {
+            
+            Query q = session.createQuery("FROM Facturas f where f.NDocumento=:NDocumento and f.sucursales.idSucursal=:idSucursal").setParameter("NDocumento", nDocumento).setParameter("idSucursal", idSucursal);
+            System.out.println("TAMAÑO: "+q.list().size());
+            if(q.list().isEmpty()){
+                System.out.println("TODO BIEN");
+                return inv = null;
+            } else {
+                System.out.println("SAD SO SAD");
+                inv = (Facturas) q.list().get(0);
+                return inv;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error consultarInventarioProducto "+e);
+            return inv;
+        } finally {
+            
+        }
 
     }
 
@@ -204,8 +222,9 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
 
-        session.beginTransaction();
+       
         try {
+             session.beginTransaction();
             Query q = session.createQuery("from Facturas");
             listaFacturas = (List<Facturas>) q.list();
             System.out.println("exito al consultar las facturas" +q);
@@ -217,6 +236,126 @@ int r=m.ActualizarFacturas(idFactura, idVentas, fechaVenta, idSucursales);
 
         }
         return listaFacturas;
+    }
+    
+     public List consultarFacturasDisponibles() {
+        List<Facturas> listaFacturas = null;
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+
+       
+        try {
+             session.beginTransaction();
+            Query q = session.createQuery("from Facturas f where f.estadoFactura='Disponible'");
+            listaFacturas = (List<Facturas>) q.list();
+            System.out.println("exito al consultar las facturas" +q);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al consultar las facturas. "+e.getMessage());
+        } finally {
+
+        }
+        return listaFacturas;
+    }
+    
+    
+    
+    
+    
+    
+     public List consultarFacturasArchivadas() {
+        List<Facturas> listaFacturas = null;
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+
+       
+        try {
+             session.beginTransaction();
+            Query q = session.createQuery("from Facturas f where f.estadoFactura='Archivado'");
+            listaFacturas = (List<Facturas>) q.list();
+            System.out.println("exito al consultar las facturas" +q);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error al consultar las facturas. "+e.getMessage());
+        } finally {
+
+        }
+        return listaFacturas;
+    }
+     
+    public int ActivarFacturas(Integer idFactura,String nDocumento, String fechaVenta, Integer idSucursal) {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        int flag = 0;
+
+        Facturas fac = new Facturas();
+        fac.setIdFactura(idFactura);
+        fac.setNDocumento(nDocumento);
+
+        fac.setFechaVenta(fechaVenta);
+
+        Sucursales sucur = new Sucursales();
+        sucur.setIdSucursal(idSucursal);
+        fac.setSucursales(sucur);
+        
+        fac.setFechaVenta(fechaVenta);
+        fac.setEstadoFactura("Disponible");
+
+        try {
+            session.beginTransaction();
+            session.update(fac);
+            session.getTransaction().commit();
+            flag = 1;
+            System.out.println(" exito al guaradar al factura");
+        } catch (Exception e) {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+                flag = 1;
+                System.out.println("Error al guaradar la factura");
+            }
+        } finally {
+            session.close();
+        }
+        return flag;
+
+    }
+     public int ArchivarFacturas(Integer idFactura,String nDocumento, String fechaVenta, Integer idSucursal) {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        int flag = 0;
+
+        Facturas fac = new Facturas();
+        fac.setIdFactura(idFactura);
+        fac.setNDocumento(nDocumento);
+
+        fac.setFechaVenta(fechaVenta);
+
+        Sucursales sucur = new Sucursales();
+        sucur.setIdSucursal(idSucursal);
+        fac.setSucursales(sucur);
+        
+        fac.setFechaVenta(fechaVenta);
+        fac.setEstadoFactura("Archivado");
+
+        try {
+            session.beginTransaction();
+            session.update(fac);
+            session.getTransaction().commit();
+            flag = 1;
+            System.out.println(" exito al guaradar al factura");
+        } catch (Exception e) {
+            if (session.getTransaction().isActive()) {
+                session.getTransaction().rollback();
+                flag = 1;
+                System.out.println("Error al guaradar la factura");
+            }
+        } finally {
+            session.close();
+        }
+        return flag;
+
     }
 
 }

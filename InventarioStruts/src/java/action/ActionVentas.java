@@ -12,6 +12,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mantenimientos.ClienteMantenimiento;
+import mantenimientos.FacturasMantenimiento;
 import mantenimientos.InventarioMantenimiento;
 import mantenimientos.MantenimientoUsuario;
 import mantenimientos.ProductosMantenimiento;
@@ -22,6 +23,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import persistencias.Clientes;
+import persistencias.Facturas;
 import persistencias.Inventario;
 import persistencias.Productos;
 import persistencias.Sucursales;
@@ -185,6 +187,42 @@ public class ActionVentas extends org.apache.struts.action.Action {
             Integer idInv = inv.getIdInventario();
 
             Double mont = monto * cantidad;
+            
+            FacturasMantenimiento facMan = new FacturasMantenimiento();         
+            Facturas fac = facMan.consultarInventarioVenta(nDocumento, idSucursal);
+
+            if(fac == null){
+                int fac1 = facMan.guardarFacturas(nDocumento, fechaHoy, idSucursal);
+                if(fac1 == 1){
+                    System.out.println("Se ha creado la factura de la venta");
+                } else {
+                    System.out.println("No se ha podido crear la factura de la venta");
+                }
+            } else {
+                ClienteMantenimiento cm = new ClienteMantenimiento();
+                List<Clientes> listaCli = cm.consultarTodosClientes();
+                af.setListaCli(listaCli);
+                request.setAttribute("listaCli", listaCli);
+
+                ProductosMantenimiento mprod = new ProductosMantenimiento();
+                List<Productos> listaProd = mprod.consultarTodosProductos();
+                af.setListaPro(listaProd);
+                request.setAttribute("listaProd", listaProd);
+
+                MantenimientoUsuario mu = new MantenimientoUsuario();
+                List<Usuario> listaUsu = mu.consultarTodosUsuarios();
+                af.setListaUsu(listaUsu);
+                request.setAttribute("listaUsu", listaUsu);
+
+                SucursalesMantenimiento scm = new SucursalesMantenimiento();
+                List<Sucursales> listaSuc = scm.consultarTodosSucursales();
+                af.setListaSuc(listaSuc);
+                request.setAttribute("listasSuc", listaSuc);
+
+                mensaje = ("Ya existe este n° de Factura en esta Sucursal");
+                request.setAttribute("error", mensaje);
+                return map.findForward(irFormVenta);
+            }
 
             int vent = ven.guardarVenta(idCliente, idInv, nDocumento, idProducto, idUsuario, idSucursal, cantidad, mont, fechaHoy);
             List<Ventas> listaVen = ven.consultarTodosVentas();

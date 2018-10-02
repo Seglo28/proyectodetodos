@@ -11,7 +11,7 @@ public class Facturas  implements java.io.Serializable {
 
      private Integer idFactura;
      private Sucursales sucursales;
-     private Ventas ventas;
+
      private String NDocumento;
      private String fechaVenta;
      private String estadoFactura;
@@ -20,14 +20,14 @@ public class Facturas  implements java.io.Serializable {
     }
 
 	
-    public Facturas(Sucursales sucursales, Ventas ventas, String NDocumento) {
+    public Facturas(Sucursales sucursales,  String NDocumento) {
         this.sucursales = sucursales;
-        this.ventas = ventas;
+      
         this.NDocumento = NDocumento;
     }
-    public Facturas(Sucursales sucursales, Ventas ventas, String NDocumento, String fechaVenta, String estadoFactura) {
+    public Facturas(Sucursales sucursales, String NDocumento, String fechaVenta, String estadoFactura) {
        this.sucursales = sucursales;
-       this.ventas = ventas;
+    
        this.NDocumento = NDocumento;
        this.fechaVenta = fechaVenta;
        this.estadoFactura = estadoFactura;
@@ -47,13 +47,7 @@ public class Facturas  implements java.io.Serializable {
     public void setSucursales(Sucursales sucursales) {
         this.sucursales = sucursales;
     }
-    public Ventas getVentas() {
-        return this.ventas;
-    }
-    
-    public void setVentas(Ventas ventas) {
-        this.ventas = ventas;
-    }
+  
     public String getNDocumento() {
         return this.NDocumento;
     }

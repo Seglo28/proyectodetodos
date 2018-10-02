@@ -11,9 +11,7 @@
         <many-to-one name="sucursales" class="persistencias.Sucursales" fetch="select">
             <column name="id_sucursal" not-null="true" />
         </many-to-one>
-        <many-to-one name="ventas" class="persistencias.Ventas" fetch="select">
-            <column name="id_venta" not-null="true" />
-        </many-to-one>
+       
         <property name="NDocumento" type="string">
             <column name="n_documento" length="25" not-null="true" />
         </property>
