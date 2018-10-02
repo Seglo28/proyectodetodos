@@ -37,7 +37,7 @@ public class ActionFacturas extends org.apache.struts.action.Action {
         String fechaVenta = af.getFechaVenta();
         String estadoFactura=af.getEstadoFactura();
         String action = af.getAction();
-        String mensaje=af.getMensaje();
+        String mensaje = "";
 
         if (af == null || action == null) {
               af.setError("<div class='alert alert-danger'>Lamentamos el inconveniente, Inténtelo más Tarde</div>");
@@ -46,8 +46,8 @@ public class ActionFacturas extends org.apache.struts.action.Action {
         
         if(action.equals("Consultar")){
             FacturasMantenimiento facMan = new FacturasMantenimiento();
-            List<Facturas> listaFac = facMan.consultarTodosFacturas();
-            System.out.println("Lista: "+listaFac);
+            List<Facturas> listaFac = facMan.consultarFacturasDisponibles();
+            
             if(listaFac.isEmpty()){
                mensaje="No se ha reizado ninguna  venta por eso no exite la factura";
                 request.setAttribute("info", mensaje);
@@ -58,9 +58,10 @@ public class ActionFacturas extends org.apache.struts.action.Action {
             }
             return map.findForward(consultarFACT);
         }
+        
         if(action.equals("Cancelar")){
             FacturasMantenimiento facMan = new FacturasMantenimiento();
-            List<Facturas> listaFac = facMan.consultarTodosFacturas();
+            List<Facturas> listaFac = facMan.consultarFacturasDisponibles();
             System.out.println("Esta la Lista de las facturas: "+listaFac);
             if(listaFac.isEmpty()){
                mensaje="No se ha reizado ninguna  venta por eso no exite la factura";
@@ -75,14 +76,17 @@ public class ActionFacturas extends org.apache.struts.action.Action {
         
          if (action.equals("Archivo Facturas")) {
            FacturasMantenimiento facMan = new FacturasMantenimiento();
-            List<Facturas> listaFac = facMan.consultarFacturasArchivadas();
-            if (listaFac.isEmpty()) {
+            List<Facturas> listaFact = facMan.consultarFacturasArchivadas();
+            System.out.println("Lista: "+listaFact);
+            if (listaFact.isEmpty()) {
                 mensaje = "No Se ha archivado ninguna Factura Aún";
                 request.setAttribute("info", mensaje);
+                return map.findForward(todasFACT);
             } else {
-                af.setListaFac(listaFac);
+                af.setListaFact(listaFact);
+                return map.findForward(todasFACT);
             }
-            return map.findForward(todasFACT);
+            
         }
         
          if (action.equals("Actualizar")) {
@@ -166,7 +170,6 @@ public class ActionFacturas extends org.apache.struts.action.Action {
               Facturas arch=fam.consultarFacturaId(key);
               String nDoc=arch.getNDocumento();
               String fechaV= arch.getFechaVenta();
-              String estadof=arch.getEstadoFactura();
               int idSuc=arch.getSucursales().getIdSucursal();
               
               int r=fam.ActivarFacturas(key, nDoc, fechaV, idSuc);
@@ -183,7 +186,6 @@ public class ActionFacturas extends org.apache.struts.action.Action {
                 mensaje = "No Se ha realizado ninguna Venta y no hay factura Aún";
                 request.setAttribute("info", mensaje);
             } else {
-                af.setListaFac(listaFac);
             }
             return map.findForward(todasFACT); 
               

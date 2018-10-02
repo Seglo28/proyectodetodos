@@ -403,6 +403,7 @@ public class ActionVentas extends org.apache.struts.action.Action {
             af.setListaVen(listaVEN);
             return map.findForward(consultarVEN);
         }
+        
         if (action.equals("Archivar")) {
             VentasMantenimiento vem = new VentasMantenimiento();
             int key = Integer.parseInt(request.getParameter("id"));

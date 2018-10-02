@@ -223,8 +223,8 @@ public static void main(String[] args) {
         List<Compras> listaCompras = null;
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
-
         session.beginTransaction();
+        
         try {
             
             Query q = session.createQuery("FROM Compras c where c.estadoCompra='Disponible'");
@@ -245,8 +245,8 @@ public static void main(String[] args) {
         List<Compras> listaCompras = null;
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
-
         session.beginTransaction();
+        
         try {
             
             Query q = session.createQuery("FROM Compras c where c.estadoCompra='Archivado'");

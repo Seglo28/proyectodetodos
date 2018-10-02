@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Control Inventario - Inicio</title>
+        <title>Control Inventario - Facturas</title>
         <link rel="icon" href="img/logo.png">
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -109,15 +109,16 @@
 
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Facturas
+                       Facturas
                     </div>
                     <div class="dropdown-menu">
-                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
-                                <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                                </div>
-                                <div class="dropdown-item" style="background-color: #343a40">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                            </html:form></div>
+                       <html:form action="/facturas">
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
 
@@ -177,19 +178,72 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
-                </li>
-            </ul>
-        </nav>
-                <div>
-                    <div id="error" hidden="hidden">${error}</div>
-                    <div id="mensaje" hidden="hidden">${mensaje}</div>
-                    <div id="info" hidden="hidden">${info}</div>
-                    <div id="warning" hidden="hidden">${warning}</div> 
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="container">
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-hover" id="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID FACTURA</th>                             
+                                    <th>FECHA</th>
+                                    <th>N° FACTURA</th>
+                                    <th>ID SUCURSAL</th>
+                                    <th>Actualizar</th>                                
+                                    <th>ARCHIVAR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <logic:notEmpty name="ActionFormFacturas" property="listaFac">
+                                <logic:iterate id="ver" name="ActionFormFacturas" property="listaFac">
+                                    <tr>
+                                        <html:form action="/facturas">
+                                            <td><bean:write name="ver" property="idFactura"/>
+                                                <div hidden="hidden"><html:text  name="ver" property="idFactura"></html:text></div></td>
+                                            <td><bean:write name="ver" property="fechaVenta"/></td>
+                                            <td><bean:write name="ver" property="NDocumento"/></td>
+                                            <td><bean:write name="ver" property="sucursales.sucursal"/></td>
+                                            <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
+                                        </html:form>
+                                        <td><button class="btn btn-outline-secondary btnArchivar" data-id="<bean:write name="ver" property="idFactura"/>">Archivar</button></td>  
+                                    </tr>
+                                </logic:iterate>
+                            </logic:notEmpty>
+                        </tbody>
+                    </table>
                 </div>
+                <div id="error" hidden="hidden">${error}</div>
+                <div id="mensaje" hidden="hidden">${mensaje}</div>
+                <div id="info" hidden="hidden">${info}</div>
+                <div id="warning" hidden="hidden">${warning}</div>
+
+            </div>
+
+        </div>
+        <div id="archivar" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de archivar este registro de Factura?</p>                            
+                    </div>
+                    <div id="modalDeleteFooter" class="modal-footer">                            
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
-
-
-
 <script>
     toastr.options = {
         "debug": false,
@@ -235,7 +289,7 @@
     $("#table").on("click", ".btnArchivar", function () {
         var dataID = $(this).data("id");
         $("#modalDeleteFooter").empty();
-        $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='ventas.do?action=Archivar&id=" + dataID + "'>Archivar</a>");
+        $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='facturas.do?action=Archivar&id=" + dataID + "'>Archivar</a>");
         $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
 
         $("#archivar").modal("show");

@@ -63,22 +63,22 @@
                         <div class="dropdown-item" style="background-color: #343a40">
                             <html:link page="/formUser.jsp" styleClass="btn btn-outline-info">Ingresar Usuario</html:link></div>
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/user">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
-                        </html:form></div>
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Usuarios</html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Productos
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/productos">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
-                        </html:form></div>
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Producto">Agregar</html:submit>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Productos</html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
 
@@ -88,14 +88,31 @@
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/compras">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Compra"></html:submit>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivadas"></html:submit> 
-                        </html:form></div>
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Ingresar Compra"></html:submit>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Archivadas"></html:submit> 
+                            </html:form></div>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                        Ventas
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/ventas">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Agregar Ventas"></html:submit>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Ventas"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
 
@@ -105,53 +122,54 @@
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/fabricantes">
-                            <html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista deFabricantes</html:submit> 
-                        </html:form></div>
+                                <html:link page="/formFabricantes.jsp" styleClass="btn btn-outline-info">Ingresar Fabricantes</html:link>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Facturas
                     </div>
                     <div class="dropdown-menu">
-                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
-                            <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de facturas</html:submit> 
-                        </html:form></div>
+                        <html:form action="/facturas">
+                            <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Clientes
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/clientes">
-                            <html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">Ingresar Cliente</html:link>
-                        </div>
-                        <a class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Clientes</html:submit> 
-                        </html:form></a>
+                                <html:link page="/formClientes.jsp" styleClass="btn btn-outline-info">Ingresar Cliente</html:link>
+                                </div>
+                                <a class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Clientes</html:submit> 
+                            </html:form></a>
                     </div>
                 </li>
-                
+
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
                         Sucursales
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/sucursales">
-                            <html:link page="/formSucursales.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
-                        </html:form></div>
+                                <html:link page="/formSucursales.jsp" styleClass="btn btn-outline-info">Ingresar Sucursal</html:link>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Sucursales</html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -160,11 +178,11 @@
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/proveedores">
-                            <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
-                        </html:form></div>
+                                <html:link page="/formProveedores.jsp" styleClass="btn btn-outline-info">Ingresar Proveedor</html:link>
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Proveedores</html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -174,7 +192,7 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/inventario">
                                 <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar">Lista de Inventarios</html:submit> 
-                        </html:form></div>
+                            </html:form></div>
                     </div>
                 </li>
 
@@ -183,40 +201,37 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <html:link page="/login.jsp" styleClass="btn btn-outline-danger">Cerrar Sesión</html:link>
-                </li>
-            </ul>
-        </nav>
+                    </li>
+                </ul>
+            </nav>
 
-        <div class="container">
+            <div class="container">
 
-            <br>
-            <div class="row">
-                <div class="col-12">
-                    <table id="table" class="table table-hover">
-                        <thead class="thead-dark">
-                            <tr>
-                                 <th>ID FACTURA</th>                             
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <table id="table" class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ID FACTURA</th>                             
                                     <th>FECHA</th>
                                     <th>N° FACTURA</th>
-                                    <th>ID SUCURSAL</th>
-                                    <th>Actualizar</th>                                
+                                    <th>SUCURSAL</th>                               
                                     <th>ACTIVAR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                         <logic:notEmpty name="ActionFormFacturas" property="listaFac">
-                                <logic:iterate id="ver" name="ActionFormFacturas" property="listaFac">
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <logic:notEmpty name="ActionFormFacturas" property="listaFact">
+                                <logic:iterate id="ver" name="ActionFormFacturas" property="listaFact">
                                     <tr>
                                         <html:form action="/facturas">
                                             <td><bean:write name="ver" property="idFactura"/></td>
                                     <div hidden="hidden"><html:text  name="ver" property="idFactura"></html:text></div> </td>
-                                         <td><bean:write name="ver" property="NDocumento"/></td>
                                     <td><bean:write name="ver" property="fechaVenta"/></td>
-                                    <td><bean:write name="ver" property="sucursales.idSucursal"/></td>
-                                    <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
-                                    
+                                    <td><bean:write name="ver" property="NDocumento"/></td>
+                                    <td><bean:write name="ver" property="sucursales.sucursal"/></td>
                                 </html:form>
-                                    <td><button class="btn btn-outline-secondary btnActivar" data-id="<bean:write name="ver" property="idFactura"/>">Activar</button></td>  
+                                <td><button class="btn btn-outline-secondary btnActivar" data-id="<bean:write name="ver" property="idFactura"/>">Activar</button></td>  
                                 </tr>
                             </logic:iterate>
                         </logic:notEmpty>
@@ -228,7 +243,7 @@
                 <div id="info" hidden="hidden">${info}</div>
             </div>
         </div>
-            
+
         <div id="activar" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -242,7 +257,7 @@
                         <p>¿Está seguro de activar de nuevo este registro de facturas?</p>                            
                     </div>
                     <div id="modalDeleteFooter" class="modal-footer">                            
-                    
+
                     </div>
                 </div>
             </div>
@@ -289,13 +304,13 @@
                     info();
                 }
             }
-            
+
             $("#table").on("click", ".btnActivar", function () {
                 var dataID = $(this).data("id");
                 $("#modalDeleteFooter").empty();
-                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='facturas.do?action=Activar&id="+dataID+"'>Activar</a>");
+                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='facturas.do?action=Activar&id=" + dataID + "'>Activar</a>");
                 $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
-                
+
                 $("#activar").modal("show");
             });
         </script>

@@ -22,6 +22,7 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
     private String error;
     private String mensaje;
     private List<Facturas> ListaFac;
+    private List<Facturas> ListaFact;
     private List<Sucursales> ListaSuc;
     private List<Ventas> ListaVen;
 
@@ -120,6 +121,14 @@ public class ActionFormFacturas extends org.apache.struts.action.ActionForm {
 
     public void setIdSucursal(Integer idSucursal) {
         this.idSucursal = idSucursal;
+    }
+
+    public List<Facturas> getListaFact() {
+        return ListaFact;
+    }
+
+    public void setListaFact(List<Facturas> ListaFact) {
+        this.ListaFact = ListaFact;
     }
 
     @Override
