@@ -34,10 +34,11 @@ public class SucursalesMantenimiento {
         System.out.println(mu);
          */
  /*--- ELIMINAR ---*/
- /*
-        m.eliminarSucursal(3);
+ 
+       int r= m.eliminarSucursal(3);
+          System.out.println(r);
 
-         */
+        
  /*--- MOSTRAR TODOS ---*/
  /*
         List mt = m.consultarTodosSucursales();
@@ -168,9 +169,10 @@ public class SucursalesMantenimiento {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
-
+        session.beginTransaction();
+        
         try {
-            session.beginTransaction(); //EN EL EJEMPLO ESTO ESTA FUERA DEL TRY... EN LA PARTE SUPERIOR
+            
             suc = (Sucursales) session.get(Sucursales.class, idSucursal);
             session.delete(suc);
             session.getTransaction().commit();
@@ -180,8 +182,8 @@ public class SucursalesMantenimiento {
         } catch (Exception e) {
             if (session.getTransaction().isActive()) {
                 session.getTransaction().rollback();
-                flag = 1;
-                System.out.println("Los datos no se han eliminado Stefany. " + e);
+                flag = 0;
+                System.out.println("Los datos no se han eliminado " + e);
             }
            
         } finally {

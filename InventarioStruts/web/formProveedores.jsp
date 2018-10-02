@@ -191,31 +191,48 @@
                             <div class="col-md-6">
                             <html:form action="/proveedores">
                                 <div class="card">
-                                    <div class="card bg-success text-white" >
+                                    <div class="card bg-info text-white" >
                                         <div class="card-header">Ingresar proveedor</div>
                                     </div>
                                     <div class="card-body bg-light">
-                                        <div class="row">
-                                            <div class="form-group col-md-6">
-                                                Proveedor:
-                                                <html:text property="proveedor" styleClass="form-control"></html:text>
-                                                    Rubro:
-                                                <html:text property="rubro" styleClass="form-control"></html:text>
-                                                    Contacto:
-                                                <html:text property="contacto" styleClass="form-control"></html:text></td>
-                                                    Teléfono:
-                                                <html:text property="telefono" styleClass="form-control" size="50" maxlength="25" value=""></html:text>
+                                             <div class="row">
+                                              
+                                                    <div class="form-group col-md-6">
+                                                         <label form="Proveedor">Nombre del proveedor:</label><br>
+                                                         <html:text property="proveedor" styleClass="form-control"></html:text>   
+                                                    </div>                             
+
+                                                    <div class="form-group col-md-6">
+                                                        <label form="Rubro">Rubro del proveedor:</label><br>
+                                                          <html:text property="rubro" styleClass="form-control"></html:text> 
+                                                    </div>
+                                                              
+                                            </div>
+                                            <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                       <label form="Contacto">Contacto del proveedor:</label><br>  
+                                                       <html:text property="contacto" styleClass="form-control"></html:text>
+                                                    </div>
+                                                        
+                                                  <div class="form-group col-md-6">
+                                                        <label form="Telefono">Telefono del proveedor:</label><br>
+                                                        <html:text property="telefono" styleClass="form-control" ></html:text> 
+                                                    </div>
+                                                    
+                                               </div>
+                                                   
                                                     <br>
                                                     <br>
                                                 <html:submit styleClass="btn btn-primary" property="action" value="Agregar"/>
+                                               
+                                                
                                             </html:form>
                                             <br>
                                             <br>
                                             <bean:write name="ActionFormProveedores" property="error" filter="false"/>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                    </div>
+                                        
+                                   
                                 </div>
                             </div>
                             </body>

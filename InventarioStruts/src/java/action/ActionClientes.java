@@ -106,8 +106,13 @@ public class ActionClientes extends org.apache.struts.action.Action {
 
         if (action.equals("Borrar")) {
             ClienteMantenimiento mc = new ClienteMantenimiento();
-            mc.eliminarClientes(idCliente);
-            formBean.setError(borrarCli);
+            int r= mc.eliminarClientes(idCliente);
+           if(r == 1){
+                 System.out.println("Sirvio");
+             } else {
+                 System.out.println("No sirvio");
+             }
+             
             List<Clientes> listaClientes = mc.consultarTodosClientes();
             formBean.setListaClientes(listaClientes);
             return map.findForward(borrarCli);

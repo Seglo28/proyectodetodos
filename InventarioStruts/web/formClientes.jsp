@@ -178,40 +178,40 @@
             </nav>
                     
         <div class="container" style="margin-top: 20px">
-            
-          
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h3> </h3>  
-                </div>  
-            </div> 
-
             <div class="row">
                 <div class="col-8">
                     <html:form action="/clientes">
-                        <table border="0" class="table-striped">
-                            <tbody style="margin: 5px;">
-                                <tr  style="padding: 10px;">
-                                    <td>Nombre del Cliente:
-                                        <html:text property="cliente" size="70" maxlength="250" value=""></html:text></td>     
-                                    </tr>
-                                    <tr  style="padding: 10px;">
-                                    <td>Tipo de persona:
-                                        <html:text property="tipoPersona" size="70" maxlength="250" value=""></html:text></td>     
-                                    </tr>
-                                    <tr  style="padding: 10px;">
-                                        <td>Direccion del Cliente:
-                                        <html:text property="direccion" size="70" maxlength="250" value=""></html:text></td>
-                                    </tr>
-                                    <tr  style="padding: 10px;">
-                                        <td>Telefono del Cliente:
-                                        <html:text property="telefono" size="70" maxlength="250" value=""></html:text>
-                                    </tr>
+                   <div class="card">
+                        <div class="card bg-info text-white">
+                            <div class="card-header">Registro de Clientes</div>
+                        </div>
+                        <div class="card-body">
+                                <div class="row">
+                              
+                                <div class="form-group col-md-6">
+                                    <label form="cliente">Nombre del cliente:</label><br>
+                                        <html:text property="cliente" styleClass="form-control"></html:text></td> 
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label form="tipo_persona">Tipo de persona:</label><br>
+                                   <html:text property="tipoPersona" styleClass="form-control"></html:text></td> 
+                                </div>
+                                  </div>  
+                                 <div class="row">                                   
+                                 <div class="form-group col-md-6">
+                                    <label form="direccion">Dirección del cliente:</label><br>
+                                    <html:text property="direccion" styleClass="form-control"></html:text>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label form="direccion">Telefono del cliente:</label><br>
+                                     <html:text property="telefono" styleClass="form-control"></html:text>
+                                </div> 
+                                 </div> 
+                                
                                 <br>
                                 <tr colspan="2">
                                 </tr><br>
-                                </tbody>
-                            </table><br>
+                                </tbody>                          
                         <html:submit styleClass="btn btn-primary" property="action" value="Insertar" />
                         <br><br>
                         <bean:write name="ActionFormClientes" property="error" filter="false"/>
@@ -219,6 +219,9 @@
                 </div>
             </div>
         </div>
+        </div>
+        </div>
+        
         ${mensaje}
     </body>
 </html>

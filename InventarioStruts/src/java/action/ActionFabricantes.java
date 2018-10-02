@@ -103,10 +103,16 @@ public class ActionFabricantes extends org.apache.struts.action.Action {
             }
         }
         
-         if (action.equals("Borrar")) {
-              FabricantesMantenimiento manf = new FabricantesMantenimiento();
-             manf.eliminarFabricante(idFabricante);
-             formBean.setError(borrarFac);
+          if (action.equals("Borrar")) {
+             FabricantesMantenimiento manf = new FabricantesMantenimiento();
+             int r = manf.eliminarFabricante(idFabricante);
+             
+             if(r == 1){
+                 System.out.println("Sirvio");
+             } else {
+                 System.out.println("No sirvio");
+             }
+             
              List<Fabricantes> listaFabricantes = manf.consultarTodosFabricantes();
              formBean.setListaFabricantes(listaFabricantes);
              return map.findForward(borrarFac);

@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Control Inventario - Inicio</title>
+        <title>Control Inventario - Sucursales</title>
         <link rel="icon" href="img/logo.png">
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -184,7 +184,7 @@
                 <br>
                 <div class="row">
                     <div class="col-12">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="table">
                             <thead class="thead-dark">
                                 <tr>
                                     <th>id</th>
@@ -210,8 +210,9 @@
                                             <td><bean:write name="sucursales" property="departamento"/></td>
                                             <td><bean:write name="sucursales" property="telefono"/></td>
                                             <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
-                                            <td><html:submit styleClass="btn btn-danger" property="action" value="Eliminar"/></td>
+                                            
                                         </html:form>
+                                          <td> <button class="btn btn-secondary btnBorrar" data-id="<bean:write name="sucursales" property="idSucursal"/>">Eliminar</button></td>     
                                     </tr>
                                 </logic:iterate>
                             </logic:notEmpty>
@@ -226,6 +227,25 @@
                 </div>
             </div>
         </div>
+       <div id="Borrar" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirmación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Está seguro de Borrar este registro?</p>                            
+                    </div>
+                    <div id="modalDeleteFooter" class="modal-footer">                            
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+            
         <script>
             toastr.options = {
                 "debug": false,
@@ -267,15 +287,15 @@
                     info();
                 }
             }
-
-            $("#table").on("click", ".btnArchivar", function () {
+            
+            $("#table").on("click", ".btnBorrar", function () {
                 var dataID = $(this).data("id");
                 $("#modalDeleteFooter").empty();
-                $("#modalDeleteFooter").append("<a class='btn btn-outline-success' href='ventas.do?action=Archivar&id=" + dataID + "'>Archivar</a>");
-                $("#modalDeleteFooter").append('<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>');
-
-                $("#archivar").modal("show");
+                $("#modalDeleteFooter").append("<a class='btn btn-outline-danger' href='sucursales.do?action=Borrar&idSucursal="+dataID+"'>Eliminar</a>");
+                $("#modalDeleteFooter").append('<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>');
+                
+                $("#Borrar").modal("show");
             });
-        </script>        
+        </script>
     </body>
 </html>

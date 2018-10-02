@@ -133,9 +133,9 @@ public class ProductosMantenimiento {
         Session session = factory.openSession();
 
         int flag = 0;
-
+       session.beginTransaction();
         try {
-            session.beginTransaction();
+          
             prod = (Productos) session.get(Productos.class, idProducto);
             session.delete(prod);
 

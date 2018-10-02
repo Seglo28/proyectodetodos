@@ -150,8 +150,12 @@ public class ActionProductos extends org.apache.struts.action.Action {
         }
          if (action.equals("Borrar")) {
             ProductosMantenimiento mprod = new ProductosMantenimiento();
-            mprod.eliminarProducto(idProducto);
-            formBean.setError(borrarPROD);
+             int r= mprod.eliminarProducto(idProducto);
+             if(r == 1){
+                 System.out.println("Sirvio");
+             } else {
+                 System.out.println("No sirvio");
+             }
             List<Productos> listaProd = mprod.consultarTodosProductos();
             formBean.setListaProd(listaProd);
             return mapping.findForward(borrarPROD);

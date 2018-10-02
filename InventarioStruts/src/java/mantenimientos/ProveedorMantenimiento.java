@@ -133,14 +133,13 @@ public class ProveedorMantenimiento {
         Proveedores prov = new Proveedores();
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
-
+         session.beginTransaction();
         int flag = 0;
 
         try {
-            session.beginTransaction();
+          
             prov = (Proveedores) session.get(Proveedores.class, idProveedor);
             session.delete(prov);
-
             session.getTransaction().commit();
             flag = 1;
             System.out.println(" exito al eliminar al proveedor");

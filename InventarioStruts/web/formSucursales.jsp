@@ -212,15 +212,15 @@
                                                     <br>
                                                     <br>
                                                 <html:submit styleClass="btn btn-primary" property="action" value="Agregar"/>
-                                                <html:submit styleClass="btn btn-primary" property="action" value="Volver"/>
+                                                
                                             </div>
                                         </div>
-                                        <bean:write name="ActionFormSucursales" property="error" filter="false"/>
+                                       
                                         <br>
                                         ${error}
                                         ${mensaje}
                                     </html:form>
-                        
+                         <bean:write name="ActionFormSucursales" property="error" filter="false"/>
                         </div>
                                 </div>
                                 </div>

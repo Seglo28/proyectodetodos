@@ -111,8 +111,13 @@ public class ActionSucursales extends org.apache.struts.action.Action{
         
         if (action.equals("Borrar")) {
             SucursalesMantenimiento sucMan = new SucursalesMantenimiento();
-            sucMan.eliminarSucursal(idSucursal);
-            af.setError(borrarSUC);
+            int r = sucMan.eliminarSucursal(idSucursal);
+            if(r == 1){
+                 System.out.println("Sirvio");
+             } else {
+                 System.out.println("No sirvio");
+             }
+             
             List<Sucursales> listaSUC = sucMan.consultarTodosSucursales();
             af.setListaSUC(listaSUC);
             return map.findForward(borrarSUC);

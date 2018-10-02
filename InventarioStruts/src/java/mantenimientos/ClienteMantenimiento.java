@@ -139,9 +139,9 @@ public class ClienteMantenimiento {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
-
+        session.beginTransaction(); 
         try {
-            session.beginTransaction(); //EN EL EJEMPLO ESTO ESTA FUERA DEL TRY... EN LA PARTE SUPERIOR
+          
             cli = (Clientes) session.get(Clientes.class, idCliente);
             session.delete(cli);
             session.getTransaction().commit();

@@ -85,8 +85,12 @@ public class ActionProveedores extends org.apache.struts.action.Action {
         
         if(action.equals("Borrar")){
             ProveedorMantenimiento proMan = new ProveedorMantenimiento();
-            proMan.eliminarProveedor(idProveedor);
-            af.setError(borrarPROV);
+            int r =  proMan.eliminarProveedor(idProveedor);
+            if(r == 1){
+                 System.out.println("Sirvio");
+             } else {
+                 System.out.println("No sirvio");
+             }
             List<Proveedores> listaPROV = proMan.consultarTodosProveedores();
             af.setListaPROV(listaPROV);
             return map.findForward(borrarPROV);

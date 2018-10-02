@@ -164,9 +164,8 @@ public class FabricantesMantenimiento {
         SessionFactory factory = HibernateUtil.getSessionFactory();
         Session session = factory.openSession();
         int flag = 0;
-
+        session.beginTransaction();
         try {
-            session.beginTransaction(); //EN EL EJEMPLO ESTO ESTA FUERA DEL TRY... EN LA PARTE SUPERIOR
             fab = (Fabricantes) session.get(Fabricantes.class, idFabricante);
             session.delete(fab);
             session.getTransaction().commit();
