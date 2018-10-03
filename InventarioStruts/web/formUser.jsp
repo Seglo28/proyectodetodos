@@ -105,17 +105,18 @@
                     </div>
                 </li>
 
-                <li class="nav-item dropdown">
+                  <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Facturas
+                       Facturas
                     </div>
                     <div class="dropdown-menu">
-                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
-                                <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                                </div>
-                                <div class="dropdown-item" style="background-color: #343a40">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                            </html:form></div>
+                       <html:form action="/facturas">
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
 
@@ -186,28 +187,28 @@
                 <div class="col-12">
                     <html:form action="/user">
                         <div class="card">
-                            <div class="card bg-success text-white">
+                            <div class="card bg-info text-white">
                                 <div class="card-header">Ingresar Usuario</div>
                             </div>
                             <div class="card-body bg-light">
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>Nombre de Usuario:</label><br>
-                                        <html:text property="usuario" size="60" maxlength="25" value=""></html:text>
+                                        <html:text property="usuario" styleClass="form-control" ></html:text>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Correo:</label><br>
-                                        <html:text property="correo" size="60" maxlength="25" value=""></html:text>
+                                        <html:text property="correo" styleClass="form-control" ></html:text>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6">
                                         <label>Contraseña:</label><br>
-                                        <html:password property="contra" size="60" maxlength="25" value=""></html:password>
+                                        <html:password property="contra" styleClass="form-control" ></html:password>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Cargo:</label><br>
-                                        <html:select property="cargo">
+                                        <html:select property="cargo" styleClass="form-control" >
                                             <html:option value="Administrador">Administrador</html:option>
                                             <html:option value="Contador">Contador</html:option>
                                             <html:option value="Supervisor">Supervisor</html:option>

@@ -110,15 +110,16 @@
 
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Facturas
+                       Facturas
                     </div>
                     <div class="dropdown-menu">
-                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
-                                <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                                </div>
-                                <div class="dropdown-item" style="background-color: #343a40">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                            </html:form></div>
+                       <html:form action="/facturas">
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
 
@@ -182,46 +183,34 @@
                 </ul>
             </nav>
         <div class="container" style="margin-top: 20px">
-            
-          
+         
             <div class="row">
-                <div class="col-12 text-center">
-                    <h3> </h3>  
-                </div>  
-            </div> 
-
-            <div class="row">
-                <div class="col-8">
+                <div class="col-12">
                     <html:form action="/fabricantes">
                        <div class="card">
                             <div class="card bg-info text-white">
                                 <div class="card-header">Registro de Fabricantes</div>
                             </div>
                             <div class="card-body">
-                            <tbody style="margin: 5px;">
-                                <tr  style="padding: 10px;">
-                                    <td>Nombre del fabricante
-                                        <html:text property="fabricante" size="70" maxlength="50" value=""></html:text></td>     
-                                    </tr>
-                                    <tr  style="padding: 10px;">
-                                        <td>Direccion del Fabricante
-                                        <html:text property="direccion" size="70" maxlength="50" value=""></html:text></td>
-                                    </tr>
-                                    <tr  style="padding: 10px;">
-                                        <td>Telefono del Fabricante:
-                                        <html:text property="telefono" size="70" maxlength="15" value=""></html:text>
-                                    </tr>
-                                <br>
-                                <tr colspan="2">
-                                 
-                                </tr><br>
-                                </tbody>
-                                </div>
-                        </div>
-                            <br>
-                        <html:submit styleClass="btn btn-primary" property="action" value="Insertar" />
-                        <br><br>
+                                <div class="row">
+                                    <div class="form-group col-md-4">
+                                          <label form="Fabricante">Nombre del fabricante:</label><br>
+                                        <html:text property="fabricante" styleClass="form-control"></html:text>   
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                           <label form="Direccion">Direccion del fabricante:</label><br>
+                                        <html:text property="direccion" styleClass="form-control"></html:text>  
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <label form="Telefono">Telefono del fabricante:</label><br>
+                                        <html:text property="telefono" styleClass="form-control"></html:text>  
+                                        </div>
+                                        </div> 
+                        <html:submit styleClass="btn btn-outline-success" property="action" value="Insertar"/>
                         <bean:write name="ActionFormFabricantes" property="error" filter="false"/>
+                         </div>
+                        </div>
                     </html:form>
                 </div>
             </div>

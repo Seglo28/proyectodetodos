@@ -105,17 +105,18 @@
                     </div>
                 </li>
 
-                <li class="nav-item dropdown">
+                  <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Facturas
+                       Facturas
                     </div>
                     <div class="dropdown-menu">
-                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
-                                <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                                </div>
-                                <div class="dropdown-item" style="background-color: #343a40">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                            </html:form></div>
+                       <html:form action="/facturas">
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
 
@@ -181,14 +182,11 @@
 
             <div class="container" style="margin-top: 20px">
                
-                <br>
-                <br>
                 <div class="row">
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-6">
+                        
+                           
+                           
                             <html:form action="/proveedores">
                                 <div class="card">
                                     <div class="card bg-info text-white" >
@@ -217,23 +215,73 @@
                                                   <div class="form-group col-md-6">
                                                         <label form="Telefono">Telefono del proveedor:</label><br>
                                                         <html:text property="telefono" styleClass="form-control" ></html:text> 
-                                                    </div>
-                                                    
+                                                    </div> 
                                                </div>
-                                                   
-                                                    <br>
-                                                    <br>
-                                                <html:submit styleClass="btn btn-primary" property="action" value="Agregar"/>
-                                               
-                                                
+                                                 
+                                                <html:submit styleClass="btn btn-outline-success" property="action" value="Agregar"/>
+                                           
                                             </html:form>
-                                            <br>
-                                            <br>
                                             <bean:write name="ActionFormProveedores" property="error" filter="false"/>
                                         </div>
                                         
                                    
                                 </div>
-                            </div>
-                            </body>
-                            </html>
+                    </div>
+                <div id="error" hidden="hidden">${error}</div>
+                <div id="mensaje" hidden="hidden">${mensaje}</div>
+                <div id="info" hidden="hidden">${info}</div>
+                <div id="warning" hidden="hidden">${warning}</div>
+                 </div>
+                   <script>
+            toastr.options = {
+                "debug": false,
+  		"positionClass": "toast-bottom-right",
+  		"onclick": null,
+            	"fadeIn": 300,
+  		"fadeOut": 100,
+                "timeOut": 5000,
+  		"extendedTimeOut": 1000
+            }
+
+            var showToastrs = false;
+
+            function error() {
+                if(!showToastrs){
+                    toastr.error($("#error").text(), 'Error!');
+                }
+            }
+            
+            function mensaje() {
+                if(!showToastrs){
+                    toastr.success($("#mensaje").text(), 'Éxito!');
+                }
+            }
+            function info() {
+                if(!showToastrs){
+                    toastr.info($("#info").text(), 'Info!');
+                }
+            }
+            function warning() {
+                if(!showToastrs){
+                    toastr.warning($("#warning").text(), 'Advertencia!');
+                }
+            }
+            
+            window.onload = function(){
+                if($("#error").text() != ""){
+                    error();
+                }
+                if($("#mensaje").text() != ""){
+                    mensaje();
+                }
+                if($("#info").text() != ""){
+                    info();
+                }
+                if($("#warning").text() != ""){
+                    warning();
+                }
+            }
+
+        </script>          
+</body>
+</html>

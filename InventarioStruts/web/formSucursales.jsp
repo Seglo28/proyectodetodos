@@ -104,17 +104,18 @@
                     </div>
                 </li>
 
-                <li class="nav-item dropdown">
+                  <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                        Facturas
+                       Facturas
                     </div>
                     <div class="dropdown-menu">
-                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/facturas">
-                                <html:link page="/formFacturas.jsp" styleClass="btn btn-outline-info">Ingresar Factura</html:link>
-                                </div>
-                                <div class="dropdown-item" style="background-color: #343a40">
-                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                            </html:form></div>
+                       <html:form action="/facturas">
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                        </div>
+                        <div class="dropdown-item" style="background-color: #343a40">
+                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
+                        </html:form></div>
                     </div>
                 </li>
 
@@ -181,41 +182,45 @@
             <div class="container" style="margin-top: 20px">
                
                 <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-3">
-
-                            </div>
-                            <div class="col-md-6">
-                            <html:form action="/sucursales">
+                    <div class="col-10">
+                    <html:form action="/sucursales">
                                 <!-- CHANGE 1-->
                                 <div class="card">
                         <div class="card bg-info text-white">
                             <div class="card-header">Registro de Sucursales:</div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body  bg-light">
                                 
                                     
                                         <div class="row">
-                                            <div class="form-group col-md-6">
-                                                Sucursal:     
+                                            <div class="form-group col-md-4">
+                                                 <label form="Sucursal">Sucursal: </label><br>   
                                                 <html:text property="sucursal" styleClass="form-control"></html:text>
-                                                    Dirección:
-                                                <html:text property="direccion" styleClass="form-control"></html:text>
-                                                    Municipio:
-                                                <html:text property="municipio" styleClass="form-control"></html:text>
-                                                    Departamento:
-                                                <html:text property="departamento" styleClass="form-control"></html:text></td>
-
-                                                    Telefono:
-                                                <html:text property="telefono" styleClass="form-control"></html:text>
-                                                    <br>
-                                                    <br>
-                                                <html:submit styleClass="btn btn-primary" property="action" value="Agregar"/>
-                                                
                                             </div>
-                                        </div>
-                                       
+                                            <div class="form-group col-md-4">
+                                               <label form="Direccion">Direccion:</label><br>
+                                                <html:text property="direccion" styleClass="form-control"></html:text> 
+                                            </div>
+                                                   
+                                            <div class="form-group col-md-4">
+                                                <label form="Municipio">Municipio:</label><br>
+                                                <html:text property="municipio" styleClass="form-control"></html:text>
+                                            </div> 
+                                              </div>    
+                                                
+                                            <div class="row">
+                                             <div class="form-group col-md-6">
+                                                 <label form="Departamento">Departamento:</label><br>
+                                                <html:text property="departamento" styleClass="form-control"></html:text></td>
+                                            </div>
+                                                   
+                                            <div class="form-group col-md-6">
+                                                <label form="Te1efono">Telefono:</label><br>
+                                                <html:text property="telefono" styleClass="form-control"></html:text>
+                                            </div>   
+                                            </div>    
+                                                 <html:submit styleClass="btn btn-outline-success" property="action" value="Agregar"/>     
+                                              
                                         <br>
                                         ${error}
                                         ${mensaje}
@@ -223,11 +228,8 @@
                          <bean:write name="ActionFormSucursales" property="error" filter="false"/>
                         </div>
                                 </div>
-                                </div>
-                        <div class="col-md-3">
-
-                        </div>
-                    </div>
+                                
+                   
 
                 </div>
 
