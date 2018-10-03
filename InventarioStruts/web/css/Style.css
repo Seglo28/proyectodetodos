@@ -28,3 +28,14 @@ and open the template in the editor.
 .dropdown-menu {
     background-color: #343a40
 }
+
+#aqui{
+     overflow:scroll;
+     height:600px;
+     width:7000px;
+}
+
+#aqui table{
+   width:500px; 
+    
+}
