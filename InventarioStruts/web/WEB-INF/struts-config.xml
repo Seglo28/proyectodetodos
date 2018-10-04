@@ -99,7 +99,7 @@
         
         <!-- 7. acciones de  facturas y redireccion-->
 
-         <forward name="agregarFACT" path="/formFacturas.jsp"/>
+         <forward name="agregarFACT" path="/verFACT.jsp"/>
          <forward name="consultarFACT" path="/verFACT.jsp"/>
          <forward name="todasFACT"  path="/todasFACT.jsp"/>
          <forward name="consultarIdFACT" path="/modFACT.jsp"/>
@@ -109,7 +109,7 @@
          <forward name="errorFACT" path="/formFacturas.jsp"/>
          
         <!-- 8. acciones de fabricantes y redireccion-->
-         <forward name="insertarFac"  path="/formFabricantes.jsp"/>
+         <forward name="insertarFac"  path="/verFac.jsp"/>
         <forward name="consultarFac"  path="/verFac.jsp"/>
         <forward name="consultarIdFac"  path="/modFac.jsp"/>
         <forward name="modificarFac"  path="/modFac.jsp"/>
@@ -121,7 +121,7 @@
         
         
         <!-- 9. acciones de clientes y redireccion-->
-         <forward name="insertarCli"  path="/formClientes.jsp"/>
+         <forward name="insertarCli"  path="/verCli.jsp"/>
         <forward name="consultarCli"  path="/verCli.jsp"/>
         <forward name="consultarIdCli"  path="/modCli.jsp"/>
         <forward name="modificarCli"  path="/modCli.jsp"/>
@@ -130,7 +130,7 @@
         <forward name="errorCli"  path="/formClientes.jsp"/>
         
         <!-- 10.acciones de sucursales y redireccion-->
-         <forward name="agregarSUC" path="/formSucursales.jsp"/>
+         <forward name="agregarSUC" path="/verSUC.jsp"/>
          <forward name="consultarSUC" path="/verSUC.jsp"/>
          <forward name="consultarIdSUC" path="/modSUC.jsp"/>
          <forward name="modificarSUC" path="/modSUC.jsp"/>
@@ -138,6 +138,15 @@
          <forward name="borrarSUC" path="/verSUC.jsp"/>
          <forward name="errorSUC" path="/formSucursales.jsp"/>
         <!-- 11. acciones  de Monedas y redirección-->
+        
+        <forward name="agregarMON" path="/verMON.jsp"/>
+         <forward name="consultarMON" path="/verMON.jsp"/>
+         <forward name="consultarIdMON" path="/modMON.jsp"/>
+         <forward name="modificarMON" path="/modMON.jsp"/>
+         <forward name="borrarMON" path="/verMON.jsp"/>
+         <forward name="errorMON" path="/formMON.jsp"/>
+        
+        
     </global-forwards>
 
     <action-mappings>

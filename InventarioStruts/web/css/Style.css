@@ -32,10 +32,10 @@ and open the template in the editor.
 #aqui{
      overflow:scroll;
      height:600px;
-     width:7000px;
+     width:1000px;
 }
 
 #aqui table{
-   width:500px; 
+   width:600px; 
     
 }

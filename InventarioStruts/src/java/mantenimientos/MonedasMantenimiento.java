@@ -134,7 +134,7 @@ public class MonedasMantenimiento {
  
       }
      
-   public List consultarTodosVentas() {
+   public List consultarTodosMonedas() {
    
     List<Monedas> listaMonedas = null;
         SessionFactory factory = HibernateUtil.getSessionFactory();
@@ -152,7 +152,29 @@ public class MonedasMantenimiento {
         return listaMonedas;
    
    }  
-     
+    public Monedas consultarNombreMoneda(String moneda) {
+        Monedas mon = new Monedas();
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session = factory.openSession();
+        try {
+            
+            Query q = session.createQuery("FROM Monedas m where m.moneda=:moneda").setParameter("moneda", moneda);
+            System.out.println("TAMAÑO: "+q.list().size());
+            if(q.list().isEmpty()){
+                System.out.println("No éxiste la moneda en el sistema, puede ingresarla");
+                return mon = null;
+            } else {
+                System.out.println("La Moneda ya existe en el sistema");
+                return mon;
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Error consultarNombreMoneda "+e);
+            return mon = null;
+        } finally {
+            session.close();
+        }
+    }  
      
      
      
