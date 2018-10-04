@@ -1,5 +1,5 @@
 package persistencias;
-// Generated 09-25-2018 08:37:16 AM by Hibernate Tools 4.3.1
+// Generated 10-04-2018 08:51:26 AM by Hibernate Tools 4.3.1
 
 
 
@@ -11,7 +11,6 @@ public class Facturas  implements java.io.Serializable {
 
      private Integer idFactura;
      private Sucursales sucursales;
-
      private String NDocumento;
      private String fechaVenta;
      private String estadoFactura;
@@ -20,14 +19,12 @@ public class Facturas  implements java.io.Serializable {
     }
 
 	
-    public Facturas(Sucursales sucursales,  String NDocumento) {
+    public Facturas(Sucursales sucursales, String NDocumento) {
         this.sucursales = sucursales;
-      
         this.NDocumento = NDocumento;
     }
     public Facturas(Sucursales sucursales, String NDocumento, String fechaVenta, String estadoFactura) {
        this.sucursales = sucursales;
-    
        this.NDocumento = NDocumento;
        this.fechaVenta = fechaVenta;
        this.estadoFactura = estadoFactura;
@@ -47,7 +44,6 @@ public class Facturas  implements java.io.Serializable {
     public void setSucursales(Sucursales sucursales) {
         this.sucursales = sucursales;
     }
-  
     public String getNDocumento() {
         return this.NDocumento;
     }

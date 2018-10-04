@@ -17,6 +17,7 @@
         <form-bean name="ActionFormCompras" type="actionforms.ActionFormCompras"></form-bean>
          <form-bean name="ActionFormVentas" type="actionforms.ActionFormVentas"/>
         <form-bean name="ActionFormFacturas" type="actionforms.ActionFormFacturas"/>
+        <form-bean name="ActionFormMonedas" type="actionforms.ActionFormMonedas"/>
     </form-beans>
     
     <global-exceptions>
@@ -136,7 +137,7 @@
          <forward name="eliminarSUC" path="/eliminarSucursales.jsp"/>
          <forward name="borrarSUC" path="/verSUC.jsp"/>
          <forward name="errorSUC" path="/formSucursales.jsp"/>
-        <!---->
+        <!-- 11. acciones  de Monedas y redirección-->
     </global-forwards>
 
     <action-mappings>
@@ -162,8 +163,8 @@
        <action name="ActionFormClientes" path="/clientes" scope="request" type="action.ActionClientes"/>
                 <!--10.  acton de  sucursales-->
        <action name="ActionFormSucursales" path="/sucursales" scope="request" type="action.ActionSucursales"/>
-                <!---->
-
+                <!--11. action de Monedas:-->
+    <action name="ActionFormMonedas" path="/monedas" scope="request" type="action.ActionMonedas"/>
         
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>

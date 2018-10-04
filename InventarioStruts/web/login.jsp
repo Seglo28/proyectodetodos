@@ -9,6 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="icon" href="img/logo.png">
         <title>Control Inventario - Login</title>
+        <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet"> 
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -38,6 +39,21 @@
             .dropdown-menu {
                 background-color: #343a40
             }
+            
+            label,card-header {
+                font-family:  'Fredericka the Great', cursive;
+                font-size: 30px;
+            }
+            
+            .aqui  {
+                font-family:  'Fredericka the Great', cursive;
+                font-size: 20px;
+            }
+
+            #aqui  {
+                font-family:  'Fredericka the Great', cursive;
+                font-size: 20px;
+            }
         </style>
     </head>
     <body class="bg">
@@ -56,20 +72,20 @@
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40">
                             <html:link page="/login.jsp" styleClass="btn btn-outline-info">Iniciar Sesión</html:link>
+                            </div>
                         </div>
-                    </div>
-                </li>
-        </nav>
-                
-        <div class="container">
-            <br>
-            <div class="row">
-                <div class="col-4"></div>
-                <div class="col-4">
+                    </li>
+            </nav>
+
+            <div class="container">
+                <br>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
                     <html:form action="/user">
                         <div class="card">
                             <div class="card bg-success text-white">
-                                <div class="card-header">Inicio de Sesión</div>
+                                <div class="card-header" id="aqui">Inicio de Sesión</div>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -78,18 +94,18 @@
                                     </div>
                                 </div>
                                 <br>
-                                <label>Correo</label><br>
+                                <label>Correo:</label><br>
                                 <html:text property="correo" styleClass="form-control"></html:text>
-                                <label>Contraseña</label><br>
+                                    <label>Contraseña:</label><br>
                                 <html:password property="contra" styleClass="form-control"></html:password>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-12 text-center">
-                                        <html:submit styleClass="btn btn-outline-success btn-block" property="action" value="Entrar">Entrar</html:submit>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                        <html:submit styleClass="btn btn-outline-success btn-block aqui" property="action" value="Entrar">Entrar</html:submit>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </html:form>
                 </div>
                 <div class="col-4"></div>
@@ -98,7 +114,7 @@
             <div id="mensaje" hidden="hidden">${mensaje}</div>
             <div id="info" hidden="hidden">${info}</div>
         </div>
-        
+
         <script>
             toastr.options = {
                 "debug": false,
@@ -141,6 +157,6 @@
                 }
             }
         </script>
-        
+
     </body>
 </html>

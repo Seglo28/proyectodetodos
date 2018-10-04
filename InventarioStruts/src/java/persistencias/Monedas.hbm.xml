@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-04-2018 08:51:26 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="persistencias.Monedas" table="monedas" catalog="control_inventario" optimistic-lock="version">
+        <id name="idMoneda" type="java.lang.Integer">
+            <column name="id_moneda" />
+            <generator class="identity" />
+        </id>
+        <property name="moneda" type="string">
+            <column name="moneda" length="50" not-null="true" />
+        </property>
+        <property name="simbolo" type="string">
+            <column name="simbolo" length="5" not-null="true" />
+        </property>
+        <property name="equivalencia" type="java.lang.Double">
+            <column name="equivalencia" precision="22" scale="0" />
+        </property>
+        <property name="equivalente" type="string">
+            <column name="equivalente" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
