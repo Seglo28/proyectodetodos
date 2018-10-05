@@ -17,7 +17,7 @@
         <form-bean name="ActionFormCompras" type="actionforms.ActionFormCompras"></form-bean>
          <form-bean name="ActionFormVentas" type="actionforms.ActionFormVentas"/>
         <form-bean name="ActionFormFacturas" type="actionforms.ActionFormFacturas"/>
-        <form-bean name="ActionFormMonedas" type="actionforms.ActionFormMonedas"/>
+        <form-bean name="ActionFormMoneda" type="actionforms.ActionFormMoneda"/>
     </form-beans>
     
     <global-exceptions>
@@ -173,7 +173,7 @@
                 <!--10.  acton de  sucursales-->
        <action name="ActionFormSucursales" path="/sucursales" scope="request" type="action.ActionSucursales"/>
                 <!--11. action de Monedas:-->
-    <action name="ActionFormMonedas" path="/monedas" scope="request" type="action.ActionMonedas"/>
+    <action name="ActionFormMoneda" path="/monedas" scope="request" type="action.ActionMonedas"/>
         
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>

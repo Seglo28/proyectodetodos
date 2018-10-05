@@ -7,7 +7,7 @@ import mantenimientos.MonedasMantenimiento;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import actionforms.ActionFormMonedas;
+import actionforms.ActionFormMoneda;
 import persistencias.Monedas;
 
 public class ActionMonedas  extends org.apache.struts.action.Action{
@@ -24,7 +24,7 @@ public class ActionMonedas  extends org.apache.struts.action.Action{
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
     
-        ActionFormMonedas af= (ActionFormMonedas) form;
+        ActionFormMoneda af= (ActionFormMoneda) form;
         Integer idMoneda = af.getIdMoneda();
         String moneda= af.getMoneda();
         String simbolo=af.getSimbolo();
