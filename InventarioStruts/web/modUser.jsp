@@ -127,6 +127,19 @@
                             </html:form></a>
                     </div>
                 </li>
+                 <li class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                       Moneda
+                    </div>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-item" style="background-color: #343a40"><html:form action="/monedas">
+                                <html:link page="/formMON.jsp" styleClass="btn btn-outline-info">Ingresar Moneda</html:link>
+                                </div>
+                                <a class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                            </html:form></a>
+                    </div>
+                </li>
 
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
