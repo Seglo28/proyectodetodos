@@ -213,8 +213,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <logic:notEmpty name="ActionFormMonedas" property="listaMon">
-                                <logic:iterate id="monedas" name="ActionFormMonedas" property="listaMon">
+                            <logic:notEmpty name="ActionFormMoneda" property="listaMon">
+                                <logic:iterate id="monedas" name="ActionFormMoneda" property="listaMon">
                                     <tr>
                                         <html:form action="/monedas">
                                             <td><bean:write name="monedas" property="idMoneda"/></td>

@@ -235,7 +235,7 @@
                         </div>
                     </div>
                 </html:form>
-                 <bean:write name="ActionFormMonedas" property="error" filter="false"/>
+              
                 </div>
                 <div id="error" hidden="hidden">${error}</div>
                 <div id="mensaje" hidden="hidden">${mensaje}</div>
