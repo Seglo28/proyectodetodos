@@ -22,7 +22,7 @@
         <link href="css/Style.css" rel="stylesheet">
     </head>
     <body class="bg ">
-       <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 
             <a class="nav navbar-brand" href="/InventarioStruts/inicio.jsp">
                 <img src="img/inicio.jpg" alt="Logo" style="width:40px;">
@@ -104,18 +104,18 @@
                     </div>
                 </li>
 
-                  <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                       Facturas
+                        Facturas
                     </div>
                     <div class="dropdown-menu">
-                       <html:form action="/facturas">
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
-                        </div>
-                        <div class="dropdown-item" style="background-color: #343a40">
-                            <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
-                        </html:form></div>
+                        <html:form action="/facturas">
+                            <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Consultar"></html:submit> 
+                                </div>
+                                <div class="dropdown-item" style="background-color: #343a40">
+                                <html:submit styleClass="btn btn-outline-info" property="action" value="Archivo Facturas"></html:submit> 
+                            </html:form></div>
                     </div>
                 </li>
 
@@ -132,9 +132,9 @@
                             </html:form></a>
                     </div>
                 </li>
-                 <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                       Moneda
+                        Moneda
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/monedas">
@@ -147,7 +147,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                       Moneda
+                        Moneda
                     </div>
                     <div class="dropdown-menu">
                         <div class="dropdown-item" style="background-color: #343a40"><html:form action="/monedas">
@@ -205,96 +205,102 @@
                 </ul>
             </nav>
 
-        <div class="container">
+            <div class="container">
 
-            <br>
-            <div class="row">
-                <div class="col-12">
-                <html:form action="/monedas">
-                    <div class="card">
-                        <div class="card bg-info text-white">
-                            <div class="card-header">Registro de Monedas</div>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="row">
-                                <div class="form-group col-md-3">
-                                    <label form="Moneda">Nombre de la moneda</label><br>
-                                    <html:text property="moneda" styleClass="form-control"></html:text>
-                                </div>
-                                <div class="form-group col-md-3">
-                                   <label form="Simbolo"> Simbolo de la moneda</label><br>
-                                    <html:text property="simbolo" styleClass="form-control"></html:text>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label form="Equivalencia">Equivalencia de la moneda:</label><br>
-                                    <html:text property="equivalencia" styleClass="form-control"></html:text>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label form="Equivalente">Moneda equivalente:</label><br>
-                                    <html:text property="equivalente" styleClass="form-control"></html:text>
-                                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                    <html:form action="/monedas">
+                        <div class="card">
+                            <div class="card bg-info text-white">
+                                <div class="card-header">Registro de Monedas</div>
                             </div>
-                                 <html:submit styleClass="btn btn-outline-success" property="action" value="Agregar"/>
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label form="Moneda">Nombre de la moneda</label><br>
+                                        <html:text property="moneda" styleClass="form-control"></html:text>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label form="Abreviatura">Abreviatura</label><br>
+                                        <html:text property="abreviatura" styleClass="form-control"></html:text>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label form="Simbolo"> Simbolo de la moneda</label><br>
+                                        <html:text property="simbolo" styleClass="form-control"></html:text>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label form="Equivalencia">Equivalencia de la moneda:</label><br>
+                                        <html:text property="equivalencia" styleClass="form-control"></html:text>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label form="Equivalente">Moneda equivalente:</label><br>
+                                        <html:text property="equivalente" styleClass="form-control"></html:text>
+                                        </div>
+                                    </div>
+                                <html:submit styleClass="btn btn-outline-success" property="action" value="Agregar"/>
                             </div>   
-                        <br>
-                      
-              
+                            <br>
+
+
                         </div>
                     </div>
                 </html:form>
-                 
-                </div>
-                <div id="error" hidden="hidden">${error}</div>
-                <div id="mensaje" hidden="hidden">${mensaje}</div>
-                <div id="info" hidden="hidden">${info}</div>
+
             </div>
-
+            <div id="error" hidden="hidden">${error}</div>
+            <div id="mensaje" hidden="hidden">${mensaje}</div>
+            <div id="info" hidden="hidden">${info}</div>
         </div>
-        <script>
-            toastr.options = {
-                "debug": false,
-  		"positionClass": "toast-bottom-right",
-  		"onclick": null,
-            	"fadeIn": 300,
-  		"fadeOut": 100,
-                "timeOut": 5000,
-  		"extendedTimeOut": 1000
-            }
 
-            var showToastrs = false;
+    </div>
+    <script>
+        toastr.options = {
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "fadeIn": 300,
+            "fadeOut": 100,
+            "timeOut": 5000,
+            "extendedTimeOut": 1000
+        }
 
-            function error() {
-                if(!showToastrs){
-                    toastr.error($("#error").text(), 'Error!');
-                }
-            }
-            
-            function mensaje() {
-                if(!showToastrs){
-                    toastr.success($("#mensaje").text(), 'Éxito!');
-                }
-            }
-            function info() {
-                if(!showToastrs){
-                    toastr.info($("#info").text(), 'Info!');
-                }
-            }
-            
-            window.onload = function(){
-                if($("#error").text() != ""){
-                    error();
-                }
-                if($("#mensaje").text() != ""){
-                    mensaje();
-                }
-                if($("#info").text() != ""){
-                    info();
-                }
-            }
+        var showToastrs = false;
 
-        </script>
-    </body>
+        function error() {
+            if (!showToastrs) {
+                toastr.error($("#error").text(), 'Error!');
+            }
+        }
+
+        function mensaje() {
+            if (!showToastrs) {
+                toastr.success($("#mensaje").text(), 'Éxito!');
+            }
+        }
+        function info() {
+            if (!showToastrs) {
+                toastr.info($("#info").text(), 'Info!');
+            }
+        }
+
+        window.onload = function () {
+            if ($("#error").text() != "") {
+                error();
+            }
+            if ($("#mensaje").text() != "") {
+                mensaje();
+            }
+            if ($("#info").text() != "") {
+                info();
+            }
+        }
+
+    </script>
+</body>
 </html>
 
 

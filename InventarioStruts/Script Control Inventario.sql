@@ -97,6 +97,7 @@ telefono varchar(15)
 create table monedas(
 id_moneda int(12) not null auto_increment primary key,
 moneda varchar(50) not null,
+abreviatura varchar(5) not null,
 simbolo varchar(5) not null,
 equivalencia double,
 equivalente varchar(50)

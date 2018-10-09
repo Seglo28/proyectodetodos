@@ -11,6 +11,7 @@ public class Monedas  implements java.io.Serializable {
 
      private Integer idMoneda;
      private String moneda;
+     private String abreviatura;
      private String simbolo;
      private Double equivalencia;
      private String equivalente;
@@ -23,8 +24,9 @@ public class Monedas  implements java.io.Serializable {
         this.moneda = moneda;
         this.simbolo = simbolo;
     }
-    public Monedas(String moneda, String simbolo, Double equivalencia, String equivalente) {
+    public Monedas(String moneda, String simbolo, String abreviatura, Double equivalencia, String equivalente) {
        this.moneda = moneda;
+       this.abreviatura = abreviatura;
        this.simbolo = simbolo;
        this.equivalencia = equivalencia;
        this.equivalente = equivalente;
@@ -44,6 +46,15 @@ public class Monedas  implements java.io.Serializable {
     public void setMoneda(String moneda) {
         this.moneda = moneda;
     }
+
+    public String getAbreviatura() {
+        return abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
+    }
+    
     public String getSimbolo() {
         return this.simbolo;
     }
@@ -65,10 +76,7 @@ public class Monedas  implements java.io.Serializable {
     public void setEquivalente(String equivalente) {
         this.equivalente = equivalente;
     }
-
-
-
-
+    
 }
 
 

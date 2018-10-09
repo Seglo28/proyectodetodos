@@ -15,11 +15,12 @@ import persistencias.Monedas;
 public class ActionFormMoneda extends org.apache.struts.action.ActionForm  {
     private Integer idMoneda;
     private String moneda;
+    private String abreviatura;
     private String simbolo;
     private Double equivalencia;
     private String equivalente;
      private String action ;
-     private   String mensaje;
+     private String mensaje;
      private List<Monedas> listaMon; 
 
     public Integer getIdMoneda() {
@@ -36,6 +37,14 @@ public class ActionFormMoneda extends org.apache.struts.action.ActionForm  {
 
     public void setMoneda(String moneda) {
         this.moneda = moneda;
+    }
+
+    public String getAbreviatura() {
+        return abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
     }
 
     public String getSimbolo() {
@@ -88,7 +97,7 @@ public class ActionFormMoneda extends org.apache.struts.action.ActionForm  {
 
     @Override
     public String toString() {
-        return "ActionFormMonedas{" + "idMoneda=" + idMoneda + ", moneda=" + moneda + ", simbolo=" + simbolo + ", equivalencia=" + equivalencia + ", equivalente=" + equivalente + ", action=" + action + ", mensaje=" + mensaje + ", listaMon=" + listaMon + '}';
+        return "ActionFormMoneda{" + "idMoneda=" + idMoneda + ", moneda=" + moneda + ", abreviatura=" + abreviatura + ", simbolo=" + simbolo + ", equivalencia=" + equivalencia + ", equivalente=" + equivalente + ", action=" + action + ", mensaje=" + mensaje + ", listaMon=" + listaMon + '}';
     }
-     
+
 }

@@ -11,6 +11,9 @@
         <property name="moneda" type="string">
             <column name="moneda" length="50" not-null="true" />
         </property>
+        <property name="abreviatura" type="string">
+            <column name="abreviatura" length="5" not-null="true" />
+        </property>
         <property name="simbolo" type="string">
             <column name="simbolo" length="5" not-null="true" />
         </property>

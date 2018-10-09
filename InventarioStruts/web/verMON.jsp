@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Control Inventario - Clientes</title>
+        <title>Control Inventario - Moneda</title>
         <link rel="icon" href="img/logo.png">
         <link href="css/bootstrap.min.css" rel="stylesheet" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -203,13 +203,13 @@
                         <table class="table table-hover" id="table">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>IdMoneda</th>
-                                    <th>Nombre de la moneda</th>
+                                    <th>ID</th>
+                                    <th>Moneda</th>
+                                    <th>Abreviatura</th>
                                     <th>Simbolo</th>
                                     <th>Equivalencia</th>
                                     <th>Equivalente</th>
-                                    <th>Actualizar</th>
-                                    <th>Eliminar</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -220,13 +220,13 @@
                                             <td><bean:write name="monedas" property="idMoneda"/></td>
                                     <div hidden="hidden"><html:text  name="monedas" property="idMoneda"></html:text></div> </td>
                                     <td><bean:write name="monedas" property="moneda"/></td>
+                                    <td><bean:write name="monedas" property="abreviatura"/></td>
                                     <td><bean:write name="monedas" property="simbolo"/></td>
                                     <td><bean:write name="monedas" property="equivalencia"/></td>
                                     <td><bean:write name="monedas" property="equivalente"/></td>
-                                    <td><html:submit styleClass="btn btn-success" property="action" value="Actualizar"/></td>
-                                    
+                                    <td><html:submit styleClass="btn btn-outline-success" property="action" value="Actualizar"/>
                                 </html:form>
-                                    <td> <button class="btn btn-secondary btnBorrar" data-id="<bean:write name="monedas" property="idMoneda"/>">Eliminar</button></td>
+                                        <button class="btn btn-outline-secondary btnBorrar" data-id="<bean:write name="monedas" property="idMoneda"/>">Eliminar</button></td>
                                 </tr>
                             </logic:iterate>
                         </logic:notEmpty>

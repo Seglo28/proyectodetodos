@@ -21,6 +21,35 @@
         <link href="http://codeseven.github.com/toastr/toastr.css" rel="stylesheet"/>
         <link href="http://codeseven.github.com/toastr/toastr-responsive.css" rel="stylesheet"/>
         <link href="css/Style.css" rel="stylesheet">
+        <style>
+            .how-section1{
+                margin-top:-15%;
+                padding: 10%;
+            }
+            .how-section1 h4{
+                color: #ffa500;
+                font-weight: bold;
+                font-size: 30px;
+            }
+            .how-section1 .subheading{
+                color: #3931af;
+                font-size: 20px;
+            }
+            .how-section1 .row
+            {
+                margin-top: 10%;
+            }
+            .how-img 
+            {
+                text-align: center;
+            }
+            .how-img img{
+                width: 40%;
+            }
+            .p{
+                color:#0b2e13;
+            }
+        </style>
     </head>
     <body class="bg ">
        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
@@ -195,11 +224,49 @@
 
         <div class="container">
             <br>
-            <div class="row">
-                <div class="col-12">
-                    <h1>Inicio</h1>
+            <div class="how-section1">
+                <div class="row">
+                    <div class="col-md-6 how-img">
+                        <img src="https://image.ibb.co/dDW27U/Work_Section2_freelance_img1.png" class="rounded-circle img-fluid" alt=""/>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Registre las personas para su acceso.</h4>
+                        <h4 class="subheading">En usuarios puede registrar las personas encargadas del control de inventarios. </h4>
+                        <p class="text-muted"> Tenga  en cuenta que solo el personal responsable puede tener acceso a la aplicación, por lo cual se recomienda otorgar un usuario para mejor control.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4> Accesibilidad garantizada.</h4>
+                        <h4 class="subheading"> Con ayuda de  la barra navegadora en la parte superior puede dirigirse al menu, al cual desea ingresar.</h4>
+                        <p class="text-muted">Al dar Click a uno de  los botones del menu sera redireccionado de forma inmediata.</p>
+                    </div>
+                    <div class="col-md-6 how-img">
+                        <img src="https://image.ibb.co/cHgKnU/Work_Section2_freelance_img2.png" class="rounded-circle img-fluid" alt=""/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 how-img">
+                        <img src="https://image.ibb.co/ctSLu9/Work_Section2_freelance_img3.png" class="rounded-circle img-fluid" alt=""/>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Acciones seguras.</h4>
+                        <h4 class="subheading">Cada formulario  y accion a realizar pueden ser verificadas antes de aceptar su ejecución. </h4>
+                        <p class="text-muted">Mensajes de advertencia y botones de confirmación  según la opción a ejecutar.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Administracion de Inventarios y movimientos relacionados.</h4>
+                        <h4 class="subheading">En  los menus de consulta puede actualizar o archivar sus movimientos</h4>
+                        <p class="text-muted"> Con un click en   el menu de  inventarios  puede acceder a las opciones  desplagables que ofrece, verificando productos, stock, entradas y salidas de los mismos según sus movimientos</p>
+                    </div>
+                    <div class="col-md-6 how-img">
+                        <img src="https://image.ibb.co/gQ9iE9/Work_Section2_freelance_img4.png" class="rounded-circle img-fluid" alt=""/>
+                    </div>
                 </div>
             </div>
+                    
         </div>
     </body>
 </html>

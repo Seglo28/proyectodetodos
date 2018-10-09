@@ -206,8 +206,7 @@
                                     <th>Usuario</th>
                                     <th>Correo</th>
                                     <th>Cargo</th>
-                                    <th>Actualizar</th>
-                                    <th>Eliminar</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -222,11 +221,9 @@
                                             <td><bean:write name="user" property="correo"/></td>
                                             <td><bean:write name="user" property="cargo"/></td>
                                             <td>
-                                                <html:submit styleClass="btn btn-success" property="action" value="Modificar"/>
-                                           
-                                            </td>
+                                                <html:submit styleClass="btn btn-outline-success" property="action" value="Modificar"/>
                                         </html:form>
-                                            <td> <button class="btn btn-secondary btnBorrar" data-id="<bean:write name="user" property="idUsuario"/>">Eliminar</button></td>   
+                                            <button class="btn btn-outline-secondary btnBorrar" data-id="<bean:write name="user" property="idUsuario"/>">Eliminar</button></td>   
                                     </tr>
                                 </logic:iterate>
                             </logic:notEmpty>
