@@ -35,7 +35,7 @@ public class ActionMonedas  extends org.apache.struts.action.Action{
         
          if (af == null || action == null) {
             mensaje = "Hay un problema en el Sistema";
-            request.setAttribute("info", mensaje);
+            request.setAttribute("error", mensaje);
             return map.findForward(errorMON);
         }
 

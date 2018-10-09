@@ -55,8 +55,8 @@ telefono varchar(15)
 
 create table usuario(
 id_usuario int(12) not null auto_increment primary key,
-usuario varchar(25),
-correo varchar(25),
+usuario varchar(45),
+correo varchar(45),
 contra varchar(45),
 cargo varchar(25)
 );
