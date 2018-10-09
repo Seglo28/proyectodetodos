@@ -9,10 +9,10 @@
             <generator class="identity" />
         </id>
         <property name="usuario" type="string">
-            <column name="usuario" length="25" />
+            <column name="usuario" length="45" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" length="25" />
+            <column name="correo" length="45" />
         </property>
         <property name="contra" type="string">
             <column name="contra" length="45" />
